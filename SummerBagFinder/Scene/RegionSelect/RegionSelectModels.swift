@@ -13,26 +13,6 @@
 import UIKit
 
 enum RegionSelect {
-    
-    struct Region: Codable {
-        let prefix: String
-        let name: String
-        let subregions: [Subregion]
-        
-        enum CodingKeys: String, CodingKey {
-            case prefix
-            case name = "region_name"
-            case subregions
-        }
-    }
-    
-    struct Subregion: Codable {
-        let id: String
-        let name: String
-    }
-    
-    // MARK: Use cases
-    
     enum MoveStoreList {
         struct Request {
             let indexPath: IndexPath

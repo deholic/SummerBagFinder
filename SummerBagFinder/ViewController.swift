@@ -12,19 +12,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    @IBAction func touchLoginButton(_ sender: Any) {
-        let loginVC = LoginViewController()
-        let nav = UINavigationController(rootViewController: loginVC)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true, completion: nil)
     }
     
-    @IBAction func touchRegionListButton(_ sender: Any) {
-        let regionVC = RegionSelectViewController()
-        let nav = UINavigationController(rootViewController: regionVC)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showLoginButton()
+    }
+
+    func showLoginButton() {
+        let loginVC = LoginViewController()
+        let nav = UINavigationController(rootViewController: loginVC)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
     }

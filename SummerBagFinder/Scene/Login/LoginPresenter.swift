@@ -19,8 +19,6 @@ protocol LoginPresentationLogic {
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     
-    // MARK: Do something
-    
     func presentLoginFailure() {
         viewController?.displayLoginFailureAlert()
     }

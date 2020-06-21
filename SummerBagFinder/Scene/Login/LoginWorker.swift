@@ -13,8 +13,6 @@
 import UIKit
 import Moya
 
-
-
 class LoginWorker {
     func processToLogin(id: String?, password: String?, completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let id = id, let password = password else { return }

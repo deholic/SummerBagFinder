@@ -14,17 +14,4 @@ import UIKit
 
 enum StoreList {
     
-    struct StoreStock {
-        let store: Store
-        let stock: Stock
-    }
-    
-    enum Something {
-        struct Request {
-        }
-        struct Response {
-        }
-        struct ViewModel {
-        }
-    }
 }

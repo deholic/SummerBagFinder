@@ -14,34 +14,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="TTC-9w-HXp">
-                                <rect key="frame" x="149.5" y="400" width="115" height="96"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcm-Ik-TXP">
-                                        <rect key="frame" x="0.0" y="0.0" width="58" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Login"/>
-                                        <connections>
-                                            <action selector="touchLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Psu-tv-jnH"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G04-qT-59l">
-                                        <rect key="frame" x="0.0" y="55" width="115" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Region List"/>
-                                        <connections>
-                                            <action selector="touchRegionListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cc2-za-Uqb"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="TTC-9w-HXp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TXB-kK-m3A"/>
-                            <constraint firstItem="TTC-9w-HXp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="thj-no-ECP"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>

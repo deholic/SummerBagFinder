@@ -13,16 +13,9 @@
 import UIKit
 
 protocol StoreListPresentationLogic {
-    func presentSomething(response: StoreList.Something.Response)
+    
 }
 
 class StoreListPresenter: StoreListPresentationLogic {
     weak var viewController: StoreListDisplayLogic?
-    
-    // MARK: Do something
-    
-    func presentSomething(response: StoreList.Something.Response) {
-        let viewModel = StoreList.Something.ViewModel()
-//        viewController?.displaySomething(viewModel: viewModel)
-    }
 }

@@ -13,7 +13,7 @@
 import UIKit
 
 protocol StoreListDisplayLogic: class {
-//    func displaySomething(viewModel: StoreList.Something.ViewModel)
+
 }
 
 class StoreListViewController: UIViewController, StoreListDisplayLogic {
@@ -116,9 +116,5 @@ extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        interactor?.doMoveToStoreList(RegionSelect.MoveStoreList.Request(indexPath: indexPath))
     }
 }

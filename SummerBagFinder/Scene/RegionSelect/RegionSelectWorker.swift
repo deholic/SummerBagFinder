@@ -14,7 +14,7 @@ import UIKit
 import Moya
 
 class RegionSelectWorker {
-    func fetchRegionList(completion: @escaping (Result<[RegionSelect.Region], Error>) -> ()) {
+    func fetchRegionList(completion: @escaping (Result<[Region], Error>) -> ()) {
         guard let path = Bundle.main.path(forResource: "regions", ofType: "json") else {
             completion(.failure(BaseError.parseError))
             return
@@ -25,7 +25,7 @@ class RegionSelectWorker {
             return
         }
         
-        guard let regions = try? JSONDecoder().decode([RegionSelect.Region].self, from: jsonData) else {
+        guard let regions = try? JSONDecoder().decode([Region].self, from: jsonData) else {
             completion(.failure(BaseError.parseError))
             return
         }

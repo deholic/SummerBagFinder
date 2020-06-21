@@ -14,11 +14,14 @@ class LoginFormView: BaseView {
     
     lazy private var label: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .secondaryLabel
         return label
     }()
     
     lazy private var textField: UITextField = {
         let textField = UITextField()
+        textField.autocapitalizationType = .none
         textField.borderStyle = .none
         return textField
     }()
@@ -66,7 +69,7 @@ extension LoginFormView {
     private func setupViews() {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 8
         
         stackView.addArrangedSubview(label)
         stackView.addArrangedSubview(textField)
