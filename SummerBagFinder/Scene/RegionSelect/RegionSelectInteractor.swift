@@ -18,7 +18,7 @@ protocol RegionSelectBusinessLogic {
 }
 
 protocol RegionSelectDataStore {
-    var regions: [RegionSelect.Region] { get }
+    var regions: [Region] { get }
     var fetchedStockList: StoreStockList? { get }
 }
 
@@ -26,7 +26,7 @@ class RegionSelectInteractor: RegionSelectBusinessLogic, RegionSelectDataStore {
     var presenter: RegionSelectPresentationLogic?
     var worker: RegionSelectWorker?
     
-    var regions: [RegionSelect.Region] = []
+    var regions: [Region] = []
     var fetchedStockList: StoreStockList?
     
     init() {
