@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
     lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.spacing = 10
+        view.spacing = 16
         return view
     }()
     
@@ -45,7 +45,14 @@ class LoginViewController: UIViewController {
     lazy var submitButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("로그인", for: .normal)
+        
+        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .bold)
         button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 8.0
+        
+        button.snp.makeConstraints { (maker) in
+            maker.height.equalTo(50)
+        }
         
         button.rx.tap.subscribe(onNext: {
             self.tapSubmitButton()
