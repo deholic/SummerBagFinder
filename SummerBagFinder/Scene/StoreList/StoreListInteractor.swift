@@ -13,7 +13,7 @@
 import UIKit
 
 protocol StoreListBusinessLogic {
-//    func doSomething(request: StoreList.Something.Request)
+    
 }
 
 protocol StoreListDataStore {
@@ -23,7 +23,6 @@ protocol StoreListDataStore {
 
 class StoreListInteractor: StoreListBusinessLogic, StoreListDataStore {
     var presenter: StoreListPresentationLogic?
-    var worker: StoreListWorker?
     
     var dataList: StoreStockList?
     

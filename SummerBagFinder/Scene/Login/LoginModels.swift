@@ -13,8 +13,6 @@
 import UIKit
 
 enum Login {
-    // MARK: Use cases
-    
     enum LoginTrial {
         struct Request {
             var id: String

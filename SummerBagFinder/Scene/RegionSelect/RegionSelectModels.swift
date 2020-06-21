@@ -13,9 +13,6 @@
 import UIKit
 
 enum RegionSelect {
-    
-    // MARK: Use cases
-    
     enum MoveStoreList {
         struct Request {
             let indexPath: IndexPath

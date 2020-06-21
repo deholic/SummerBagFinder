@@ -20,8 +20,6 @@ protocol RegionSelectPresentationLogic {
 class RegionSelectPresenter: RegionSelectPresentationLogic {
     weak var viewController: RegionSelectDisplayLogic?
     
-    // MARK: Do something
-    
     func presentRegionList() {
         viewController?.displayRegionList()
     }
