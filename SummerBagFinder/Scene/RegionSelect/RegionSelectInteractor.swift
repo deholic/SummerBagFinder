@@ -23,6 +23,7 @@ protocol RegionSelectDataStore {
 }
 
 class RegionSelectInteractor: RegionSelectBusinessLogic, RegionSelectDataStore {
+    var router: (NSObjectProtocol & RegionSelectRoutingLogic & RegionSelectDataPassing)?
     var presenter: RegionSelectPresentationLogic?
     var worker: RegionSelectWorker?
     
@@ -51,7 +52,7 @@ class RegionSelectInteractor: RegionSelectBusinessLogic, RegionSelectDataStore {
             guard case let .success(stockList) = result else { return }
             
             self.fetchedStockList = stockList
-            self.presenter?.presentStoreList()
+            self.router?.routeToStoreList()
         }
     }
 }

@@ -21,7 +21,7 @@ protocol RegionSelectDataPassing {
 }
 
 class RegionSelectRouter: NSObject, RegionSelectRoutingLogic, RegionSelectDataPassing {
-    weak var viewController: RegionSelectViewController?
+    var viewController: RegionSelectViewController?
     var dataStore: RegionSelectDataStore?
 }
 
@@ -32,7 +32,18 @@ extension RegionSelectRouter {
         guard let dataStore = dataStore else { return }
         
         let destinationVC = StoreListViewController()
-        var destinationDS = destinationVC.router!.dataStore!
+        let interactor = StoreListInteractor()
+        let presenter = StoreListPresenter()
+        let router = StoreListRouter()
+        destinationVC.interactor = interactor
+        destinationVC.dataStore = interactor
+        interactor.router = router
+        interactor.presenter = presenter
+        presenter.viewController = destinationVC
+        router.viewController = destinationVC
+        router.dataStore = interactor
+
+        var destinationDS: StoreListDataStore = interactor
         passDataToStoreList(source: dataStore, destination: &destinationDS)
         navigateToStoreList(source: viewController, destination: destinationVC)
     }

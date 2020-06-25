@@ -22,6 +22,7 @@ protocol StoreListDataStore {
 }
 
 class StoreListInteractor: StoreListBusinessLogic, StoreListDataStore {
+    var router: (NSObjectProtocol & StoreListRoutingLogic & StoreListDataPassing)?
     var presenter: StoreListPresentationLogic?
     
     var dataList: StoreStockList?

@@ -16,7 +16,6 @@ import RxCocoa
 
 protocol RegionSelectDisplayLogic: class {
     func displayRegionList()
-    func displayStoreList()
 }
 
 class RegionSelectViewController: UIViewController {
@@ -26,8 +25,6 @@ class RegionSelectViewController: UIViewController {
     }
     
     var interactor: RegionSelectBusinessLogic?
-    var router: (NSObjectProtocol & RegionSelectRoutingLogic & RegionSelectDataPassing)?
-    
     var dataStore: RegionSelectDataStore?
     
     lazy var tableView: UITableView = {
@@ -75,7 +72,7 @@ extension RegionSelectViewController {
         let router = RegionSelectRouter()
         viewController.interactor = interactor
         viewController.dataStore = interactor
-        viewController.router = router
+        interactor.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
@@ -129,9 +126,5 @@ extension RegionSelectViewController: UITableViewDelegate, UITableViewDataSource
 extension RegionSelectViewController: RegionSelectDisplayLogic {
     func displayRegionList() {
         tableView.reloadData()
-    }
-    
-    func displayStoreList() {
-        router?.routeToStoreList()
     }
 }

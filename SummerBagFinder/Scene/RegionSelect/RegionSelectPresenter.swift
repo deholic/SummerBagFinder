@@ -14,7 +14,6 @@ import UIKit
 
 protocol RegionSelectPresentationLogic {
     func presentRegionList()
-    func presentStoreList()
 }
 
 class RegionSelectPresenter: RegionSelectPresentationLogic {
@@ -22,9 +21,5 @@ class RegionSelectPresenter: RegionSelectPresentationLogic {
     
     func presentRegionList() {
         viewController?.displayRegionList()
-    }
-    
-    func presentStoreList() {
-        viewController?.displayStoreList()
     }
 }
