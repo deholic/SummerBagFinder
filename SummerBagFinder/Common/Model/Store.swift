@@ -8,26 +8,10 @@
 
 import Foundation
 
-struct Store: Codable {
+struct Store {
     let id: Int
     let name: String
     let address: String
-    let isOpen: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "store_cd"
-        case name = "store_nm"
-        case address
-        case isOpen = "is_open"
-    }
-}
-
-struct StoreStockList: Codable {
-    let stores: [Store]
-    let stocks: [Stock]
-    
-    enum CodingKeys: String, CodingKey {
-        case stores = "storeList"
-        case stocks = "stockList"
-    }
+    let isOpen: Bool // Bool로 변환가능?
+    let stock: Stock?
 }

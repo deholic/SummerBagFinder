@@ -13,13 +13,20 @@
 import UIKit
 
 protocol RegionSelectPresentationLogic {
-    func presentRegionList()
+    func presentRegionList(_ response: RegionSelect.doFetchRegions.Response)
 }
 
 class RegionSelectPresenter: RegionSelectPresentationLogic {
     weak var viewController: RegionSelectDisplayLogic?
     
-    func presentRegionList() {
-        viewController?.displayRegionList()
+    func presentRegionList(_ response: RegionSelect.doFetchRegions.Response) {
+        let regions = response.regions.map {
+            RegionViewModel(
+                name: $0.name,
+                subregions: $0.subregions.map { RegionViewModel.SubregionViewModel(name: $0.name)}
+            )
+        }
+        let viewModel = RegionSelect.doFetchRegions.ViewModel(regions: regions)
+        viewController?.displayRegionList(viewModel)
     }
 }

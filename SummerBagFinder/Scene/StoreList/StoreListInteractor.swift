@@ -13,19 +13,23 @@
 import UIKit
 
 protocol StoreListBusinessLogic {
+    func viewDidLoad()
 }
 
 class StoreListInteractor {
     var router: (NSObjectProtocol & StoreListRoutingLogic)?
     var presenter: StoreListPresentationLogic?
     
-    var dataList: StoreStockList?
+    var stores: [Store]?
 }
 
+extension StoreListInteractor: StoreListBusinessLogic {
     
-    func getStoreStock(index: Int) -> Stock? {
-        let store = dataList?.stores[index]
-        let stock = dataList?.stocks.filter({ Int($0.storeId) == store?.id }).first
-        return stock
+    func viewDidLoad() {
+        
+        if let stores = stores {
+            let response = StoreList.viewDidLoad.Response(stores: stores)
+            presenter?.displayStoreStockList(response)
+        }
     }
 }

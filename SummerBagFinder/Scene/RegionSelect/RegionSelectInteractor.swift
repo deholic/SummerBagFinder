@@ -23,7 +23,7 @@ class RegionSelectInteractor: RegionSelectBusinessLogic {
     var worker: RegionSelectWorker?
     
     var regions: [Region] = []
-    var fetchedStockList: StoreStockList?
+    var stores: [Store]?
     
     init() {
         worker = RegionSelectWorker()
@@ -34,7 +34,8 @@ class RegionSelectInteractor: RegionSelectBusinessLogic {
             guard let self = self else { return }
             guard case let .success(regions) = result else { return }
             self.regions = regions
-            self.presenter?.presentRegionList()
+            let response = RegionSelect.doFetchRegions.Response(regions: regions)
+            self.presenter?.presentRegionList(response)
         }
     }
     
@@ -44,10 +45,10 @@ class RegionSelectInteractor: RegionSelectBusinessLogic {
         
         worker?.fetchStoreList(regionCode: subregion.id) { [weak self] result in
             guard let self = self else { return }
-            guard case let .success(stockList) = result else { return }
+            guard case let .success(stores) = result else { return }
             
-            self.fetchedStockList = stockList
-            self.router?.routeToStoreList()
+            self.stores = stores
+            self.router?.routeToStoreList(stores: stores)
         }
     }
 }

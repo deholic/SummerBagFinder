@@ -13,9 +13,15 @@
 import UIKit
 
 protocol StoreListPresentationLogic {
-    
+    func displayStoreStockList(_ response: StoreList.viewDidLoad.Response)
 }
 
 class StoreListPresenter: StoreListPresentationLogic {
     weak var viewController: StoreListDisplayLogic?
+    
+    func displayStoreStockList(_ response: StoreList.viewDidLoad.Response) {
+        let viewModel = StoreList.viewDidLoad.ViewModel(stores: response.stores)
+        
+        viewController?.displayStoreStockList(viewModel)
+    }
 }

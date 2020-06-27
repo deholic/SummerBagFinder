@@ -15,7 +15,7 @@ import RxSwift
 import RxCocoa
 
 protocol RegionSelectDisplayLogic: class {
-    func displayRegionList()
+    func displayRegionList(_ viewModel: RegionSelect.doFetchRegions.ViewModel)
 }
 
 class RegionSelectViewController: UIViewController {
@@ -25,8 +25,8 @@ class RegionSelectViewController: UIViewController {
     }
     
     var interactor: RegionSelectBusinessLogic?
-    var dataStore: RegionSelectDataStore?
-    
+    var regions: [RegionViewModel] = []
+
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         
@@ -72,22 +72,22 @@ extension RegionSelectViewController {
 
 extension RegionSelectViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataStore?.regions.count ?? 0
+        return regions.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataStore?.regions[section].subregions.count ?? 0
+        return regions[section].subregions.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return dataStore?.regions[section].name
+        return regions[section].name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.regionCellIdentifier, for: indexPath)
         
-        let region = dataStore?.regions[indexPath.section].subregions[indexPath.row]
-        cell.textLabel?.text = region?.name
+        let region = regions[indexPath.section].subregions[indexPath.row]
+        cell.textLabel?.text = region.name
         
         return cell
     }
@@ -98,7 +98,8 @@ extension RegionSelectViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 extension RegionSelectViewController: RegionSelectDisplayLogic {
-    func displayRegionList() {
+    func displayRegionList(_ viewModel: RegionSelect.doFetchRegions.ViewModel) {
+        regions = viewModel.regions
         tableView.reloadData()
     }
 }

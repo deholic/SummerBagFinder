@@ -13,5 +13,13 @@
 import UIKit
 
 enum StoreList {
-    
+    enum viewDidLoad {
+        struct Request {}
+        struct Response {
+            let stores: [Store]
+        }
+        struct ViewModel {
+            let stores: [Store]
+        }
+    }
 }

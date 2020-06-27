@@ -8,19 +8,13 @@
 
 import Foundation
 
-struct Region: Codable {
-    let prefix: String
+struct Region {
+    let id: String
     let name: String
     let subregions: [Subregion]
-    
-    enum CodingKeys: String, CodingKey {
-        case prefix
-        case name = "region_name"
-        case subregions
-    }
 }
 
-struct Subregion: Codable {
+struct Subregion {
     let id: String
     let name: String
 }

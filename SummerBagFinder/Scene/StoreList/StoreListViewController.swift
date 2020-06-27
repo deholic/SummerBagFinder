@@ -13,7 +13,7 @@
 import UIKit
 
 protocol StoreListDisplayLogic: class {
-
+    func displayStoreStockList(_ viewModel: StoreList.viewDidLoad.ViewModel)
 }
 
 class StoreListViewController: UIViewController {
@@ -35,6 +35,8 @@ class StoreListViewController: UIViewController {
         return tableView
     }()
     
+    private var stores: [Store] = []
+    
     // MARK: View lifecycle
     
     override func viewDidLoad() {
@@ -42,6 +44,7 @@ class StoreListViewController: UIViewController {
         
         setupViews()
         setupTableView()
+        interactor?.viewDidLoad()
     }
 }
 
@@ -74,19 +77,26 @@ extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataStore?.dataList?.stores.count ?? 0
+        return stores.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.storeCellIdentifier, for: indexPath)
         
-        if let storeCell = cell as? StoreListCell, let store = dataStore?.dataList?.stores[indexPath.row] {
-            let stock = dataStore?.getStoreStock(index: indexPath.row)
-            
+        if let storeCell = cell as? StoreListCell{
+            let store = stores[indexPath.row]
             storeCell.setStoreInfo(store)
-            storeCell.setStockInfo(stock)
+            storeCell.setStockInfo(store.stock)
         }
         
         return cell
+    }
+}
+
+extension StoreListViewController: StoreListDisplayLogic {
+    
+    func displayStoreStockList(_ viewModel: StoreList.viewDidLoad.ViewModel) {
+        stores = viewModel.stores
+        tableView.reloadData()
     }
 }
