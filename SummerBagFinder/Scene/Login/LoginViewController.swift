@@ -61,18 +61,6 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
     // MARK: View lifecycle
     
     override func viewDidLoad() {
@@ -84,18 +72,6 @@ class LoginViewController: UIViewController {
 // MARK: - Setup
 
 extension LoginViewController {
-    private func setup() {
-        let viewController = self
-        let interactor = LoginInteractor()
-        let presenter = LoginPresenter()
-        let router = LoginRouter()
-        viewController.interactor = interactor
-        interactor.presenter = presenter
-        interactor.router = router
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
-    }
     
     private func setupViews() {
         self.title = "로그인"

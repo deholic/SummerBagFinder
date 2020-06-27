@@ -37,19 +37,6 @@ class RegionSelectViewController: UIViewController {
         return tableView
     }()
     
-    // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    
     // MARK: View lifecycle
     
     override func viewDidLoad() {
@@ -65,20 +52,7 @@ class RegionSelectViewController: UIViewController {
 // MARK: - Setup
 
 extension RegionSelectViewController {
-    private func setup() {
-        let viewController = self
-        let interactor = RegionSelectInteractor()
-        let presenter = RegionSelectPresenter()
-        let router = RegionSelectRouter()
-        viewController.interactor = interactor
-        viewController.dataStore = interactor
-        interactor.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
-    }
-    
+
     private func setupViews() {
         self.title = "지역 선택"
         self.edgesForExtendedLayout = [.all]
