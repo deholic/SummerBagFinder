@@ -20,7 +20,8 @@ class ViewController: UIViewController {
     }
 
     func showLoginButton() {
-        let loginVC = LoginViewController()
+        let router = LoginBuilder().build()
+        let loginVC = router.viewController
         let nav = UINavigationController(rootViewController: loginVC)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)

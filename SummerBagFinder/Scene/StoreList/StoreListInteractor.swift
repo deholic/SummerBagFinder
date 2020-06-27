@@ -13,19 +13,15 @@
 import UIKit
 
 protocol StoreListBusinessLogic {
-    
 }
 
-protocol StoreListDataStore {
-    var dataList: StoreStockList? { get set }
-    func getStoreStock(index: Int) -> Stock?
-}
-
-class StoreListInteractor: StoreListBusinessLogic, StoreListDataStore {
-    var router: (NSObjectProtocol & StoreListRoutingLogic & StoreListDataPassing)?
+class StoreListInteractor {
+    var router: (NSObjectProtocol & StoreListRoutingLogic)?
     var presenter: StoreListPresentationLogic?
     
     var dataList: StoreStockList?
+}
+
     
     func getStoreStock(index: Int) -> Stock? {
         let store = dataList?.stores[index]

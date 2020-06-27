@@ -49,6 +49,7 @@
 		DEFDEB5624A4B4630067A17C /* StoreListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5524A4B4630067A17C /* StoreListBuilder.swift */; };
 		DEFDEB5824A4B46F0067A17C /* RegionSelectBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5724A4B46F0067A17C /* RegionSelectBuilder.swift */; };
 		DEFDEB5A24A4B4960067A17C /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5924A4B4960067A17C /* LoginBuilder.swift */; };
+		DEFDEB6324A7117F0067A17C /* RouterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB6224A7117F0067A17C /* RouterLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		DEFDEB5524A4B4630067A17C /* StoreListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListBuilder.swift; sourceTree = "<group>"; };
 		DEFDEB5724A4B46F0067A17C /* RegionSelectBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectBuilder.swift; sourceTree = "<group>"; };
 		DEFDEB5924A4B4960067A17C /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
+		DEFDEB6224A7117F0067A17C /* RouterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterLogic.swift; sourceTree = "<group>"; };
 		EDCCAD7CC7E1088E479FA483 /* Pods-SummerBagFinder-SummerBagFinderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SummerBagFinder-SummerBagFinderUITests.debug.xcconfig"; path = "Target Support Files/Pods-SummerBagFinder-SummerBagFinderUITests/Pods-SummerBagFinder-SummerBagFinderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 		B88AE8F3249EFB1B002879AC /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DEFDEB6124A711720067A17C /* Common */,
 				B88AE900249EFB4C002879AC /* Login */,
 				B88AE901249EFB59002879AC /* RegionSelect */,
 				B88AE902249EFB6E002879AC /* StoreList */,
@@ -355,6 +358,14 @@
 				B8DDFD66249ED185002B3B13 /* Info.plist */,
 			);
 			path = SummerBagFinderUITests;
+			sourceTree = "<group>";
+		};
+		DEFDEB6124A711720067A17C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DEFDEB6224A7117F0067A17C /* RouterLogic.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -613,6 +624,7 @@
 				B88AE8FE249EFB41002879AC /* LoginViewController.swift in Sources */,
 				DEFDEB5A24A4B4960067A17C /* LoginBuilder.swift in Sources */,
 				B8C50562249F25CD00D45DCC /* BaseResponse.swift in Sources */,
+				DEFDEB6324A7117F0067A17C /* RouterLogic.swift in Sources */,
 				B8DDFD47249ED183002B3B13 /* ViewController.swift in Sources */,
 				B8C50577249F3A7400D45DCC /* StoreListPresenter.swift in Sources */,
 				B8DDFD43249ED183002B3B13 /* AppDelegate.swift in Sources */,

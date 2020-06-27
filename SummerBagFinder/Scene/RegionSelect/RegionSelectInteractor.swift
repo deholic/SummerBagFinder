@@ -17,13 +17,8 @@ protocol RegionSelectBusinessLogic {
     func doMoveToStoreList(_ request: RegionSelect.MoveStoreList.Request)
 }
 
-protocol RegionSelectDataStore {
-    var regions: [Region] { get }
-    var fetchedStockList: StoreStockList? { get }
-}
-
-class RegionSelectInteractor: RegionSelectBusinessLogic, RegionSelectDataStore {
-    var router: (NSObjectProtocol & RegionSelectRoutingLogic & RegionSelectDataPassing)?
+class RegionSelectInteractor: RegionSelectBusinessLogic {
+    var router: (NSObjectProtocol & RegionSelectRoutingLogic)?
     var presenter: RegionSelectPresentationLogic?
     var worker: RegionSelectWorker?
     

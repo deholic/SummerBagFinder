@@ -16,7 +16,7 @@ protocol StoreListDisplayLogic: class {
 
 }
 
-class StoreListViewController: UIViewController, StoreListDisplayLogic {
+class StoreListViewController: UIViewController {
     
     private struct Constant {
         static var storeCellIdentifier: String     = "StoreCell"
@@ -24,8 +24,6 @@ class StoreListViewController: UIViewController, StoreListDisplayLogic {
     
     var interactor: StoreListBusinessLogic?
 
-    var dataStore: StoreListDataStore?
-    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
 

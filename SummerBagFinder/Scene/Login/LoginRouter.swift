@@ -12,21 +12,23 @@
 
 import UIKit
 
-@objc protocol LoginRoutingLogic {
+protocol LoginRoutingLogic: RoutingLogic {
     func routeToRegionList()
 }
 
-protocol LoginDataPassing {
-    var dataStore: LoginDataStore? { get }
-}
-
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
-    weak var viewController: LoginViewController?
-    var dataStore: LoginDataStore?
+class LoginRouter: NSObject, LoginRoutingLogic {
+    var viewController: UIViewController
+    private var regionSelectBuilder: RegionSelectBuilable
+    
+    init(viewController: UIViewController, regionSelectBuilder: RegionSelectBuilable) {
+        self.viewController = viewController
+        self.regionSelectBuilder = regionSelectBuilder
+    }
     
     // MARK: Routing
     func routeToRegionList() {
-        let regionsVC = RegionSelectViewController()
-        viewController?.navigationController?.pushViewController(regionsVC, animated: true)
+        let router = regionSelectBuilder.build()
+        let regionsVC = router.viewController
+        viewController.navigationController?.pushViewController(regionsVC, animated: true)
     }
 }

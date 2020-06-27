@@ -12,15 +12,14 @@
 
 import UIKit
 
-@objc protocol StoreListRoutingLogic {
+protocol StoreListRoutingLogic: RoutingLogic {
     
 }
 
-protocol StoreListDataPassing {
-    var dataStore: StoreListDataStore? { get }
-}
-
-class StoreListRouter: NSObject, StoreListRoutingLogic, StoreListDataPassing {
-    weak var viewController: StoreListViewController?
-    var dataStore: StoreListDataStore?
+class StoreListRouter: NSObject, StoreListRoutingLogic {
+    var viewController: UIViewController
+    
+    init(viewController: UIViewController) {
+        self.viewController = viewController
+    }
 }

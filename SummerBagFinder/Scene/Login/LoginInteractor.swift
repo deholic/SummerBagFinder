@@ -16,11 +16,9 @@ protocol LoginBusinessLogic {
     func doLogin(request: Login.LoginTrial.Request)
 }
 
-protocol LoginDataStore { }
-
-class LoginInteractor: LoginDataStore {
+class LoginInteractor {
     var presenter: LoginPresentationLogic?
-    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    var router: (NSObjectProtocol & LoginRoutingLogic)?
     var worker: LoginWorker?
     
     init() {
