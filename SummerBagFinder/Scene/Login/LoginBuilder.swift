@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol LoginBuidable {
-    func build() -> LoginRoutingLogic
+protocol LoginBuildingLogic {
+    func build() -> RoutingLogic
 }
 
-class LoginBuilder: LoginBuidable {
+class LoginBuilder: LoginBuildingLogic {
     
-    func build() -> LoginRoutingLogic {
+    func build() -> RoutingLogic {
         let viewController = LoginViewController()
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
@@ -23,7 +23,6 @@ class LoginBuilder: LoginBuidable {
         interactor.presenter = presenter
         interactor.router = router
         presenter.viewController = viewController
-        router.viewController = viewController
         
         return router
     }

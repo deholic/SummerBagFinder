@@ -8,24 +8,22 @@
 
 import Foundation
 
-protocol StoreListBuildable {
-    func build(stores: [Store]?) -> StoreListRoutingLogic
+protocol StoreListBuildingLogic {
+    func build(stores: [Store]?) -> RoutingLogic
 }
 
-class StoreListBuilder: StoreListBuildable {
+class StoreListBuilder: StoreListBuildingLogic {
     
     // builder 추가
-    func build(stores: [Store]?) -> StoreListRoutingLogic {
+    func build(stores: [Store]?) -> RoutingLogic {
         let destinationVC = StoreListViewController()
-        let interactor = StoreListInteractor()
+        let interactor = StoreListInteractor(stores: stores)
         let presenter = StoreListPresenter()
         let router = StoreListRouter(viewController: destinationVC)
         destinationVC.interactor = interactor
         interactor.router = router
         interactor.presenter = presenter
         presenter.viewController = destinationVC
-        router.viewController = destinationVC
-        interactor.stores = stores
         
         return router
     }

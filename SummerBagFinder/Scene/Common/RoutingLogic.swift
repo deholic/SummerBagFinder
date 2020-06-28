@@ -1,5 +1,5 @@
 //
-//  RouterLogic.swift
+//  RoutingLogic.swift
 //  SummerBagFinder
 //
 //  Created by 정국희 on 2020/06/27.

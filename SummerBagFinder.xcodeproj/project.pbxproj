@@ -40,8 +40,6 @@
 		B8C50588249F8C2000D45DCC /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C50587249F8C2000D45DCC /* Region.swift */; };
 		B8DDFD43249ED183002B3B13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DDFD42249ED183002B3B13 /* AppDelegate.swift */; };
 		B8DDFD45249ED183002B3B13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DDFD44249ED183002B3B13 /* SceneDelegate.swift */; };
-		B8DDFD47249ED183002B3B13 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DDFD46249ED183002B3B13 /* ViewController.swift */; };
-		B8DDFD4A249ED183002B3B13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DDFD48249ED183002B3B13 /* Main.storyboard */; };
 		B8DDFD4C249ED185002B3B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8DDFD4B249ED185002B3B13 /* Assets.xcassets */; };
 		B8DDFD4F249ED185002B3B13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DDFD4D249ED185002B3B13 /* LaunchScreen.storyboard */; };
 		B8DDFD5A249ED185002B3B13 /* SummerBagFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DDFD59249ED185002B3B13 /* SummerBagFinderTests.swift */; };
@@ -49,7 +47,7 @@
 		DEFDEB5624A4B4630067A17C /* StoreListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5524A4B4630067A17C /* StoreListBuilder.swift */; };
 		DEFDEB5824A4B46F0067A17C /* RegionSelectBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5724A4B46F0067A17C /* RegionSelectBuilder.swift */; };
 		DEFDEB5A24A4B4960067A17C /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5924A4B4960067A17C /* LoginBuilder.swift */; };
-		DEFDEB6324A7117F0067A17C /* RouterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB6224A7117F0067A17C /* RouterLogic.swift */; };
+		DEFDEB6324A7117F0067A17C /* RoutingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB6224A7117F0067A17C /* RoutingLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,8 +106,6 @@
 		B8DDFD3F249ED183002B3B13 /* SummerBagFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SummerBagFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DDFD42249ED183002B3B13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8DDFD44249ED183002B3B13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B8DDFD46249ED183002B3B13 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B8DDFD49249ED183002B3B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8DDFD4B249ED185002B3B13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8DDFD4E249ED185002B3B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8DDFD50249ED185002B3B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,7 +119,7 @@
 		DEFDEB5524A4B4630067A17C /* StoreListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListBuilder.swift; sourceTree = "<group>"; };
 		DEFDEB5724A4B46F0067A17C /* RegionSelectBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectBuilder.swift; sourceTree = "<group>"; };
 		DEFDEB5924A4B4960067A17C /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
-		DEFDEB6224A7117F0067A17C /* RouterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterLogic.swift; sourceTree = "<group>"; };
+		DEFDEB6224A7117F0067A17C /* RoutingLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingLogic.swift; sourceTree = "<group>"; };
 		EDCCAD7CC7E1088E479FA483 /* Pods-SummerBagFinder-SummerBagFinderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SummerBagFinder-SummerBagFinderUITests.debug.xcconfig"; path = "Target Support Files/Pods-SummerBagFinder-SummerBagFinderUITests/Pods-SummerBagFinder-SummerBagFinderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,8 +329,6 @@
 				B88AE8F0249EF836002879AC /* Statics */,
 				B8DDFD42249ED183002B3B13 /* AppDelegate.swift */,
 				B8DDFD44249ED183002B3B13 /* SceneDelegate.swift */,
-				B8DDFD46249ED183002B3B13 /* ViewController.swift */,
-				B8DDFD48249ED183002B3B13 /* Main.storyboard */,
 				B8DDFD4B249ED185002B3B13 /* Assets.xcassets */,
 				B8DDFD4D249ED185002B3B13 /* LaunchScreen.storyboard */,
 				B8DDFD50249ED185002B3B13 /* Info.plist */,
@@ -363,7 +357,7 @@
 		DEFDEB6124A711720067A17C /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				DEFDEB6224A7117F0067A17C /* RouterLogic.swift */,
+				DEFDEB6224A7117F0067A17C /* RoutingLogic.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -480,7 +474,6 @@
 				B8DDFD4F249ED185002B3B13 /* LaunchScreen.storyboard in Resources */,
 				B8C50585249F575600D45DCC /* StoreListCell.xib in Resources */,
 				B8DDFD4C249ED185002B3B13 /* Assets.xcassets in Resources */,
-				B8DDFD4A249ED183002B3B13 /* Main.storyboard in Resources */,
 				B88AE8F2249EF84D002879AC /* regions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,8 +617,7 @@
 				B88AE8FE249EFB41002879AC /* LoginViewController.swift in Sources */,
 				DEFDEB5A24A4B4960067A17C /* LoginBuilder.swift in Sources */,
 				B8C50562249F25CD00D45DCC /* BaseResponse.swift in Sources */,
-				DEFDEB6324A7117F0067A17C /* RouterLogic.swift in Sources */,
-				B8DDFD47249ED183002B3B13 /* ViewController.swift in Sources */,
+				DEFDEB6324A7117F0067A17C /* RoutingLogic.swift in Sources */,
 				B8C50577249F3A7400D45DCC /* StoreListPresenter.swift in Sources */,
 				B8DDFD43249ED183002B3B13 /* AppDelegate.swift in Sources */,
 				B8C5055F249F1C1900D45DCC /* StarbuckService.swift in Sources */,
@@ -677,14 +669,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B8DDFD48249ED183002B3B13 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8DDFD49249ED183002B3B13 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B8DDFD4D249ED185002B3B13 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

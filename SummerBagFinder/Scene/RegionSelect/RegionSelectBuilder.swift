@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol RegionSelectBuilable {
-    func build() -> RegionSelectRoutingLogic
+protocol RegionSelectBuildingLogic {
+    func build() -> RoutingLogic
 }
 
-class RegionSelectBuilder: RegionSelectBuilable {
+class RegionSelectBuilder: RegionSelectBuildingLogic {
     
-    func build() -> RegionSelectRoutingLogic {
+    func build() -> RoutingLogic {
         let viewController = RegionSelectViewController()
         let interactor = RegionSelectInteractor()
         let presenter = RegionSelectPresenter()
@@ -23,7 +23,6 @@ class RegionSelectBuilder: RegionSelectBuilable {
         interactor.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
-        router.viewController = viewController
         
         return router
     }

@@ -6,9 +6,9 @@ protocol RegionSelectRoutingLogic: RoutingLogic {
 
 class RegionSelectRouter: NSObject, RegionSelectRoutingLogic {
     var viewController: UIViewController
-    private var storeListBuilder: StoreListBuildable
+    private var storeListBuilder: StoreListBuildingLogic
     
-    init(viewController: UIViewController, storeListBuilder: StoreListBuildable) {
+    init(viewController: UIViewController, storeListBuilder: StoreListBuildingLogic) {
         self.viewController = viewController
         self.storeListBuilder = storeListBuilder
     }

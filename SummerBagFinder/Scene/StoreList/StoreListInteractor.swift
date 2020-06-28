@@ -21,6 +21,10 @@ class StoreListInteractor {
     var presenter: StoreListPresentationLogic?
     
     var stores: [Store]?
+    
+    init(stores: [Store]?) {
+        self.stores = stores
+    }
 }
 
 extension StoreListInteractor: StoreListBusinessLogic {

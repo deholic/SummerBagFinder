@@ -18,9 +18,9 @@ protocol LoginRoutingLogic: RoutingLogic {
 
 class LoginRouter: NSObject, LoginRoutingLogic {
     var viewController: UIViewController
-    private var regionSelectBuilder: RegionSelectBuilable
+    private var regionSelectBuilder: RegionSelectBuildingLogic
     
-    init(viewController: UIViewController, regionSelectBuilder: RegionSelectBuilable) {
+    init(viewController: UIViewController, regionSelectBuilder: RegionSelectBuildingLogic) {
         self.viewController = viewController
         self.regionSelectBuilder = regionSelectBuilder
     }
@@ -29,6 +29,6 @@ class LoginRouter: NSObject, LoginRoutingLogic {
     func routeToRegionList() {
         let router = regionSelectBuilder.build()
         let regionsVC = router.viewController
-        viewController.navigationController?.pushViewController(regionsVC, animated: true)
+        viewController.show(regionsVC, sender: nil)
     }
 }
