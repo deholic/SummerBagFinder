@@ -6,7 +6,7 @@
 //  Copyright © 2020 EUIGYOM KIM. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct Stock: Codable {
     let storeId: String
@@ -40,19 +40,6 @@ extension Stock {
             return .warning
         } else {
             return .outOfStock
-        }
-    }
-}
-
-extension Stock.State {
-    var color: UIColor {
-        switch self {
-        case .available:
-            return .systemGreen
-        case .warning:
-            return .systemYellow
-        case .outOfStock:
-            return .systemRed
         }
     }
 }

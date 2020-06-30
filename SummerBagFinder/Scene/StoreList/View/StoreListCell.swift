@@ -43,3 +43,16 @@ class StoreListCell: UITableViewCell {
     }
     
 }
+
+extension Stock.State {
+    var color: UIColor {
+        switch self {
+        case .available:
+            return .systemGreen
+        case .warning:
+            return .systemYellow
+        case .outOfStock:
+            return .systemRed
+        }
+    }
+}
