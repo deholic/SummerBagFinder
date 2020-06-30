@@ -38,7 +38,7 @@ class StoreListCell: UITableViewCell {
             return
         }
         
-        stockImage.tintColor = stock.canBuyBag ? .systemGreen : .systemRed
+        stockImage.tintColor = stock.state.color
         stockStatusLabel.text = "G: \(stock.greenCount) / P: \(stock.pinkCount)"
     }
     
