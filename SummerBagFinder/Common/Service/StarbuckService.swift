@@ -29,10 +29,8 @@ enum StarbucksService: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .login:
+        case .login, .getStockList:
             return .post
-        case .getStockList:
-            return .get
         }
     }
     
@@ -64,7 +62,6 @@ enum StarbucksService: TargetType {
             
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         }
-        
     }
     
     var headers: [String : String]? {
@@ -74,8 +71,12 @@ enum StarbucksService: TargetType {
                 "Referer": "https://www.starbucks.co.kr/login/login.do",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0"
             ]
-        default:
-            return nil
+        case .getStockList:
+            return [
+                "Referer": "https://www.starbucks.co.kr:7643/eFrequency/index.do",
+                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+                "Origin": "https://www.starbucks.co.kr:7643"
+            ]
         }
     }
     
