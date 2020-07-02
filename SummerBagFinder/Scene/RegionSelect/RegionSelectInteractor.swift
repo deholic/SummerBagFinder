@@ -13,6 +13,7 @@
 import UIKit
 
 protocol RegionSelectBusinessLogic {
+    func viewWillAppear()
     func doFetchRegions()
     func doMoveToStoreList(_ request: RegionSelect.MoveStoreList.Request)
 }
@@ -25,11 +26,25 @@ class RegionSelectInteractor: RegionSelectBusinessLogic {
     var regions: [Region] = []
     var stores: [Store]?
     
-    init() {
+    private let message: String?
+    
+    init(message: String?) {
         worker = RegionSelectWorker()
+        self.message = message
+    }
+    
+    deinit {
+        print(#function)
+    }
+    
+    func viewWillAppear() {
+        if let message = message {
+            presenter?.showMessageAlert(message: message)
+        }
     }
     
     func doFetchRegions() {
+
         worker?.fetchRegionList { [weak self] result in
             guard let self = self else { return }
             guard case let .success(regions) = result else { return }

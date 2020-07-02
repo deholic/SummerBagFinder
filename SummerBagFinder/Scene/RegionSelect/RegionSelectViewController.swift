@@ -16,12 +16,17 @@ import RxCocoa
 
 protocol RegionSelectDisplayLogic: class {
     func displayRegionList(_ viewModel: RegionSelect.doFetchRegions.ViewModel)
+    func showMessageAlert(message: String)
 }
 
 class RegionSelectViewController: UIViewController {
     
     private struct Constant {
         static var regionCellIdentifier: String     = "RegionCell"
+    }
+    
+    deinit {
+        print(#function)
     }
     
     var interactor: RegionSelectBusinessLogic?
@@ -46,6 +51,12 @@ class RegionSelectViewController: UIViewController {
         setupTableView()
         
         interactor?.doFetchRegions()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        interactor?.viewWillAppear()
     }
 }
 
@@ -98,6 +109,17 @@ extension RegionSelectViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 extension RegionSelectViewController: RegionSelectDisplayLogic {
+    
+    func showMessageAlert(message: String) {
+        let alertController = UIAlertController(
+            title: "test",
+            message: message,
+            preferredStyle: .alert
+        )
+        alertController.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alertController, animated: true)
+    }
+    
     func displayRegionList(_ viewModel: RegionSelect.doFetchRegions.ViewModel) {
         regions = viewModel.regions
         tableView.reloadData()

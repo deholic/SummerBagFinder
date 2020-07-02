@@ -9,14 +9,17 @@
 import Foundation
 
 protocol RegionSelectBuildingLogic {
-    func build() -> RoutingLogic
+    func build(message: String?) -> RegionSelectRoutingLogic
 }
 
 class RegionSelectBuilder: RegionSelectBuildingLogic {
     
-    func build() -> RoutingLogic {
+    deinit {
+        print(#function)
+    }
+    func build(message: String?) -> RegionSelectRoutingLogic {
         let viewController = RegionSelectViewController()
-        let interactor = RegionSelectInteractor()
+        let interactor = RegionSelectInteractor(message: message)
         let presenter = RegionSelectPresenter()
         let router = RegionSelectRouter(viewController: viewController, storeListBuilder: StoreListBuilder())
         viewController.interactor = interactor

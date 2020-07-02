@@ -12,13 +12,16 @@
 
 import UIKit
 
-protocol StoreListPresentationLogic {
+protocol StoreListPresentationLogic: class {
     func displayStoreStockList(_ response: StoreList.viewDidLoad.Response)
 }
 
 class StoreListPresenter: StoreListPresentationLogic {
     weak var viewController: StoreListDisplayLogic?
     
+    deinit {
+        print(#function)
+    }
     func displayStoreStockList(_ response: StoreList.viewDidLoad.Response) {
         let viewModel = StoreList.viewDidLoad.ViewModel(stores: response.stores)
         

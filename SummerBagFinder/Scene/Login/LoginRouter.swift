@@ -12,23 +12,25 @@
 
 import UIKit
 
-protocol LoginRoutingLogic: RoutingLogic {
-    func routeToRegionList()
+protocol LoginRoutingLogic {
+    var viewController: LoginViewController { get }
+    func routeToRegionList(message: String?)
 }
 
 class LoginRouter: NSObject, LoginRoutingLogic {
-    var viewController: UIViewController
+    var viewController: LoginViewController
     private var regionSelectBuilder: RegionSelectBuildingLogic
     
-    init(viewController: UIViewController, regionSelectBuilder: RegionSelectBuildingLogic) {
+    init(viewController: LoginViewController, regionSelectBuilder: RegionSelectBuildingLogic) {
         self.viewController = viewController
         self.regionSelectBuilder = regionSelectBuilder
     }
     
     // MARK: Routing
-    func routeToRegionList() {
-        let router = regionSelectBuilder.build()
+    func routeToRegionList(message: String?) {
+        /// 유킷 -> 유킷
+        let router = regionSelectBuilder.build(message: message)
         let regionsVC = router.viewController
-        viewController.show(regionsVC, sender: nil)
+        viewController.display(regionsVC)
     }
 }

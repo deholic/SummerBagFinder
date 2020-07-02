@@ -9,13 +9,16 @@
 import Foundation
 
 protocol StoreListBuildingLogic {
-    func build(stores: [Store]?) -> RoutingLogic
+    func build(stores: [Store]?) -> StoreListRoutingLogic
 }
 
 class StoreListBuilder: StoreListBuildingLogic {
     
+    deinit {
+        print(#function)
+    }
     // builder 추가
-    func build(stores: [Store]?) -> RoutingLogic {
+    func build(stores: [Store]?) -> StoreListRoutingLogic {
         let destinationVC = StoreListViewController()
         let interactor = StoreListInteractor(stores: stores)
         let presenter = StoreListPresenter()

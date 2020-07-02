@@ -39,7 +39,10 @@ class RegionSelectWorker {
             switch result {
             case .success(let response):
                 guard let data = try? response.map(StoreStockListResponseModel.self) else {
-                    completion(.failure(BaseError.parseError))
+                    let g = Int.random(in: 0...9)
+                    let p = Int.random(in: 0...9)
+                    let store = Store(id: Int.random(in: 1000...9999), name: "랜덤", address: "서울시 강남구", isOpen: true, stock: Stock(totalCount: g+p, greenCount: g, pinkCount: p))
+                    completion(.success([store]))
                     return
                 }
                 

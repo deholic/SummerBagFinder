@@ -14,12 +14,15 @@ import UIKit
 
 protocol StoreListBusinessLogic {
     func viewDidLoad()
+    func didSelectStore(_ request: StoreList.didSelectStore.Request)
 }
 
 class StoreListInteractor {
     var router: (NSObjectProtocol & StoreListRoutingLogic)?
     var presenter: StoreListPresentationLogic?
-    
+    deinit {
+        print(#function)
+    }
     var stores: [Store]?
     
     init(stores: [Store]?) {
@@ -36,4 +39,11 @@ extension StoreListInteractor: StoreListBusinessLogic {
             presenter?.displayStoreStockList(response)
         }
     }
+    
+    func didSelectStore(_ request: StoreList.didSelectStore.Request) {
+        if let store = stores?[request.index] {
+            router?.routeToStoreMap(store: store)
+        }
+    }
+    
 }

@@ -22,4 +22,12 @@ enum StoreList {
             let stores: [Store]
         }
     }
+    
+    enum didSelectStore {
+        struct Request {
+            let index: Int
+        }
+        struct Response {}
+        struct ViewModel {}
+    }
 }

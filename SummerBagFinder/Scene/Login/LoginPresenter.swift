@@ -12,12 +12,12 @@
 
 import UIKit
 
-protocol LoginPresentationLogic {
+protocol LoginPresentationLogic: class {
     func presentLoginFailure()
 }
 
 class LoginPresenter: LoginPresentationLogic {
-    weak var viewController: LoginDisplayLogic?
+    var viewController: LoginDisplayLogic?
     
     func presentLoginFailure() {
         viewController?.displayLoginFailureAlert()

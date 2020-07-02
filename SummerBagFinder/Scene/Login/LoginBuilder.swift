@@ -9,12 +9,12 @@
 import Foundation
 
 protocol LoginBuildingLogic {
-    func build() -> RoutingLogic
+    func build() -> LoginRoutingLogic
 }
 
 class LoginBuilder: LoginBuildingLogic {
     
-    func build() -> RoutingLogic {
+    func build() -> LoginRoutingLogic {
         let viewController = LoginViewController()
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()

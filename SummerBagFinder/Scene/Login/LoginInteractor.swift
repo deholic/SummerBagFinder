@@ -37,7 +37,7 @@ extension LoginInteractor: LoginBusinessLogic {
             
             // 지역 선택 화면으로 이동
             if isSuccess {
-                self.router?.routeToRegionList()
+                self.router?.routeToRegionList(message: "로그인화면에서 온 메시지")
             }
                 
             // 로그인 실패 얼럿 노출

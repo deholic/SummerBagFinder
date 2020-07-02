@@ -13,6 +13,7 @@
 import UIKit
 
 enum RegionSelect {
+    
     enum doFetchRegions {
         struct Request {}
         struct Response {

@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol StoreListDisplayLogic: class {
     func displayStoreStockList(_ viewModel: StoreList.viewDidLoad.ViewModel)
@@ -23,7 +24,11 @@ class StoreListViewController: UIViewController {
     }
     
     var interactor: StoreListBusinessLogic?
-
+    
+    deinit {
+        print(#function)
+    }
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
 
@@ -91,6 +96,10 @@ extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor?.didSelectStore(StoreList.didSelectStore.Request(index: indexPath.row))
+    }
 }
 
 extension StoreListViewController: StoreListDisplayLogic {
@@ -99,4 +108,7 @@ extension StoreListViewController: StoreListDisplayLogic {
         stores = viewModel.stores
         tableView.reloadData()
     }
+}
+
+extension StoreListViewController {
 }
