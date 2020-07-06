@@ -20,15 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
-        let router = LoginBuilder().build()
-        #warning("이상함")
-        if let loginVC = router.viewController as? UIViewController {
-            let nav = UINavigationController(rootViewController: loginVC)
-            nav.modalPresentationStyle = .fullScreen
-            
-            window?.rootViewController = nav
-            window?.makeKeyAndVisible()
-        }
+        let loginVC = LoginScene().build()
+        let nav = UINavigationController(rootViewController: loginVC)
+        nav.modalPresentationStyle = .fullScreen
+        
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

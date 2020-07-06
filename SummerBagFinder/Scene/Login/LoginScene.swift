@@ -1,5 +1,5 @@
 //
-//  LoginBuilder.swift
+//  LoginScene.swift
 //  SummerBagFinder
 //
 //  Created by 정국희 on 2020/06/25.
@@ -8,22 +8,26 @@
 
 import Foundation
 
-protocol LoginBuildingLogic {
-    func build() -> LoginRoutingLogic
+protocol LoginSceneLogic {
+    var viewController: LoginViewController! { get set }
+    func build() -> LoginViewController
 }
 
-class LoginBuilder: LoginBuildingLogic {
+class LoginScene: LoginSceneLogic {
     
-    func build() -> LoginRoutingLogic {
+    weak var viewController: LoginViewController!
+    
+    func build() -> LoginViewController {
         let viewController = LoginViewController()
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
-        let router = LoginRouter(viewController: viewController, regionSelectBuilder: RegionSelectBuilder())
+        let router = LoginRouter(scene: self, regionSelectScene: RegionSelectScene())
         viewController.interactor = interactor
         interactor.presenter = presenter
         interactor.router = router
         presenter.viewController = viewController
+        self.viewController = viewController
         
-        return router
+        return viewController
     }
 }

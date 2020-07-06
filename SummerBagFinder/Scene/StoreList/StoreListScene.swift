@@ -1,5 +1,5 @@
 //
-//  StoreListBuilder.swift
+//  StoreListScene.swift
 //  SummerBagFinder
 //
 //  Created by 정국희 on 2020/06/25.
@@ -8,26 +8,30 @@
 
 import Foundation
 
-protocol StoreListBuildingLogic {
-    func build(stores: [Store]?) -> StoreListRoutingLogic
+protocol StoreListSceneLogic {
+    var viewController: StoreListViewController! { get }
+    func build(stores: [Store]?) -> StoreListViewController
 }
 
-class StoreListBuilder: StoreListBuildingLogic {
+class StoreListScene: StoreListSceneLogic {
+    weak var viewController: StoreListViewController!
     
     deinit {
         print(#function)
     }
+    
     // builder 추가
-    func build(stores: [Store]?) -> StoreListRoutingLogic {
+    func build(stores: [Store]?) -> StoreListViewController {
         let destinationVC = StoreListViewController()
         let interactor = StoreListInteractor(stores: stores)
         let presenter = StoreListPresenter()
-        let router = StoreListRouter(viewController: destinationVC)
+        let router = StoreListRouter(scene: self)
         destinationVC.interactor = interactor
         interactor.router = router
         interactor.presenter = presenter
         presenter.viewController = destinationVC
+        self.viewController = destinationVC
         
-        return router
+        return viewController
     }
 }

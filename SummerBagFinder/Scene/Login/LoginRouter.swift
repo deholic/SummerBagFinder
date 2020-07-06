@@ -13,24 +13,23 @@
 import UIKit
 
 protocol LoginRoutingLogic {
-    var viewController: LoginViewController { get }
     func routeToRegionList(message: String?)
 }
 
 class LoginRouter: NSObject, LoginRoutingLogic {
-    var viewController: LoginViewController
-    private var regionSelectBuilder: RegionSelectBuildingLogic
+    let scene: LoginSceneLogic
+    private var regionSelectScene: RegionSelectSceneLogic
     
-    init(viewController: LoginViewController, regionSelectBuilder: RegionSelectBuildingLogic) {
-        self.viewController = viewController
-        self.regionSelectBuilder = regionSelectBuilder
+    init(scene: LoginSceneLogic, regionSelectScene: RegionSelectSceneLogic) {
+        self.scene = scene
+        self.regionSelectScene = regionSelectScene
     }
     
     // MARK: Routing
     func routeToRegionList(message: String?) {
         /// 유킷 -> 유킷
-        let router = regionSelectBuilder.build(message: message)
-        let regionsVC = router.viewController
-        viewController.display(regionsVC)
+        let regionVC = regionSelectScene.build(message: message)
+  
+        self.scene.viewController.show(regionVC, sender: nil)
     }
 }

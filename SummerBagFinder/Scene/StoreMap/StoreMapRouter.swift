@@ -14,36 +14,35 @@ import UIKit
 import SwiftUI
 
 protocol StoreMapRoutingLogic {
-    #warning("구체타입.")
-    var viewController: StoreMapViewController{ get }
     func routeToStoreDetail()
     func routeToRegionSelection(message: String?)
 }
 
 class StoreMapRouter: NSObject, StoreMapRoutingLogic {
-    var viewController: StoreMapViewController
-    var storeDetailBuilder: StoreDetailBuildingLogic
-    var regionSelectBuilder: RegionSelectBuildingLogic
+    var scene: StoreMapSceneLogic
+    var storeDetailScene: StoreDetailSceneLogic
+    var regionSelectScene: RegionSelectSceneLogic
 
-    init(viewController: StoreMapViewController, storeDetailBuilder: StoreDetailBuildingLogic, regionSelectBuilder: RegionSelectBuildingLogic) {
-        self.viewController = viewController
-        self.storeDetailBuilder = storeDetailBuilder
-        self.regionSelectBuilder = regionSelectBuilder
+    init(scene: StoreMapSceneLogic, storeDetailScene: StoreDetailSceneLogic, regionSelectScene: RegionSelectSceneLogic) {
+        self.scene = scene
+        self.storeDetailScene = storeDetailScene
+        self.regionSelectScene = regionSelectScene
     }
     
     func routeToStoreDetail() {
-        let router = storeDetailBuilder.build()
-        viewController.isStoreDetailPresented = true
-        viewController.storeDetailViewController = router.viewController
+        // 스유 -> 스유 
+        let storeDetailVC = storeDetailScene.build()
+        self.scene.viewController.isStoreDetailPresented = true
+        self.scene.viewController.storeDetailViewController = storeDetailVC
     }
     
     func routeToRegionSelection(message: String?) {
         // 스유 -> 유킷
-        let sceneBuildingLogic: () -> RegionSelectRoutingLogic = {
-            let router = self.regionSelectBuilder.build(message: message)
-            return router
+        let sceneBuildingLogic: () -> RegionSelectViewController = {
+            let viewController = self.regionSelectScene.build(message: message)
+            return viewController
         }
-        viewController.isRegionSelectPresended = true
-        viewController.regionSelectSceneBuildingLogic = sceneBuildingLogic
+        self.scene.viewController.isRegionSelectPresended = true
+        self.scene.viewController.regionSelectSceneBuildingLogic = sceneBuildingLogic
     }
 }

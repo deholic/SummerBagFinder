@@ -1,5 +1,5 @@
 //
-//  StoreDetailBuilder.swift
+//  StoreDetailScene.swift
 //  SummerBagFinder
 //
 //  Created by mine on 2020/06/28.
@@ -8,21 +8,25 @@
 
 import Foundation
 
-protocol StoreDetailBuildingLogic {
-    func build() -> StoreDetailRoutingLogic
+protocol StoreDetailSceneLogic {
+    var viewController: StoreDetailViewController! { get }
+    func build() -> StoreDetailViewController
 }
 
-class StoreDetailBuilder: StoreDetailBuildingLogic {
-    func build() -> StoreDetailRoutingLogic {
+class StoreDetailScene: StoreDetailSceneLogic {
+    weak var viewController: StoreDetailViewController!
+
+    func build() -> StoreDetailViewController {
         let viewController = StoreDetailViewController()
         let interactor = StoreDetailInteractor()
         let presenter = StoreDetailPresenter()
-        let router = StoreDetailRouter(viewController: viewController)
+        let router = StoreDetailRouter(scene: self)
         viewController.interactor = interactor
         interactor.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
+        self.viewController = viewController
 
-        return router
+        return viewController
     }
 }

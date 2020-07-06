@@ -14,26 +14,25 @@ import UIKit
 import SwiftUI
 
 protocol StoreListRoutingLogic {
-    var viewController: StoreListViewController { get }
     func routeToStoreMap(store: Store)
 }
 
 class StoreListRouter: NSObject, StoreListRoutingLogic {
-    var viewController: StoreListViewController
+    var scene: StoreListSceneLogic
     
     deinit {
         print(#function)
     }
     
-    init(viewController: StoreListViewController) {
-        self.viewController = viewController
+    init(scene: StoreListSceneLogic) {
+        self.scene = scene
     }
     
     func routeToStoreMap(store: Store) {
         ///유킷  ->  스유
-        let router = StoreMapBuilder().build(store: store)
+        let destinationVC = StoreMapScene().build(store: store)
         
-        let destination = UIHostingController(rootView: StoreMapView(viewController: router.viewController))
-        viewController.display(destination)
+        let destination = UIHostingController(rootView: StoreMapView(viewController: destinationVC))
+        scene.viewController.display(destination)
     }
 }

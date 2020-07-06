@@ -1,5 +1,5 @@
 //
-//  RegionSelectBuilder.swift
+//  RegionSelectScene.swift
 //  SummerBagFinder
 //
 //  Created by 정국희 on 2020/06/25.
@@ -8,25 +8,29 @@
 
 import Foundation
 
-protocol RegionSelectBuildingLogic {
-    func build(message: String?) -> RegionSelectRoutingLogic
+protocol RegionSelectSceneLogic {
+    var viewController: RegionSelectViewController! { get set }
+    func build(message: String?) -> RegionSelectViewController
 }
 
-class RegionSelectBuilder: RegionSelectBuildingLogic {
+class RegionSelectScene: RegionSelectSceneLogic {
+    weak var viewController: RegionSelectViewController!
     
     deinit {
         print(#function)
     }
-    func build(message: String?) -> RegionSelectRoutingLogic {
+    
+    func build(message: String?) -> RegionSelectViewController {
         let viewController = RegionSelectViewController()
         let interactor = RegionSelectInteractor(message: message)
         let presenter = RegionSelectPresenter()
-        let router = RegionSelectRouter(viewController: viewController, storeListBuilder: StoreListBuilder())
+        let router = RegionSelectRouter(scene: self, storeListScene: StoreListScene())
         viewController.interactor = interactor
         interactor.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
-        
-        return router
+        self.viewController = viewController
+
+        return viewController
     }
 }

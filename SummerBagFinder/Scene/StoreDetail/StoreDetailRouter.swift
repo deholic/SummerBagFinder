@@ -14,15 +14,13 @@ import UIKit
 import SwiftUI
 
 protocol StoreDetailRoutingLogic {
-    #warning("구체타입.")
-    var viewController: StoreDetailViewController{ get }
     //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
 class StoreDetailRouter: NSObject, StoreDetailRoutingLogic {
-    var viewController: StoreDetailViewController
-
-    init(viewController: StoreDetailViewController) {
-        self.viewController = viewController
+    let scene: StoreDetailSceneLogic
+    
+    init(scene: StoreDetailSceneLogic) {
+        self.scene = scene
     }
 }

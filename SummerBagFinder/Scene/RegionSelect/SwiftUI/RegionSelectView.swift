@@ -10,12 +10,12 @@ import SwiftUI
 
 struct RegionSelectView: UIViewControllerRepresentable {
     
-    let sceneBuildingLogic: (() -> RegionSelectRoutingLogic)?
+    let sceneBuildingLogic: (() -> RegionSelectViewController)?
     
     func makeUIViewController(context: Context) -> RegionSelectViewController {
         guard let sceneBuildingLogic = sceneBuildingLogic else { return RegionSelectViewController() }
-        let router = sceneBuildingLogic()
-        return router.viewController
+        let viewController = sceneBuildingLogic()
+        return viewController
     }
     
     func updateUIViewController(_ uiViewController: RegionSelectViewController, context: Context) {}

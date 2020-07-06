@@ -14,7 +14,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol LoginDisplayLogic {
+protocol LoginDisplayLogic: class {
     func displayLoginFailureAlert()
 }
 

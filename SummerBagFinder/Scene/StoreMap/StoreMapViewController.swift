@@ -21,7 +21,7 @@ protocol StoreMapViewControllingLogic: ViewControllingLogic {
     var isStoreDetailPresented: Bool { get }
     var storeDetailViewController: StoreDetailViewController { get }
     var isRegionSelectPresended: Bool { get }
-    var regionSelectSceneBuildingLogic: (() -> RegionSelectRoutingLogic)? { get }
+    var regionSelectSceneBuildingLogic: (() -> RegionSelectViewController)? { get }
 }
 
 protocol StoreMapDisplayLogic: class {
@@ -45,7 +45,7 @@ class StoreMapViewController: ObservableObject, StoreMapViewControllingLogic  {
     @Published var isStoreDetailPresented: Bool = false
     @Published var storeDetailViewController: StoreDetailViewController = StoreDetailViewController()
     @Published var isRegionSelectPresended: Bool = false
-    @Published var regionSelectSceneBuildingLogic: (() -> RegionSelectRoutingLogic)? = nil
+    @Published var regionSelectSceneBuildingLogic: (() -> RegionSelectViewController)? = nil
 }
 
 extension StoreMapViewController: StoreMapDisplayLogic {
