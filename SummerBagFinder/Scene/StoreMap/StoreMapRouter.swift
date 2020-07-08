@@ -32,8 +32,8 @@ class StoreMapRouter: NSObject, StoreMapRoutingLogic {
     func routeToStoreDetail() {
         // 스유 -> 스유 
         let storeDetailVC = storeDetailScene.build()
-        self.scene.viewController.isStoreDetailPresented = true
-        self.scene.viewController.storeDetailViewController = storeDetailVC
+        self.scene.routerDelegate.isStoreDetailPresented = true
+        self.scene.routerDelegate.storeDetailViewController = storeDetailVC
     }
     
     func routeToRegionSelection(message: String?) {
@@ -42,7 +42,7 @@ class StoreMapRouter: NSObject, StoreMapRoutingLogic {
             let viewController = self.regionSelectScene.build(message: message)
             return viewController
         }
-        self.scene.viewController.isRegionSelectPresended = true
-        self.scene.viewController.regionSelectSceneBuildingLogic = sceneBuildingLogic
+        self.scene.routerDelegate.isRegionSelectPresended = true
+        self.scene.routerDelegate.regionSelectSceneBuildingLogic = sceneBuildingLogic
     }
 }

@@ -11,7 +11,6 @@
 		3BCB3CDF24A8BB2400EB221B /* StoreMapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CD924A8BB2300EB221B /* StoreMapInteractor.swift */; };
 		3BCB3CE024A8BB2400EB221B /* StoreMapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CDA24A8BB2300EB221B /* StoreMapRouter.swift */; };
 		3BCB3CE124A8BB2400EB221B /* StoreMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CDB24A8BB2300EB221B /* StoreMapPresenter.swift */; };
-		3BCB3CE224A8BB2400EB221B /* StoreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CDC24A8BB2400EB221B /* StoreMapViewController.swift */; };
 		3BCB3CE324A8BB2400EB221B /* StoreMapModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CDD24A8BB2400EB221B /* StoreMapModels.swift */; };
 		3BCB3CE424A8BB2400EB221B /* StoreMapWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CDE24A8BB2400EB221B /* StoreMapWorker.swift */; };
 		3BCB3CE624A8BB2D00EB221B /* StoreMapScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CE524A8BB2D00EB221B /* StoreMapScene.swift */; };
@@ -90,7 +89,6 @@
 		3BCB3CD924A8BB2300EB221B /* StoreMapInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapInteractor.swift; sourceTree = "<group>"; };
 		3BCB3CDA24A8BB2300EB221B /* StoreMapRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapRouter.swift; sourceTree = "<group>"; };
 		3BCB3CDB24A8BB2300EB221B /* StoreMapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapPresenter.swift; sourceTree = "<group>"; };
-		3BCB3CDC24A8BB2400EB221B /* StoreMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapViewController.swift; sourceTree = "<group>"; };
 		3BCB3CDD24A8BB2400EB221B /* StoreMapModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapModels.swift; sourceTree = "<group>"; };
 		3BCB3CDE24A8BB2400EB221B /* StoreMapWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapWorker.swift; sourceTree = "<group>"; };
 		3BCB3CE524A8BB2D00EB221B /* StoreMapScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapScene.swift; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				3BCB3CDD24A8BB2400EB221B /* StoreMapModels.swift */,
 				3BCB3CDB24A8BB2300EB221B /* StoreMapPresenter.swift */,
 				3BCB3CDA24A8BB2300EB221B /* StoreMapRouter.swift */,
-				3BCB3CDC24A8BB2400EB221B /* StoreMapViewController.swift */,
 				3BCB3CDE24A8BB2400EB221B /* StoreMapWorker.swift */,
 				3BCB3CE524A8BB2D00EB221B /* StoreMapScene.swift */,
 				DEFDEB7424A993290067A17C /* StoreMapView.swift */,
@@ -701,7 +698,6 @@
 				B8C50577249F3A7400D45DCC /* StoreListPresenter.swift in Sources */,
 				B8DDFD43249ED183002B3B13 /* AppDelegate.swift in Sources */,
 				B8C5055F249F1C1900D45DCC /* StarbuckService.swift in Sources */,
-				3BCB3CE224A8BB2400EB221B /* StoreMapViewController.swift in Sources */,
 				B8DDFD45249ED183002B3B13 /* SceneDelegate.swift in Sources */,
 				DEFDEB5624A4B4630067A17C /* StoreListScene.swift in Sources */,
 				B8C5056E249F2CE700D45DCC /* RegionSelectModels.swift in Sources */,

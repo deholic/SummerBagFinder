@@ -17,11 +17,7 @@ protocol StoreMapBusinessLogic {
     func didTapRegionSelection(_ request: StoreMap.DidTapRegionSelection.Request)
 }
 
-protocol StoreMapDataStore {
-    //var name: String { get set }
-}
-
-class StoreMapInteractor: StoreMapBusinessLogic, StoreMapDataStore {
+class StoreMapInteractor: StoreMapBusinessLogic {
     var router: (NSObjectProtocol & StoreMapRoutingLogic)?
     var presenter: StoreMapPresentationLogic?
     var worker: StoreMapWorker?

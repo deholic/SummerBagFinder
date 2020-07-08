@@ -30,9 +30,9 @@ class StoreListRouter: NSObject, StoreListRoutingLogic {
     
     func routeToStoreMap(store: Store) {
         ///유킷  ->  스유
-        let destinationVC = StoreMapScene().build(store: store)
+        let (interactor, presenter) = StoreMapScene().build(store: store)
         
-        let destination = UIHostingController(rootView: StoreMapView(viewController: destinationVC))
+        let destination = UIHostingController(rootView: StoreMapView(interactor: interactor, presenter: presenter))
         scene.viewController.display(destination)
     }
 }

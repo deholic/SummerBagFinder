@@ -10,11 +10,12 @@ import SwiftUI
 
 struct StoreMapView: View {
     
-    @ObservedObject var viewController: StoreMapViewController
+    var interactor: StoreMapBusinessLogic
+    @ObservedObject var presenter: StoreMapPresenter
     
     var regionSelectionItem: some View {
         Button(action: {
-            self.viewController.didTapRegionSelection = true
+            self.interactor.didTapRegionSelection(StoreMap.DidTapRegionSelection.Request())
         }) {
             Image(systemName: "gear").imageScale(.large)
         }
@@ -24,20 +25,20 @@ struct StoreMapView: View {
         VStack {
             Text("StoreMap - SwiftUI")
             Button(action: {
-                self.viewController.didTapButton = true
+                self.interactor.didTapButton(StoreMap.DidTapButton.Request())
             }) {
                 Text("go to StoreDetail")
             }
 // modal 방식
-            .sheet(isPresented: $viewController.isRegionSelectPresended, onDismiss: {
-                self.viewController.isRegionSelectPresended = false
+            .sheet(isPresented: $presenter.isRegionSelectPresended, onDismiss: {
+                self.presenter.isRegionSelectPresended = false
             }) {
-                RegionSelectView(sceneBuildingLogic: self.viewController.regionSelectSceneBuildingLogic)
+                RegionSelectView(sceneBuildingLogic: self.presenter.regionSelectSceneBuildingLogic)
             }
 // push 방식
             NavigationLink(
-                destination: StoreDetailView(viewController: viewController.storeDetailViewController),
-                isActive: $viewController.isStoreDetailPresented
+                destination: StoreDetailView(viewController: presenter.storeDetailViewController),
+                isActive: $presenter.isStoreDetailPresented
             ) {
                 EmptyView()
             }
@@ -49,6 +50,6 @@ struct StoreMapView: View {
 
 struct StoreMapView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreMapView(viewController: StoreMapViewController())
+        StoreMapView(interactor: StoreMapInteractor(), presenter: StoreMapPresenter())
     }
 }

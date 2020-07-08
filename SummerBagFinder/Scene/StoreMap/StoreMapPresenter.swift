@@ -16,13 +16,21 @@ protocol StoreMapPresentationLogic {
     func presentSomething(response: StoreMap.DidTapButton.Response)
 }
 
-class StoreMapPresenter: StoreMapPresentationLogic {
-    weak var viewController: StoreMapDisplayLogic?
+class StoreMapPresenter: ObservableObject {
     
+    @Published var somthing = StoreMap.DidTapButton.ViewModel()
+    
+    // routing
+    @Published var isStoreDetailPresented: Bool = false
+    @Published var storeDetailViewController: StoreDetailViewController = StoreDetailViewController()
+    @Published var isRegionSelectPresended: Bool = false
+    @Published var regionSelectSceneBuildingLogic: (() -> RegionSelectViewController)? = nil
+}
+
+extension StoreMapPresenter: StoreMapPresentationLogic {
     // MARK: Do something
     
     func presentSomething(response: StoreMap.DidTapButton.Response) {
-        let viewModel = StoreMap.DidTapButton.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+        somthing = StoreMap.DidTapButton.ViewModel()
     }
 }
