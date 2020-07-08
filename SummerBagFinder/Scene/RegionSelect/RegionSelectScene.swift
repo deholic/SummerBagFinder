@@ -9,13 +9,11 @@
 import Foundation
 
 protocol RegionSelectSceneLogic {
-    var viewController: RegionSelectViewController! { get set }
     func build(message: String?) -> RegionSelectViewController
 }
 
 class RegionSelectScene: RegionSelectSceneLogic {
-    weak var viewController: RegionSelectViewController!
-    
+
     deinit {
         print(#function)
     }
@@ -24,12 +22,11 @@ class RegionSelectScene: RegionSelectSceneLogic {
         let viewController = RegionSelectViewController()
         let interactor = RegionSelectInteractor(message: message)
         let presenter = RegionSelectPresenter()
-        let router = RegionSelectRouter(scene: self, storeListScene: StoreListScene())
+        let router = RegionSelectRouter(viewController: viewController, storeListScene: StoreListScene())
         viewController.interactor = interactor
         interactor.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
-        self.viewController = viewController
 
         return viewController
     }

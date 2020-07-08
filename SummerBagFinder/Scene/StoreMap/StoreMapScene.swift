@@ -9,20 +9,17 @@
 import Foundation
 
 protocol StoreMapSceneLogic {
-    var routerDelegate: StoreMapPresenter! { get }
     func build(store: Store) -> (StoreMapBusinessLogic, StoreMapPresenter)
 }
 
 class StoreMapScene: StoreMapSceneLogic {
-    weak var routerDelegate: StoreMapPresenter!
-    
+
     func build(store: Store) -> (StoreMapBusinessLogic, StoreMapPresenter) {
         let interactor = StoreMapInteractor()
         let presenter = StoreMapPresenter(storeDetailScene: StoreDetailScene(), regionSelectScene: RegionSelectScene())
         interactor.router = presenter
         interactor.presenter = presenter
-        routerDelegate = presenter
-        
+
         return (interactor, presenter)
     }
 }

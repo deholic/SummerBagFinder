@@ -18,14 +18,14 @@ protocol StoreListRoutingLogic {
 }
 
 class StoreListRouter: NSObject, StoreListRoutingLogic {
-    var scene: StoreListSceneLogic
+    weak var viewController: UIViewController!
     
     deinit {
         print(#function)
     }
     
-    init(scene: StoreListSceneLogic) {
-        self.scene = scene
+    init(viewController: UIViewController) {
+        self.viewController = viewController
     }
     
     func routeToStoreMap(store: Store) {
@@ -33,6 +33,6 @@ class StoreListRouter: NSObject, StoreListRoutingLogic {
         let (interactor, presenter) = StoreMapScene().build(store: store)
         
         let destination = UIHostingController(rootView: StoreMapView(interactor: interactor, presenter: presenter))
-        scene.viewController.display(destination)
+        viewController.display(destination)
     }
 }

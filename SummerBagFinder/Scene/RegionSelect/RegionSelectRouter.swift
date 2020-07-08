@@ -5,11 +5,11 @@ protocol RegionSelectRoutingLogic {
 }
 
 class RegionSelectRouter: NSObject, RegionSelectRoutingLogic {
-    var scene: RegionSelectSceneLogic
+    weak var viewController: UIViewController!
     private var storeListScene: StoreListSceneLogic
     
-    init(scene: RegionSelectScene, storeListScene: StoreListSceneLogic) {
-        self.scene = scene
+    init(viewController: UIViewController, storeListScene: StoreListSceneLogic) {
+        self.viewController = viewController
         self.storeListScene = storeListScene
     }
     
@@ -23,6 +23,6 @@ extension RegionSelectRouter {
     func routeToStoreList(stores: [Store]?) {
         /// 유킷 -> 유킷 
         let destinationVC = storeListScene.build(stores: stores)
-        scene.viewController.show(destinationVC, sender: nil)
+        viewController.show(destinationVC, sender: nil)
     }
 }
