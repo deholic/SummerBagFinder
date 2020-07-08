@@ -16,7 +16,7 @@ class StoreMapBuilder: StoreMapBuildingLogic {
 
     func build(store: Store) -> (StoreMapBusinessLogic, StoreMapPresenter) {
         let interactor = StoreMapInteractor()
-        let presenter = StoreMapPresenter(storeDetailScene: StoreDetailBuilder(), regionSelectScene: RegionSelectBuilder())
+        let presenter = StoreMapPresenter(storeDetailBuilder: StoreDetailBuilder(), regionSelectBuilder: RegionSelectBuilder())
         interactor.router = presenter
         interactor.presenter = presenter
 

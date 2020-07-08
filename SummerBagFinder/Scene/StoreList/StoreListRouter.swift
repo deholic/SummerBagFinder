@@ -19,21 +19,21 @@ protocol StoreListRoutingLogic {
 
 class StoreListRouter: NSObject, StoreListRoutingLogic {
     weak var viewController: UIViewController!
-    private var storeMapScene: StoreMapBuildingLogic
+    private var storeMapBuilder: StoreMapBuildingLogic
     
     deinit {
         print(#function)
     }
     
-    init(viewController: UIViewController, storeMapScene: StoreMapBuildingLogic) {
+    init(viewController: UIViewController, storeMapBuilder: StoreMapBuildingLogic) {
         self.viewController = viewController
-        self.storeMapScene = storeMapScene
+        self.storeMapBuilder = storeMapBuilder
     }
     
     func routeToStoreMap(store: Store) {
         ///라우팅: 유킷  ->  스유
         let sceneBuildingLogic: () -> (StoreMapBusinessLogic, StoreMapPresenter) = {
-            return self.storeMapScene.build(store: store)
+            return self.storeMapBuilder.build(store: store)
         }
         
         let destination = UIHostingController(rootView: StoreMapView(sceneBuildingLogic: sceneBuildingLogic))

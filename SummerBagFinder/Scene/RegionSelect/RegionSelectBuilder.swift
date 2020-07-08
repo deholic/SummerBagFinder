@@ -22,7 +22,7 @@ class RegionSelectBuilder: RegionSelectBuildingLogic {
         let viewController = RegionSelectViewController()
         let interactor = RegionSelectInteractor(message: message, worker: RegionSelectWorker())
         let presenter = RegionSelectPresenter()
-        let router = RegionSelectRouter(viewController: viewController, storeListScene: StoreListBuilder())
+        let router = RegionSelectRouter(viewController: viewController, storeListBuilder: StoreListBuilder())
         viewController.interactor = interactor
         interactor.router = router
         interactor.presenter = presenter

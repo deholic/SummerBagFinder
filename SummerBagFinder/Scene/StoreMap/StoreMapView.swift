@@ -43,11 +43,11 @@ struct StoreMapView: View {
             .sheet(isPresented: $presenter.isRegionSelectPresended, onDismiss: {
                 self.presenter.isRegionSelectPresended = false
             }) {
-                RegionSelectView(sceneBuildingLogic: self.presenter.regionSelectSceneBuildingLogic)
+                RegionSelectView(sceneBuildingLogic: self.presenter.regionSelectBuilderBuildingLogic)
             }
 // push 방식
             NavigationLink(
-                destination: StoreDetailView(sceneBuildingLogic: self.presenter.storeDetailSceneBuildingLogic),
+                destination: StoreDetailView(sceneBuildingLogic: self.presenter.storeDetailBuilderBuildingLogic),
                 isActive: $presenter.isStoreDetailPresented
             ) {
                 EmptyView()

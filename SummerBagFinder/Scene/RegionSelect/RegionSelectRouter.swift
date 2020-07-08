@@ -6,11 +6,11 @@ protocol RegionSelectRoutingLogic {
 
 class RegionSelectRouter: NSObject, RegionSelectRoutingLogic {
     weak var viewController: UIViewController!
-    private var storeListScene: StoreListBuildingLogic
+    private var storeListBuilder: StoreListBuildingLogic
     
-    init(viewController: UIViewController, storeListScene: StoreListBuildingLogic) {
+    init(viewController: UIViewController, storeListBuilder: StoreListBuildingLogic) {
         self.viewController = viewController
-        self.storeListScene = storeListScene
+        self.storeListBuilder = storeListBuilder
     }
     
     deinit {
@@ -22,7 +22,7 @@ extension RegionSelectRouter {
     // MARK: Routing
     func routeToStoreList(stores: [Store]?) {
         ///라우팅: 유킷 -> 유킷 
-        let destinationVC = storeListScene.build(stores: stores)
+        let destinationVC = storeListBuilder.build(stores: stores)
         viewController.show(destinationVC, sender: nil)
     }
 }

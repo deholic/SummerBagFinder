@@ -17,18 +17,18 @@ protocol LoginRoutingLogic {
 }
 
 class LoginRouter: NSObject, LoginRoutingLogic {
-    private var regionSelectScene: RegionSelectBuildingLogic
+    private var regionSelectBuilder: RegionSelectBuildingLogic
     private weak var viewController: UIViewController!
     
-    init(viewController: UIViewController, regionSelectScene: RegionSelectBuildingLogic) {
+    init(viewController: UIViewController, regionSelectBuilder: RegionSelectBuildingLogic) {
         self.viewController = viewController
-        self.regionSelectScene = regionSelectScene
+        self.regionSelectBuilder = regionSelectBuilder
     }
     
     // MARK: Routing
     func routeToRegionList(message: String?) {
         ///라우팅: 유킷 -> 유킷
-        let regionVC = regionSelectScene.build(message: message)
+        let regionVC = regionSelectBuilder.build(message: message)
   
         viewController.show(regionVC, sender: nil)
     }

@@ -1,5 +1,5 @@
 //
-//  StoreDetailScene.swift
+//  StoreDetailBuilder.swift
 //  SummerBagFinder
 //
 //  Created by mine on 2020/06/28.

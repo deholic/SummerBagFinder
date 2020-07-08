@@ -1,5 +1,5 @@
 //
-//  LoginScene.swift
+//  LoginBuilder.swift
 //  SummerBagFinder
 //
 //  Created by 정국희 on 2020/06/25.
@@ -18,7 +18,7 @@ class LoginBuilder: LoginBuidingLogic {
         let viewController = LoginViewController()
         let interactor = LoginInteractor(worker: LoginWorker())
         let presenter = LoginPresenter()
-        let router = LoginRouter(viewController: viewController, regionSelectScene: RegionSelectBuilder())
+        let router = LoginRouter(viewController: viewController, regionSelectBuilder: RegionSelectBuilder())
         viewController.interactor = interactor
         interactor.presenter = presenter
         interactor.router = router
