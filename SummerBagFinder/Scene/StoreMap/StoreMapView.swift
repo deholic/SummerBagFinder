@@ -50,6 +50,6 @@ struct StoreMapView: View {
 
 struct StoreMapView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreMapView(interactor: StoreMapInteractor(), presenter: StoreMapPresenter())
+        StoreMapView(interactor: StoreMapInteractor(), presenter: StoreMapPresenter(storeDetailScene: StoreDetailScene(), regionSelectScene: RegionSelectScene()))
     }
 }

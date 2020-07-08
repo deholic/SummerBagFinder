@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0AB662BEDE09FC4FF2DB36A9 /* Pods_SummerBagFinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E302647FA47E0FF4A5846C /* Pods_SummerBagFinderTests.framework */; };
 		3BCB3CDF24A8BB2400EB221B /* StoreMapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CD924A8BB2300EB221B /* StoreMapInteractor.swift */; };
-		3BCB3CE024A8BB2400EB221B /* StoreMapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CDA24A8BB2300EB221B /* StoreMapRouter.swift */; };
 		3BCB3CE124A8BB2400EB221B /* StoreMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CDB24A8BB2300EB221B /* StoreMapPresenter.swift */; };
 		3BCB3CE324A8BB2400EB221B /* StoreMapModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CDD24A8BB2400EB221B /* StoreMapModels.swift */; };
 		3BCB3CE424A8BB2400EB221B /* StoreMapWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB3CDE24A8BB2400EB221B /* StoreMapWorker.swift */; };
@@ -86,7 +85,6 @@
 		14BEF53460930E2A03EC913C /* Pods-SummerBagFinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SummerBagFinderTests.debug.xcconfig"; path = "Target Support Files/Pods-SummerBagFinderTests/Pods-SummerBagFinderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1E94EBBF6135864B177EBB38 /* Pods-SummerBagFinder-SummerBagFinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SummerBagFinder-SummerBagFinderUITests.release.xcconfig"; path = "Target Support Files/Pods-SummerBagFinder-SummerBagFinderUITests/Pods-SummerBagFinder-SummerBagFinderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3BCB3CD924A8BB2300EB221B /* StoreMapInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapInteractor.swift; sourceTree = "<group>"; };
-		3BCB3CDA24A8BB2300EB221B /* StoreMapRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapRouter.swift; sourceTree = "<group>"; };
 		3BCB3CDB24A8BB2300EB221B /* StoreMapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapPresenter.swift; sourceTree = "<group>"; };
 		3BCB3CDD24A8BB2400EB221B /* StoreMapModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapModels.swift; sourceTree = "<group>"; };
 		3BCB3CDE24A8BB2400EB221B /* StoreMapWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapWorker.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				3BCB3CD924A8BB2300EB221B /* StoreMapInteractor.swift */,
 				3BCB3CDD24A8BB2400EB221B /* StoreMapModels.swift */,
 				3BCB3CDB24A8BB2300EB221B /* StoreMapPresenter.swift */,
-				3BCB3CDA24A8BB2300EB221B /* StoreMapRouter.swift */,
 				3BCB3CDE24A8BB2400EB221B /* StoreMapWorker.swift */,
 				3BCB3CE524A8BB2D00EB221B /* StoreMapScene.swift */,
 				DEFDEB7424A993290067A17C /* StoreMapView.swift */,
@@ -680,7 +677,6 @@
 				B8C5057E249F3F1200D45DCC /* Store.swift in Sources */,
 				B88AE8FA249EFB41002879AC /* LoginPresenter.swift in Sources */,
 				B88AE905249EFBE3002879AC /* LoginFormView.swift in Sources */,
-				3BCB3CE024A8BB2400EB221B /* StoreMapRouter.swift in Sources */,
 				B88AE8FD249EFB41002879AC /* LoginModels.swift in Sources */,
 				B8C5056D249F2CE700D45DCC /* RegionSelectRouter.swift in Sources */,
 				3BCB3CE124A8BB2400EB221B /* StoreMapPresenter.swift in Sources */,

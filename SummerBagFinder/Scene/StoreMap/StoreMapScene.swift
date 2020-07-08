@@ -18,12 +18,12 @@ class StoreMapScene: StoreMapSceneLogic {
     
     func build(store: Store) -> (StoreMapBusinessLogic, StoreMapPresenter) {
         let interactor = StoreMapInteractor()
-        let presenter = StoreMapPresenter()
-        let router = StoreMapRouter(scene: self, storeDetailScene: StoreDetailScene(), regionSelectScene: RegionSelectScene())
-        interactor.router = router
+        let presenter = StoreMapPresenter(storeDetailScene: StoreDetailScene(), regionSelectScene: RegionSelectScene())
+        interactor.router = presenter
         interactor.presenter = presenter
         routerDelegate = presenter
         
         return (interactor, presenter)
     }
 }
+

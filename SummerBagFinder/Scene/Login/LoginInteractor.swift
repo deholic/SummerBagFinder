@@ -18,7 +18,7 @@ protocol LoginBusinessLogic {
 
 class LoginInteractor {
     var presenter: LoginPresentationLogic?
-    var router: (NSObjectProtocol & LoginRoutingLogic)?
+    var router: LoginRoutingLogic?
     var worker: LoginWorker?
     
     init() {
