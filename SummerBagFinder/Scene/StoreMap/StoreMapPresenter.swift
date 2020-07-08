@@ -22,14 +22,14 @@ class StoreMapPresenter: ObservableObject {
     
     // routing
     @Published var isStoreDetailPresented: Bool = false
-    @Published var storeDetailSceneBuildingLogic: (() -> (StoreDetailBusinessLogic, StoreDetailPresenter)) = { (StoreDetailInteractor(store: Store(id: 0, name: "", address: "", isOpen: false, stock: nil)), StoreDetailPresenter())}
+    @Published var storeDetailSceneBuildingLogic: (() -> (StoreDetailBusinessLogic, StoreDetailPresenter))? = nil
     @Published var isRegionSelectPresended: Bool = false
     @Published var regionSelectSceneBuildingLogic: (() -> RegionSelectViewController)? = nil
     
-    var storeDetailScene: StoreDetailSceneLogic
-    var regionSelectScene: RegionSelectSceneLogic
+    var storeDetailScene: StoreDetailSceneLogic?
+    var regionSelectScene: RegionSelectSceneLogic?
 
-    init(storeDetailScene: StoreDetailSceneLogic, regionSelectScene: RegionSelectSceneLogic) {
+    init(storeDetailScene: StoreDetailSceneLogic? = nil, regionSelectScene: RegionSelectSceneLogic? = nil) {
         self.storeDetailScene = storeDetailScene
         self.regionSelectScene = regionSelectScene
     }
@@ -46,18 +46,20 @@ extension StoreMapPresenter: StoreMapPresentationLogic {
 extension StoreMapPresenter: StoreMapRoutingLogic {
     
     func routeToStoreDetail(store: Store) {
+        guard let storeDetailScene = storeDetailScene else { return }
         // 스유 -> 스유
         let sceneBuildingLogic: () -> (StoreDetailBusinessLogic, StoreDetailPresenter) = {
-            return self.storeDetailScene.build(store: store)
+            return storeDetailScene.build(store: store)
         }
         self.isStoreDetailPresented = true
         self.storeDetailSceneBuildingLogic = sceneBuildingLogic
     }
     
     func routeToRegionSelection(message: String?) {
+        guard let regionSelectScene = regionSelectScene else { return }
         // 스유 -> 유킷
         let sceneBuildingLogic: () -> RegionSelectViewController = {
-            let viewController = self.regionSelectScene.build(message: message)
+            let viewController = regionSelectScene.build(message: message)
             return viewController
         }
         self.isRegionSelectPresended = true

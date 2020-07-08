@@ -16,12 +16,12 @@ protocol StoreDetailBusinessLogic {
     func doSomething(request: StoreDetail.Something.Request)
 }
 
-protocol StoreDetailDataStore {
-    //var name: String { get set }
+protocol StoreDetailRoutingLogic {
+    //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-class StoreDetailInteractor: StoreDetailBusinessLogic, StoreDetailDataStore {
-    var router: (NSObjectProtocol & StoreDetailRoutingLogic)?
+class StoreDetailInteractor: StoreDetailBusinessLogic {
+    var router: StoreDetailRoutingLogic?
     var presenter: StoreDetailPresentationLogic?
     var worker: StoreDetailWorker?
     private var store: Store

@@ -28,3 +28,7 @@ extension StoreDetailPresenter: StoreDetailPresentationLogic {
         somthing = StoreDetail.Something.ViewModel()
     }
 }
+
+extension StoreDetailPresenter: StoreDetailRoutingLogic {
+    
+}

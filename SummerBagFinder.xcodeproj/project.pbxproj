@@ -55,7 +55,6 @@
 		DEFDEB7524A993290067A17C /* StoreMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB7424A993290067A17C /* StoreMapView.swift */; };
 		DEFDEBB524AC660A0067A17C /* ViewControllnigLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBB424AC660A0067A17C /* ViewControllnigLogic.swift */; };
 		DEFDEBBF24AC6FEA0067A17C /* StoreDetailModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBB724AC6FEA0067A17C /* StoreDetailModels.swift */; };
-		DEFDEBC024AC6FEA0067A17C /* StoreDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBB824AC6FEA0067A17C /* StoreDetailRouter.swift */; };
 		DEFDEBC124AC6FEA0067A17C /* StoreDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBB924AC6FEA0067A17C /* StoreDetailPresenter.swift */; };
 		DEFDEBC224AC6FEA0067A17C /* StoreDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBBA24AC6FEA0067A17C /* StoreDetailWorker.swift */; };
 		DEFDEBC324AC6FEA0067A17C /* StoreDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBBB24AC6FEA0067A17C /* StoreDetailInteractor.swift */; };
@@ -141,7 +140,6 @@
 		DEFDEB7424A993290067A17C /* StoreMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapView.swift; sourceTree = "<group>"; };
 		DEFDEBB424AC660A0067A17C /* ViewControllnigLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllnigLogic.swift; sourceTree = "<group>"; };
 		DEFDEBB724AC6FEA0067A17C /* StoreDetailModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailModels.swift; sourceTree = "<group>"; };
-		DEFDEBB824AC6FEA0067A17C /* StoreDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailRouter.swift; sourceTree = "<group>"; };
 		DEFDEBB924AC6FEA0067A17C /* StoreDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailPresenter.swift; sourceTree = "<group>"; };
 		DEFDEBBA24AC6FEA0067A17C /* StoreDetailWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailWorker.swift; sourceTree = "<group>"; };
 		DEFDEBBB24AC6FEA0067A17C /* StoreDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailInteractor.swift; sourceTree = "<group>"; };
@@ -410,7 +408,6 @@
 			isa = PBXGroup;
 			children = (
 				DEFDEBB724AC6FEA0067A17C /* StoreDetailModels.swift */,
-				DEFDEBB824AC6FEA0067A17C /* StoreDetailRouter.swift */,
 				DEFDEBB924AC6FEA0067A17C /* StoreDetailPresenter.swift */,
 				DEFDEBBA24AC6FEA0067A17C /* StoreDetailWorker.swift */,
 				DEFDEBBB24AC6FEA0067A17C /* StoreDetailInteractor.swift */,
@@ -711,7 +708,6 @@
 				DEFDEBC624AC6FEA0067A17C /* StoreDetailScene.swift in Sources */,
 				DEFDEBC124AC6FEA0067A17C /* StoreDetailPresenter.swift in Sources */,
 				DEFDEBC224AC6FEA0067A17C /* StoreDetailWorker.swift in Sources */,
-				DEFDEBC024AC6FEA0067A17C /* StoreDetailRouter.swift in Sources */,
 				B8C50579249F3A7400D45DCC /* StoreListRouter.swift in Sources */,
 				B8C5056F249F2CE700D45DCC /* RegionSelectViewController.swift in Sources */,
 			);
