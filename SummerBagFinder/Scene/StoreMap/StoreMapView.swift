@@ -10,12 +10,22 @@ import SwiftUI
 
 struct StoreMapView: View {
     
-    let interactor: StoreMapBusinessLogic
-    @ObservedObject var presenter: StoreMapPresenter
+    private let interactor: StoreMapBusinessLogic?
+    @ObservedObject private var presenter: StoreMapPresenter
+
+    init(sceneBuildingLogic: (() -> (StoreMapBusinessLogic, StoreMapPresenter))?) {
+        if let (interactor, presenter) = sceneBuildingLogic?() {
+            self.interactor = interactor
+            self.presenter = presenter
+        } else {
+            self.interactor = nil
+            self.presenter = StoreMapPresenter()
+        }
+    }
     
     var regionSelectionItem: some View {
         Button(action: {
-            self.interactor.didTapRegionSelection(StoreMap.DidTapRegionSelection.Request())
+            self.interactor?.didTapRegionSelection(StoreMap.DidTapRegionSelection.Request())
         }) {
             Image(systemName: "gear").imageScale(.large)
         }
@@ -25,7 +35,7 @@ struct StoreMapView: View {
         VStack {
             Text("StoreMap - SwiftUI")
             Button(action: {
-                self.interactor.didTapButton(StoreMap.DidTapButton.Request())
+                self.interactor?.didTapButton(StoreMap.DidTapButton.Request())
             }) {
                 Text("go to StoreDetail")
             }
@@ -50,6 +60,6 @@ struct StoreMapView: View {
 
 struct StoreMapView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreMapView(interactor: StoreMapInteractor(), presenter: StoreMapPresenter())
+        StoreMapView(sceneBuildingLogic: nil)
     }
 }

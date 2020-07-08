@@ -20,14 +20,15 @@ class StoreMapPresenter: ObservableObject {
     
     @Published var somthing = StoreMap.DidTapButton.ViewModel()
     
-    // routing
+    // MARK: routing
+    
     @Published var isStoreDetailPresented: Bool = false
     @Published var storeDetailSceneBuildingLogic: (() -> (StoreDetailBusinessLogic, StoreDetailPresenter))? = nil
     @Published var isRegionSelectPresended: Bool = false
     @Published var regionSelectSceneBuildingLogic: (() -> RegionSelectViewController)? = nil
     
-    var storeDetailScene: StoreDetailSceneLogic?
-    var regionSelectScene: RegionSelectSceneLogic?
+    private var storeDetailScene: StoreDetailSceneLogic?
+    private var regionSelectScene: RegionSelectSceneLogic?
 
     init(storeDetailScene: StoreDetailSceneLogic? = nil, regionSelectScene: RegionSelectSceneLogic? = nil) {
         self.storeDetailScene = storeDetailScene
@@ -57,7 +58,7 @@ extension StoreMapPresenter: StoreMapRoutingLogic {
     
     func routeToRegionSelection(message: String?) {
         guard let regionSelectScene = regionSelectScene else { return }
-        // 스유 -> 유킷
+        //라우팅: 스유 -> 유킷
         let sceneBuildingLogic: () -> RegionSelectViewController = {
             let viewController = regionSelectScene.build(message: message)
             return viewController
@@ -65,11 +66,5 @@ extension StoreMapPresenter: StoreMapRoutingLogic {
         self.isRegionSelectPresended = true
         self.regionSelectSceneBuildingLogic = sceneBuildingLogic
     }
-    
-}
-
-
-protocol ViewPresentation {
-    var isPresented: Bool { get }
     
 }

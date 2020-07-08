@@ -17,19 +17,19 @@ protocol LoginRoutingLogic {
 }
 
 class LoginRouter: NSObject, LoginRoutingLogic {
-    let scene: LoginSceneLogic
     private var regionSelectScene: RegionSelectSceneLogic
+    private weak var viewController: UIViewController!
     
-    init(scene: LoginSceneLogic, regionSelectScene: RegionSelectSceneLogic) {
-        self.scene = scene
+    init(viewController: UIViewController, regionSelectScene: RegionSelectSceneLogic) {
+        self.viewController = viewController
         self.regionSelectScene = regionSelectScene
     }
     
     // MARK: Routing
     func routeToRegionList(message: String?) {
-        /// 유킷 -> 유킷
+        ///라우팅: 유킷 -> 유킷
         let regionVC = regionSelectScene.build(message: message)
   
-        self.scene.viewController.show(regionVC, sender: nil)
+        viewController.show(regionVC, sender: nil)
     }
 }

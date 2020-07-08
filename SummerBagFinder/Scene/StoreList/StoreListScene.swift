@@ -23,7 +23,7 @@ class StoreListScene: StoreListSceneLogic {
         let destinationVC = StoreListViewController()
         let interactor = StoreListInteractor(stores: stores)
         let presenter = StoreListPresenter()
-        let router = StoreListRouter(viewController: destinationVC)
+        let router = StoreListRouter(viewController: destinationVC, storeMapScene: StoreMapScene())
         destinationVC.interactor = interactor
         interactor.router = router
         interactor.presenter = presenter

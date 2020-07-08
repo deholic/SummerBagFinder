@@ -21,7 +21,7 @@ class RegionSelectRouter: NSObject, RegionSelectRoutingLogic {
 extension RegionSelectRouter {
     // MARK: Routing
     func routeToStoreList(stores: [Store]?) {
-        /// 유킷 -> 유킷 
+        ///라우팅: 유킷 -> 유킷 
         let destinationVC = storeListScene.build(stores: stores)
         viewController.show(destinationVC, sender: nil)
     }
