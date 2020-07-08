@@ -10,7 +10,8 @@ import SwiftUI
 
 struct StoreDetailView: View {
     
-    @ObservedObject var viewController: StoreDetailViewController
+    let interactor: StoreDetailBusinessLogic
+    @ObservedObject var presenter: StoreDetailPresenter
     
     var body: some View {
         Text("StoreDetail - SwiftUI")
@@ -20,6 +21,6 @@ struct StoreDetailView: View {
 
 struct StoreDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreDetailView(viewController: StoreDetailViewController())
+        StoreDetailView(interactor: StoreDetailInteractor(), presenter: StoreDetailPresenter())
     }
 }

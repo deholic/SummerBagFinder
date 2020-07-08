@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StoreMapView: View {
     
-    var interactor: StoreMapBusinessLogic
+    let interactor: StoreMapBusinessLogic
     @ObservedObject var presenter: StoreMapPresenter
     
     var regionSelectionItem: some View {
@@ -37,7 +37,7 @@ struct StoreMapView: View {
             }
 // push 방식
             NavigationLink(
-                destination: StoreDetailView(viewController: presenter.storeDetailViewController),
+                destination: StoreDetailView(interactor: self.presenter.storeDetailInteractor, presenter: self.presenter.storeDetailPresenter),
                 isActive: $presenter.isStoreDetailPresented
             ) {
                 EmptyView()

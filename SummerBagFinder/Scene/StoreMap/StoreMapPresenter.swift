@@ -22,7 +22,8 @@ class StoreMapPresenter: ObservableObject {
     
     // routing
     @Published var isStoreDetailPresented: Bool = false
-    @Published var storeDetailViewController: StoreDetailViewController = StoreDetailViewController()
+    @Published var storeDetailInteractor = StoreDetailInteractor()
+    @Published var storeDetailPresenter = StoreDetailPresenter()
     @Published var isRegionSelectPresended: Bool = false
     @Published var regionSelectSceneBuildingLogic: (() -> RegionSelectViewController)? = nil
 }

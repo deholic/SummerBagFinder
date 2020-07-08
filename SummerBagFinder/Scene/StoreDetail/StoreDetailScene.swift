@@ -9,24 +9,21 @@
 import Foundation
 
 protocol StoreDetailSceneLogic {
-    var viewController: StoreDetailViewController! { get }
-    func build() -> StoreDetailViewController
+    var routerDelegate: StoreDetailPresenter! { get }
+    func build() -> (StoreDetailInteractor, StoreDetailPresenter)
 }
 
 class StoreDetailScene: StoreDetailSceneLogic {
-    weak var viewController: StoreDetailViewController!
-
-    func build() -> StoreDetailViewController {
-        let viewController = StoreDetailViewController()
+    var routerDelegate: StoreDetailPresenter!
+    
+    func build() -> (StoreDetailInteractor, StoreDetailPresenter) {
         let interactor = StoreDetailInteractor()
         let presenter = StoreDetailPresenter()
         let router = StoreDetailRouter(scene: self)
-        viewController.interactor = interactor
         interactor.router = router
         interactor.presenter = presenter
-        presenter.viewController = viewController
-        self.viewController = viewController
+        self.routerDelegate = presenter
 
-        return viewController
+        return (interactor, presenter)
     }
 }

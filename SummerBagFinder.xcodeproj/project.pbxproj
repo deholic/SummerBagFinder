@@ -60,7 +60,6 @@
 		DEFDEBC124AC6FEA0067A17C /* StoreDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBB924AC6FEA0067A17C /* StoreDetailPresenter.swift */; };
 		DEFDEBC224AC6FEA0067A17C /* StoreDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBBA24AC6FEA0067A17C /* StoreDetailWorker.swift */; };
 		DEFDEBC324AC6FEA0067A17C /* StoreDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBBB24AC6FEA0067A17C /* StoreDetailInteractor.swift */; };
-		DEFDEBC424AC6FEA0067A17C /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBBC24AC6FEA0067A17C /* StoreDetailViewController.swift */; };
 		DEFDEBC524AC6FEA0067A17C /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBBD24AC6FEA0067A17C /* StoreDetailView.swift */; };
 		DEFDEBC624AC6FEA0067A17C /* StoreDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBBE24AC6FEA0067A17C /* StoreDetailScene.swift */; };
 		DEFDEBC924AC918E0067A17C /* RegionSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEBC824AC918E0067A17C /* RegionSelectView.swift */; };
@@ -148,7 +147,6 @@
 		DEFDEBB924AC6FEA0067A17C /* StoreDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailPresenter.swift; sourceTree = "<group>"; };
 		DEFDEBBA24AC6FEA0067A17C /* StoreDetailWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailWorker.swift; sourceTree = "<group>"; };
 		DEFDEBBB24AC6FEA0067A17C /* StoreDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailInteractor.swift; sourceTree = "<group>"; };
-		DEFDEBBC24AC6FEA0067A17C /* StoreDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 		DEFDEBBD24AC6FEA0067A17C /* StoreDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
 		DEFDEBBE24AC6FEA0067A17C /* StoreDetailScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailScene.swift; sourceTree = "<group>"; };
 		DEFDEBC824AC918E0067A17C /* RegionSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectView.swift; sourceTree = "<group>"; };
@@ -419,7 +417,6 @@
 				DEFDEBB924AC6FEA0067A17C /* StoreDetailPresenter.swift */,
 				DEFDEBBA24AC6FEA0067A17C /* StoreDetailWorker.swift */,
 				DEFDEBBB24AC6FEA0067A17C /* StoreDetailInteractor.swift */,
-				DEFDEBBC24AC6FEA0067A17C /* StoreDetailViewController.swift */,
 				DEFDEBBD24AC6FEA0067A17C /* StoreDetailView.swift */,
 				DEFDEBBE24AC6FEA0067A17C /* StoreDetailScene.swift */,
 			);
@@ -710,7 +707,6 @@
 				3BCB3CE424A8BB2400EB221B /* StoreMapWorker.swift in Sources */,
 				B88AE8FF249EFB41002879AC /* LoginInteractor.swift in Sources */,
 				B8C50564249F262A00D45DCC /* BaseError.swift in Sources */,
-				DEFDEBC424AC6FEA0067A17C /* StoreDetailViewController.swift in Sources */,
 				B8C5057B249F3A7400D45DCC /* StoreListViewController.swift in Sources */,
 				B8C5057A249F3A7400D45DCC /* StoreListModels.swift in Sources */,
 				3BCB3CDF24A8BB2400EB221B /* StoreMapInteractor.swift in Sources */,

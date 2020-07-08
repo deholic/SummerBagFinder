@@ -31,9 +31,10 @@ class StoreMapRouter: NSObject, StoreMapRoutingLogic {
     
     func routeToStoreDetail() {
         // 스유 -> 스유 
-        let storeDetailVC = storeDetailScene.build()
+        let (interactor, presenter) = storeDetailScene.build()
         self.scene.routerDelegate.isStoreDetailPresented = true
-        self.scene.routerDelegate.storeDetailViewController = storeDetailVC
+        self.scene.routerDelegate.storeDetailInteractor = interactor
+        self.scene.routerDelegate.storeDetailPresenter = presenter
     }
     
     func routeToRegionSelection(message: String?) {

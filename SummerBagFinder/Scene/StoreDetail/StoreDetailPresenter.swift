@@ -16,13 +16,15 @@ protocol StoreDetailPresentationLogic {
     func presentSomething(response: StoreDetail.Something.Response)
 }
 
-class StoreDetailPresenter: StoreDetailPresentationLogic {
-    weak var viewController: StoreDetailDisplayLogic?
+class StoreDetailPresenter: ObservableObject {
     
+    @Published var somthing = StoreDetail.Something.ViewModel()
+}
+
+extension StoreDetailPresenter: StoreDetailPresentationLogic {
     // MARK: Do something
     
     func presentSomething(response: StoreDetail.Something.Response) {
-        let viewModel = StoreDetail.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+        somthing = StoreDetail.Something.ViewModel()
     }
 }
