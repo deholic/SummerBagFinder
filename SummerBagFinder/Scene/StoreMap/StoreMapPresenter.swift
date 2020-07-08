@@ -22,8 +22,7 @@ class StoreMapPresenter: ObservableObject {
     
     // routing
     @Published var isStoreDetailPresented: Bool = false
-    @Published var storeDetailInteractor = StoreDetailInteractor()
-    @Published var storeDetailPresenter = StoreDetailPresenter()
+    @Published var storeDetailSceneBuildingLogic: (() -> (StoreDetailBusinessLogic, StoreDetailPresenter)) = { (StoreDetailInteractor(store: Store(id: 0, name: "", address: "", isOpen: false, stock: nil)), StoreDetailPresenter())}
     @Published var isRegionSelectPresended: Bool = false
     @Published var regionSelectSceneBuildingLogic: (() -> RegionSelectViewController)? = nil
 }
@@ -35,3 +34,5 @@ extension StoreMapPresenter: StoreMapPresentationLogic {
         somthing = StoreMap.DidTapButton.ViewModel()
     }
 }
+
+

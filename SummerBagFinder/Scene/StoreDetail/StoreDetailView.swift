@@ -10,8 +10,14 @@ import SwiftUI
 
 struct StoreDetailView: View {
     
-    let interactor: StoreDetailBusinessLogic
-    @ObservedObject var presenter: StoreDetailPresenter
+    private let interactor: StoreDetailBusinessLogic
+    @ObservedObject private var presenter: StoreDetailPresenter
+    
+    init(sceneBuildingLogic: () -> (StoreDetailBusinessLogic, StoreDetailPresenter)) {
+        let (interactor, presenter) = sceneBuildingLogic()
+        self.interactor = interactor
+        self.presenter = presenter
+    }
     
     var body: some View {
         Text("StoreDetail - SwiftUI")
@@ -21,6 +27,6 @@ struct StoreDetailView: View {
 
 struct StoreDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreDetailView(interactor: StoreDetailInteractor(), presenter: StoreDetailPresenter())
+        StoreDetailView(sceneBuildingLogic: { (StoreDetailInteractor(store: Store(id: 0, name: "", address: "", isOpen: false, stock: nil)), StoreDetailPresenter()) })
     }
 }

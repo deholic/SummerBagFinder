@@ -14,7 +14,7 @@ import UIKit
 import SwiftUI
 
 protocol StoreMapRoutingLogic {
-    func routeToStoreDetail()
+    func routeToStoreDetail(store: Store)
     func routeToRegionSelection(message: String?)
 }
 
@@ -29,12 +29,13 @@ class StoreMapRouter: NSObject, StoreMapRoutingLogic {
         self.regionSelectScene = regionSelectScene
     }
     
-    func routeToStoreDetail() {
-        // 스유 -> 스유 
-        let (interactor, presenter) = storeDetailScene.build()
+    func routeToStoreDetail(store: Store) {
+        // 스유 -> 스유
+        let sceneBuildingLogic: () -> (StoreDetailBusinessLogic, StoreDetailPresenter) = {
+            return self.storeDetailScene.build(store: store)
+        }
         self.scene.routerDelegate.isStoreDetailPresented = true
-        self.scene.routerDelegate.storeDetailInteractor = interactor
-        self.scene.routerDelegate.storeDetailPresenter = presenter
+        self.scene.routerDelegate.storeDetailSceneBuildingLogic = sceneBuildingLogic
     }
     
     func routeToRegionSelection(message: String?) {

@@ -26,7 +26,8 @@ class StoreMapInteractor: StoreMapBusinessLogic {
     // MARK: Do something
     
     func didTapButton(_ request: StoreMap.DidTapButton.Request) {
-        router?.routeToStoreDetail()
+        let store = Store(id: 100, name: "스타벅스 강남2호점", address: "강남역", isOpen: true, stock: Stock(totalCount: 100, greenCount: 40, pinkCount: 60))
+        router?.routeToStoreDetail(store: store)
     }
     
     func didTapRegionSelection(_ request: StoreMap.DidTapRegionSelection.Request) {

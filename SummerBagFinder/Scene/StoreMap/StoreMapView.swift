@@ -37,7 +37,7 @@ struct StoreMapView: View {
             }
 // push 방식
             NavigationLink(
-                destination: StoreDetailView(interactor: self.presenter.storeDetailInteractor, presenter: self.presenter.storeDetailPresenter),
+                destination: StoreDetailView(sceneBuildingLogic: self.presenter.storeDetailSceneBuildingLogic),
                 isActive: $presenter.isStoreDetailPresented
             ) {
                 EmptyView()

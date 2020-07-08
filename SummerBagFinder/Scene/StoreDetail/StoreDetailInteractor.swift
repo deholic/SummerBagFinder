@@ -24,7 +24,11 @@ class StoreDetailInteractor: StoreDetailBusinessLogic, StoreDetailDataStore {
     var router: (NSObjectProtocol & StoreDetailRoutingLogic)?
     var presenter: StoreDetailPresentationLogic?
     var worker: StoreDetailWorker?
-    //var name: String = ""
+    private var store: Store
+    
+    init(store: Store) {
+        self.store = store
+    }
     
     // MARK: Do something
     

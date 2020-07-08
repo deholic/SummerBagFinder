@@ -10,14 +10,14 @@ import Foundation
 
 protocol StoreDetailSceneLogic {
     var routerDelegate: StoreDetailPresenter! { get }
-    func build() -> (StoreDetailInteractor, StoreDetailPresenter)
+    func build(store: Store) -> (StoreDetailInteractor, StoreDetailPresenter)
 }
 
 class StoreDetailScene: StoreDetailSceneLogic {
     var routerDelegate: StoreDetailPresenter!
     
-    func build() -> (StoreDetailInteractor, StoreDetailPresenter) {
-        let interactor = StoreDetailInteractor()
+    func build(store: Store) -> (StoreDetailInteractor, StoreDetailPresenter) {
+        let interactor = StoreDetailInteractor(store: store)
         let presenter = StoreDetailPresenter()
         let router = StoreDetailRouter(scene: self)
         interactor.router = router
