@@ -12,13 +12,7 @@
 
 import UIKit
 
-protocol StoreDetailBusinessLogic {
-    func doSomething(request: StoreDetail.Something.Request)
-}
-
-protocol StoreDetailRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-}
+// MARK: StoreDetailInteractor
 
 class StoreDetailInteractor: StoreDetailBusinessLogic {
     var router: StoreDetailRoutingLogic?
@@ -39,4 +33,18 @@ class StoreDetailInteractor: StoreDetailBusinessLogic {
         let response = StoreDetail.Something.Response()
         presenter?.presentSomething(response: response)
     }
+}
+
+// MARK: protocol
+
+protocol StoreDetailBusinessLogic {
+    func doSomething(request: StoreDetail.Something.Request)
+}
+
+protocol StoreDetailPresentationLogic {
+    func presentSomething(response: StoreDetail.Something.Response)
+}
+
+protocol StoreDetailRoutingLogic {
+    //func routeToSomewhere(segue: UIStoryboardSegue?)
 }

@@ -1,9 +1,5 @@
 import UIKit
 
-protocol RegionSelectRoutingLogic {
-    func routeToStoreList(stores: [Store]?)
-}
-
 class RegionSelectRouter: NSObject, RegionSelectRoutingLogic {
     weak var viewController: UIViewController!
     private var storeListBuilder: StoreListBuildingLogic

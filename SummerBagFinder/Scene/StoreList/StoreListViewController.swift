@@ -13,10 +13,6 @@
 import UIKit
 import SwiftUI
 
-protocol StoreListDisplayLogic: class {
-    func displayStoreStockList(_ viewModel: StoreList.viewDidLoad.ViewModel)
-}
-
 class StoreListViewController: UIViewController {
     
     private struct Constant {

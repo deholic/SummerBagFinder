@@ -12,10 +12,7 @@
 
 import UIKit
 
-protocol RegionSelectPresentationLogic: class {
-    func presentRegionList(_ response: RegionSelect.doFetchRegions.Response)
-    func showMessageAlert(message: String)
-}
+// MARK: RegionSelectPresenter
 
 class RegionSelectPresenter: RegionSelectPresentationLogic {
     weak var viewController: RegionSelectDisplayLogic?
@@ -38,4 +35,11 @@ class RegionSelectPresenter: RegionSelectPresentationLogic {
     func showMessageAlert(message: String) {
         viewController?.showMessageAlert(message: message)
     }
+}
+
+// MARK: RegionSelectDisplayLogic
+
+protocol RegionSelectDisplayLogic: class {
+    func displayRegionList(_ viewModel: RegionSelect.doFetchRegions.ViewModel)
+    func showMessageAlert(message: String)
 }

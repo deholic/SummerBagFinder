@@ -14,10 +14,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol LoginDisplayLogic: class {
-    func displayLoginFailureAlert()
-}
-
 class LoginViewController: UIViewController {
     var interactor: LoginBusinessLogic?
     let disposeBag = DisposeBag()

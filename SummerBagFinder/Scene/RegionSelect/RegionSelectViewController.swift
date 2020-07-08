@@ -14,11 +14,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol RegionSelectDisplayLogic: class {
-    func displayRegionList(_ viewModel: RegionSelect.doFetchRegions.ViewModel)
-    func showMessageAlert(message: String)
-}
-
 class RegionSelectViewController: UIViewController {
     
     private struct Constant {

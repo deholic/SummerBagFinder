@@ -12,13 +12,7 @@
 
 import UIKit
 
-protocol LoginBusinessLogic {
-    func doLogin(request: Login.LoginTrial.Request)
-}
-
-protocol LoginWorkingLogic {
-    func processToLogin(id: String?, password: String?, completion: @escaping (Result<Bool, Error>) -> ())
-}
+// MARK: LoginInteractor
 
 class LoginInteractor {
     var presenter: LoginPresentationLogic?
@@ -50,4 +44,22 @@ extension LoginInteractor: LoginBusinessLogic {
             }
         }
     }
+}
+
+// MARK: protocol
+
+protocol LoginBusinessLogic {
+    func doLogin(request: Login.LoginTrial.Request)
+}
+
+protocol LoginWorkingLogic {
+    func processToLogin(id: String?, password: String?, completion: @escaping (Result<Bool, Error>) -> ())
+}
+
+protocol LoginRoutingLogic {
+    func routeToRegionList(message: String?)
+}
+
+protocol LoginPresentationLogic: class {
+    func presentLoginFailure()
 }

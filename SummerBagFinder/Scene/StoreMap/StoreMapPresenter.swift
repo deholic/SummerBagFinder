@@ -12,9 +12,7 @@
 
 import UIKit
 
-protocol StoreMapPresentationLogic {
-    func presentSomething(response: StoreMap.DidTapButton.Response)
-}
+// MARK: StoreMapPresenter
 
 class StoreMapPresenter: ObservableObject {
     
@@ -36,6 +34,8 @@ class StoreMapPresenter: ObservableObject {
     }
 }
 
+// MARK: StoreMapPresentationLogic
+
 extension StoreMapPresenter: StoreMapPresentationLogic {
     // MARK: Do something
     
@@ -43,6 +43,8 @@ extension StoreMapPresenter: StoreMapPresentationLogic {
         somthing = StoreMap.DidTapButton.ViewModel()
     }
 }
+
+// MARK: StoreMapRoutingLogic
 
 extension StoreMapPresenter: StoreMapRoutingLogic {
     

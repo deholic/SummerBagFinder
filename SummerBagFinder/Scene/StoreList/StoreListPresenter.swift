@@ -12,10 +12,6 @@
 
 import UIKit
 
-protocol StoreListPresentationLogic: class {
-    func displayStoreStockList(_ response: StoreList.viewDidLoad.Response)
-}
-
 class StoreListPresenter: StoreListPresentationLogic {
     weak var viewController: StoreListDisplayLogic?
     
@@ -27,4 +23,10 @@ class StoreListPresenter: StoreListPresentationLogic {
         
         viewController?.displayStoreStockList(viewModel)
     }
+}
+
+// MARK: protocol
+
+protocol StoreListDisplayLogic: class {
+    func displayStoreStockList(_ viewModel: StoreList.viewDidLoad.ViewModel)
 }

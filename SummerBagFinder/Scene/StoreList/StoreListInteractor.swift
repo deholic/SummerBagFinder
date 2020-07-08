@@ -12,10 +12,7 @@
 
 import UIKit
 
-protocol StoreListBusinessLogic {
-    func viewDidLoad()
-    func didSelectStore(_ request: StoreList.didSelectStore.Request)
-}
+// MARK: StoreListInteractor
 
 class StoreListInteractor {
     var router: (NSObjectProtocol & StoreListRoutingLogic)?
@@ -47,3 +44,18 @@ extension StoreListInteractor: StoreListBusinessLogic {
     }
     
 }
+
+// MARK: protocol
+
+protocol StoreListBusinessLogic {
+    func viewDidLoad()
+    func didSelectStore(_ request: StoreList.didSelectStore.Request)
+}
+protocol StoreListPresentationLogic: class {
+    func displayStoreStockList(_ response: StoreList.viewDidLoad.Response)
+}
+
+protocol StoreListRoutingLogic {
+    func routeToStoreMap(store: Store)
+}
+

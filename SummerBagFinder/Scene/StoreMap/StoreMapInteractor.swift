@@ -12,15 +12,7 @@
 
 import UIKit
 
-protocol StoreMapBusinessLogic {
-    func didTapButton(_ request: StoreMap.DidTapButton.Request)
-    func didTapRegionSelection(_ request: StoreMap.DidTapRegionSelection.Request)
-}
-
-protocol StoreMapRoutingLogic {
-    func routeToStoreDetail(store: Store)
-    func routeToRegionSelection(message: String?)
-}
+// MARK: StoreMapInteractor
 
 class StoreMapInteractor: StoreMapBusinessLogic {
     var router: StoreMapRoutingLogic?
@@ -38,4 +30,20 @@ class StoreMapInteractor: StoreMapBusinessLogic {
     func didTapRegionSelection(_ request: StoreMap.DidTapRegionSelection.Request) {
         router?.routeToRegionSelection(message: "Store Map에서 온 메시지")
     }
+}
+
+// MARK: protocol
+
+protocol StoreMapBusinessLogic {
+    func didTapButton(_ request: StoreMap.DidTapButton.Request)
+    func didTapRegionSelection(_ request: StoreMap.DidTapRegionSelection.Request)
+}
+
+protocol StoreMapPresentationLogic {
+    func presentSomething(response: StoreMap.DidTapButton.Response)
+}
+
+protocol StoreMapRoutingLogic {
+    func routeToStoreDetail(store: Store)
+    func routeToRegionSelection(message: String?)
 }

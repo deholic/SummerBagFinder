@@ -12,14 +12,14 @@
 
 import UIKit
 
-protocol StoreDetailPresentationLogic {
-    func presentSomething(response: StoreDetail.Something.Response)
-}
+// MARK: StoreDetailPresenter
 
 class StoreDetailPresenter: ObservableObject {
     
     @Published var somthing = StoreDetail.Something.ViewModel()
 }
+
+// MARK: StoreDetailPresentationLogic
 
 extension StoreDetailPresenter: StoreDetailPresentationLogic {
     // MARK: Do something
@@ -29,6 +29,9 @@ extension StoreDetailPresenter: StoreDetailPresentationLogic {
     }
 }
 
+// MARK: StoreDetailRoutingLogic
+
 extension StoreDetailPresenter: StoreDetailRoutingLogic {
     
 }
+

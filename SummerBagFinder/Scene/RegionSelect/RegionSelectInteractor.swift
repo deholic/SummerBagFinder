@@ -12,16 +12,7 @@
 
 import UIKit
 
-protocol RegionSelectBusinessLogic {
-    func viewWillAppear()
-    func doFetchRegions()
-    func doMoveToStoreList(_ request: RegionSelect.MoveStoreList.Request)
-}
-
-protocol ResionSelectWorkingLogic {
-    func fetchRegionList(completion: @escaping (Result<[Region], Error>) -> ())
-    func fetchStoreList(regionCode: String, completion: @escaping (Result<[Store], Error>) -> ())
-}
+// MARK: RegionSelectInteractor
 
 class RegionSelectInteractor: RegionSelectBusinessLogic {
     var router: (NSObjectProtocol & RegionSelectRoutingLogic)?
@@ -71,4 +62,26 @@ class RegionSelectInteractor: RegionSelectBusinessLogic {
             self.router?.routeToStoreList(stores: stores)
         }
     }
+}
+
+// MARK: protocol
+
+protocol RegionSelectBusinessLogic {
+    func viewWillAppear()
+    func doFetchRegions()
+    func doMoveToStoreList(_ request: RegionSelect.MoveStoreList.Request)
+}
+
+protocol RegionSelectPresentationLogic: class {
+    func presentRegionList(_ response: RegionSelect.doFetchRegions.Response)
+    func showMessageAlert(message: String)
+}
+
+protocol RegionSelectRoutingLogic {
+    func routeToStoreList(stores: [Store]?)
+}
+
+protocol ResionSelectWorkingLogic {
+    func fetchRegionList(completion: @escaping (Result<[Region], Error>) -> ())
+    func fetchStoreList(regionCode: String, completion: @escaping (Result<[Store], Error>) -> ())
 }

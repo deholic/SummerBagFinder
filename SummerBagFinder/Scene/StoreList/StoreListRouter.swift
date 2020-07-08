@@ -13,10 +13,6 @@
 import UIKit
 import SwiftUI
 
-protocol StoreListRoutingLogic {
-    func routeToStoreMap(store: Store)
-}
-
 class StoreListRouter: NSObject, StoreListRoutingLogic {
     weak var viewController: UIViewController!
     private var storeMapBuilder: StoreMapBuildingLogic

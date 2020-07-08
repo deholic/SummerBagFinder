@@ -12,10 +12,6 @@
 
 import UIKit
 
-protocol LoginRoutingLogic {
-    func routeToRegionList(message: String?)
-}
-
 class LoginRouter: NSObject, LoginRoutingLogic {
     private var regionSelectBuilder: RegionSelectBuildingLogic
     private weak var viewController: UIViewController!
