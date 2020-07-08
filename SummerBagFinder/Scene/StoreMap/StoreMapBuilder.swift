@@ -1,5 +1,5 @@
 //
-//  StoreMapScene.swift
+//  StoreMapBuilder.swift
 //  SummerBagFinder
 //
 //  Created by mine on 2020/06/28.
@@ -8,15 +8,15 @@
 
 import Foundation
 
-protocol StoreMapSceneLogic {
+protocol StoreMapBuildingLogic {
     func build(store: Store) -> (StoreMapBusinessLogic, StoreMapPresenter)
 }
 
-class StoreMapScene: StoreMapSceneLogic {
+class StoreMapBuilder: StoreMapBuildingLogic {
 
     func build(store: Store) -> (StoreMapBusinessLogic, StoreMapPresenter) {
         let interactor = StoreMapInteractor()
-        let presenter = StoreMapPresenter(storeDetailScene: StoreDetailScene(), regionSelectScene: RegionSelectScene())
+        let presenter = StoreMapPresenter(storeDetailScene: StoreDetailBuilder(), regionSelectScene: RegionSelectBuilder())
         interactor.router = presenter
         interactor.presenter = presenter
 

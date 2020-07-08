@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol StoreDetailSceneLogic {
+protocol StoreDetailBuildingLogic {
     func build(store: Store) -> (StoreDetailInteractor, StoreDetailPresenter)
 }
 
-class StoreDetailScene: StoreDetailSceneLogic {
+class StoreDetailBuilder: StoreDetailBuildingLogic {
     
     func build(store: Store) -> (StoreDetailInteractor, StoreDetailPresenter) {
         let interactor = StoreDetailInteractor(store: store)

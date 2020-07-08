@@ -19,13 +19,13 @@ protocol StoreListRoutingLogic {
 
 class StoreListRouter: NSObject, StoreListRoutingLogic {
     weak var viewController: UIViewController!
-    private var storeMapScene: StoreMapSceneLogic
+    private var storeMapScene: StoreMapBuildingLogic
     
     deinit {
         print(#function)
     }
     
-    init(viewController: UIViewController, storeMapScene: StoreMapSceneLogic) {
+    init(viewController: UIViewController, storeMapScene: StoreMapBuildingLogic) {
         self.viewController = viewController
         self.storeMapScene = storeMapScene
     }

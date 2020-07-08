@@ -6,9 +6,9 @@ protocol RegionSelectRoutingLogic {
 
 class RegionSelectRouter: NSObject, RegionSelectRoutingLogic {
     weak var viewController: UIViewController!
-    private var storeListScene: StoreListSceneLogic
+    private var storeListScene: StoreListBuildingLogic
     
-    init(viewController: UIViewController, storeListScene: StoreListSceneLogic) {
+    init(viewController: UIViewController, storeListScene: StoreListBuildingLogic) {
         self.viewController = viewController
         self.storeListScene = storeListScene
     }

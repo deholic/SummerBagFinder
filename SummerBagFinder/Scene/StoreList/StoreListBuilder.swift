@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol StoreListSceneLogic {
+protocol StoreListBuildingLogic {
     func build(stores: [Store]?) -> StoreListViewController
 }
 
-class StoreListScene: StoreListSceneLogic {
+class StoreListBuilder: StoreListBuildingLogic {
     
     deinit {
         print(#function)
@@ -23,7 +23,7 @@ class StoreListScene: StoreListSceneLogic {
         let destinationVC = StoreListViewController()
         let interactor = StoreListInteractor(stores: stores)
         let presenter = StoreListPresenter()
-        let router = StoreListRouter(viewController: destinationVC, storeMapScene: StoreMapScene())
+        let router = StoreListRouter(viewController: destinationVC, storeMapScene: StoreMapBuilder())
         destinationVC.interactor = interactor
         interactor.router = router
         interactor.presenter = presenter

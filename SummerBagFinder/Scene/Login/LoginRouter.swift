@@ -17,10 +17,10 @@ protocol LoginRoutingLogic {
 }
 
 class LoginRouter: NSObject, LoginRoutingLogic {
-    private var regionSelectScene: RegionSelectSceneLogic
+    private var regionSelectScene: RegionSelectBuildingLogic
     private weak var viewController: UIViewController!
     
-    init(viewController: UIViewController, regionSelectScene: RegionSelectSceneLogic) {
+    init(viewController: UIViewController, regionSelectScene: RegionSelectBuildingLogic) {
         self.viewController = viewController
         self.regionSelectScene = regionSelectScene
     }

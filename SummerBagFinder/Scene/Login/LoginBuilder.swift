@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol LoginSceneLogic {
+protocol LoginBuidingLogic {
     func build() -> LoginViewController
 }
 
-class LoginScene: LoginSceneLogic {
+class LoginBuilder: LoginBuidingLogic {
     
     func build() -> LoginViewController {
         let viewController = LoginViewController()
-        let interactor = LoginInteractor()
+        let interactor = LoginInteractor(worker: LoginWorker())
         let presenter = LoginPresenter()
-        let router = LoginRouter(viewController: viewController, regionSelectScene: RegionSelectScene())
+        let router = LoginRouter(viewController: viewController, regionSelectScene: RegionSelectBuilder())
         viewController.interactor = interactor
         interactor.presenter = presenter
         interactor.router = router

@@ -27,10 +27,10 @@ class StoreMapPresenter: ObservableObject {
     @Published var isRegionSelectPresended: Bool = false
     @Published var regionSelectSceneBuildingLogic: (() -> RegionSelectViewController)? = nil
     
-    private var storeDetailScene: StoreDetailSceneLogic?
-    private var regionSelectScene: RegionSelectSceneLogic?
+    private var storeDetailScene: StoreDetailBuildingLogic?
+    private var regionSelectScene: RegionSelectBuildingLogic?
 
-    init(storeDetailScene: StoreDetailSceneLogic? = nil, regionSelectScene: RegionSelectSceneLogic? = nil) {
+    init(storeDetailScene: StoreDetailBuildingLogic? = nil, regionSelectScene: RegionSelectBuildingLogic? = nil) {
         self.storeDetailScene = storeDetailScene
         self.regionSelectScene = regionSelectScene
     }
