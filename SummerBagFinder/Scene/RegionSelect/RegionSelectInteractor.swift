@@ -18,18 +18,23 @@ protocol RegionSelectBusinessLogic {
     func doMoveToStoreList(_ request: RegionSelect.MoveStoreList.Request)
 }
 
+protocol ResionSelectWorkingLogic {
+    func fetchRegionList(completion: @escaping (Result<[Region], Error>) -> ())
+    func fetchStoreList(regionCode: String, completion: @escaping (Result<[Store], Error>) -> ())
+}
+
 class RegionSelectInteractor: RegionSelectBusinessLogic {
     var router: (NSObjectProtocol & RegionSelectRoutingLogic)?
     var presenter: RegionSelectPresentationLogic?
-    var worker: RegionSelectWorker?
+    private var worker: ResionSelectWorkingLogic?
     
-    var regions: [Region] = []
-    var stores: [Store]?
+    private var regions: [Region] = []
+    private var stores: [Store]?
     
     private let message: String?
     
-    init(message: String?) {
-        worker = RegionSelectWorker()
+    init(message: String?, worker: ResionSelectWorkingLogic) {
+        self.worker = worker
         self.message = message
     }
     

@@ -13,7 +13,7 @@
 import UIKit
 import Moya
 
-class RegionSelectWorker {
+class RegionSelectWorker: ResionSelectWorkingLogic {
     func fetchRegionList(completion: @escaping (Result<[Region], Error>) -> ()) {
         guard let path = Bundle.main.path(forResource: "regions", ofType: "json") else {
             completion(.failure(BaseError.parseError))

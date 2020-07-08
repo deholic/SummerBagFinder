@@ -16,13 +16,17 @@ protocol LoginBusinessLogic {
     func doLogin(request: Login.LoginTrial.Request)
 }
 
+protocol LoginWorkingLogic {
+    func processToLogin(id: String?, password: String?, completion: @escaping (Result<Bool, Error>) -> ())
+}
+
 class LoginInteractor {
     var presenter: LoginPresentationLogic?
     var router: LoginRoutingLogic?
-    var worker: LoginWorker?
+    private var worker: LoginWorkingLogic?
     
-    init() {
-        worker = LoginWorker()
+    init(worker: LoginWorkingLogic) {
+        self.worker = worker
     }
 }
 
