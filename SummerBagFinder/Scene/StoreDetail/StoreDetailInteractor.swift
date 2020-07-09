@@ -14,37 +14,47 @@ import UIKit
 
 // MARK: StoreDetailInteractor
 
-class StoreDetailInteractor: StoreDetailBusinessLogic {
+class StoreDetailInteractor: StoreDetailBusinessLogic, ObservableObject {
     var router: StoreDetailRoutingLogic?
     var presenter: StoreDetailPresentationLogic?
     var worker: StoreDetailWorker?
-    private var store: Store
+    private let store: Store
+    private let listener: StoreDetailListener?
     
-    init(store: Store) {
+    var message: String?
+    
+    init(store: Store, listener: StoreDetailListener?) {
         self.store = store
+        self.listener = listener
     }
     
-    // MARK: Do something
+    func viewDidDisappear() {
+        if let message = message {
+            listener?.didFinishWriting(message: message)
+        }
+    }
     
-    func doSomething(request: StoreDetail.Something.Request) {
-        worker = StoreDetailWorker()
-        worker?.doSomeWork()
-        
-        let response = StoreDetail.Something.Response()
-        presenter?.presentSomething(response: response)
+    func didFinishWriting(request: StoreDetail.DidFinishWriting.Request) {
+        message = request.message
+        presenter?.showConfirmButton()
     }
 }
 
 // MARK: protocol
 
 protocol StoreDetailBusinessLogic {
-    func doSomething(request: StoreDetail.Something.Request)
+    func viewDidDisappear()
+    func didFinishWriting(request: StoreDetail.DidFinishWriting.Request)
 }
 
 protocol StoreDetailPresentationLogic {
-    func presentSomething(response: StoreDetail.Something.Response)
+    func showConfirmButton()
 }
 
 protocol StoreDetailRoutingLogic {
     //func routeToSomewhere(segue: UIStoryboardSegue?)
+}
+
+protocol StoreDetailListener {
+    func didFinishWriting(message: String)
 }

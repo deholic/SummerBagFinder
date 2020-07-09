@@ -24,11 +24,20 @@ class StoreMapInteractor: StoreMapBusinessLogic {
     
     func didTapButton(_ request: StoreMap.DidTapButton.Request) {
         let store = Store(id: 100, name: "스타벅스 강남2호점", address: "강남역", isOpen: true, stock: Stock(totalCount: 100, greenCount: 40, pinkCount: 60))
-        router?.routeToStoreDetail(store: store)
+        router?.routeToStoreDetail(store: store, listener: self)
     }
     
     func didTapRegionSelection(_ request: StoreMap.DidTapRegionSelection.Request) {
         router?.routeToRegionSelection(message: "Store Map에서 온 메시지")
+    }
+}
+
+// MARK:
+
+extension StoreMapInteractor: StoreDetailListener {
+    
+    func didFinishWriting(message: String) {
+        presenter?.showRejectMessage(message)
     }
 }
 
@@ -41,9 +50,10 @@ protocol StoreMapBusinessLogic {
 
 protocol StoreMapPresentationLogic {
     func presentSomething(response: StoreMap.DidTapButton.Response)
+    func showRejectMessage(_ message: String)
 }
 
 protocol StoreMapRoutingLogic {
-    func routeToStoreDetail(store: Store)
+    func routeToStoreDetail(store: Store, listener: StoreDetailListener?)
     func routeToRegionSelection(message: String?)
 }

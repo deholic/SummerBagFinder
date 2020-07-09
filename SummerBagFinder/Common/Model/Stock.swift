@@ -12,6 +12,12 @@ struct Stock {
     let totalCount: Int
     let greenCount: Int
     let pinkCount: Int
+    
+    init(totalCount: Int = 0, greenCount: Int = 0, pinkCount: Int = 0) {
+        self.totalCount = totalCount
+        self.greenCount = greenCount
+        self.pinkCount = pinkCount
+    }
 }
 
 extension Stock {

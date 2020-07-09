@@ -14,4 +14,12 @@ struct Store {
     let address: String
     let isOpen: Bool // Bool로 변환가능?
     let stock: Stock?
+    
+    init(id: Int, name: String = "", address: String = "", isOpen: Bool = false, stock: Stock? = nil) {
+        self.id = id
+        self.name = name
+        self.address = address
+        self.isOpen = isOpen
+        self.stock = stock
+    }
 }

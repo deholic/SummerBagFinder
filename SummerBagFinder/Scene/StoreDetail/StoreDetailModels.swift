@@ -15,8 +15,9 @@ import UIKit
 enum StoreDetail {
     // MARK: Use cases
     
-    enum Something {
+    enum DidFinishWriting {
         struct Request {
+            let message: String
         }
         struct Response {
         }

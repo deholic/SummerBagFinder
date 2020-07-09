@@ -17,6 +17,7 @@ import UIKit
 class StoreMapPresenter: ObservableObject {
     
     @Published var somthing = StoreMap.DidTapButton.ViewModel()
+    @Published var MessageFromDetail: String = ""
     
     // MARK: routing
     
@@ -42,17 +43,21 @@ extension StoreMapPresenter: StoreMapPresentationLogic {
     func presentSomething(response: StoreMap.DidTapButton.Response) {
         somthing = StoreMap.DidTapButton.ViewModel()
     }
+    
+    func showRejectMessage(_ message: String) {
+        MessageFromDetail = message
+    }
 }
 
 // MARK: StoreMapRoutingLogic
 
 extension StoreMapPresenter: StoreMapRoutingLogic {
-    
-    func routeToStoreDetail(store: Store) {
+
+    func routeToStoreDetail(store: Store, listener: StoreDetailListener?) {
         guard let storeDetailBuilder = storeDetailBuilder else { return }
         // 스유 -> 스유
         let sceneBuildingLogic: () -> (StoreDetailBusinessLogic, StoreDetailPresenter) = {
-            return storeDetailBuilder.build(store: store)
+            return storeDetailBuilder.build(store: store, listener: listener)
         }
         self.isStoreDetailPresented = true
         self.storeDetailBuilderBuildingLogic = sceneBuildingLogic
@@ -68,5 +73,4 @@ extension StoreMapPresenter: StoreMapRoutingLogic {
         self.isRegionSelectPresended = true
         self.regionSelectBuilderBuildingLogic = sceneBuildingLogic
     }
-    
 }

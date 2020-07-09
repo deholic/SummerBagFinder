@@ -12,6 +12,7 @@ struct StoreDetailView: View {
     
     private let interactor: StoreDetailBusinessLogic?
     @ObservedObject private var presenter: StoreDetailPresenter
+    @State var message: String = ""
     
     init(sceneBuildingLogic: (() -> (StoreDetailBusinessLogic, StoreDetailPresenter))?) {
         if let (interactor, presenter) = sceneBuildingLogic?() {
@@ -24,13 +25,31 @@ struct StoreDetailView: View {
     }
     
     var body: some View {
-        Text("StoreDetail - SwiftUI")
+        VStack {
+            Text("StoreDetail - SwiftUI")
+            TextField("message", text: $message) {
+                self.interactor?.didFinishWriting(request: StoreDetail.DidFinishWriting.Request(message: self.message))
+            }
+            .padding(.all, 20)
+            if true == self.presenter.isConfirmButtonShown {
+                Button(action: {}, label: { Text("확인") })
+            }
+        }
+        .onDisappear {
+            self.interactor?.viewDidDisappear()
+        }
     }
 }
 
-
 struct StoreDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreDetailView(sceneBuildingLogic: nil)
+        StoreDetailView(sceneBuildingLogic: {
+            return (
+                (
+                    StoreDetailInteractor(store: Store(id: 100), listener: nil)
+                    , StoreDetailPresenter()
+                )
+            )
+        })
     }
 }

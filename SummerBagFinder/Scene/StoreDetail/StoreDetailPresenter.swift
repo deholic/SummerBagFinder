@@ -16,7 +16,7 @@ import UIKit
 
 class StoreDetailPresenter: ObservableObject {
     
-    @Published var somthing = StoreDetail.Something.ViewModel()
+    @Published var isConfirmButtonShown = false
 }
 
 // MARK: StoreDetailPresentationLogic
@@ -24,8 +24,8 @@ class StoreDetailPresenter: ObservableObject {
 extension StoreDetailPresenter: StoreDetailPresentationLogic {
     // MARK: Do something
     
-    func presentSomething(response: StoreDetail.Something.Response) {
-        somthing = StoreDetail.Something.ViewModel()
+    func showConfirmButton() {
+        isConfirmButtonShown = true
     }
 }
 

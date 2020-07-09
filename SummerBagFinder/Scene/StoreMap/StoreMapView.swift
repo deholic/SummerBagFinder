@@ -52,6 +52,7 @@ struct StoreMapView: View {
             ) {
                 EmptyView()
             }
+            Text(presenter.MessageFromDetail)
         }
         .navigationBarItems(trailing: regionSelectionItem)
     }

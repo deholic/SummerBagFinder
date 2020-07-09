@@ -9,13 +9,13 @@
 import Foundation
 
 protocol StoreDetailBuildingLogic {
-    func build(store: Store) -> (StoreDetailInteractor, StoreDetailPresenter)
+    func build(store: Store, listener: StoreDetailListener?) -> (StoreDetailInteractor, StoreDetailPresenter)
 }
 
 class StoreDetailBuilder: StoreDetailBuildingLogic {
     
-    func build(store: Store) -> (StoreDetailInteractor, StoreDetailPresenter) {
-        let interactor = StoreDetailInteractor(store: store)
+    func build(store: Store, listener: StoreDetailListener?) -> (StoreDetailInteractor, StoreDetailPresenter) {
+        let interactor = StoreDetailInteractor(store: store, listener: listener)
         let presenter = StoreDetailPresenter()
         interactor.router = presenter
         interactor.presenter = presenter
