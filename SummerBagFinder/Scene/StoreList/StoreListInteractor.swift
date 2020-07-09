@@ -32,27 +32,26 @@ extension StoreListInteractor: StoreListBusinessLogic {
     func viewDidLoad() {
         
         if let stores = stores {
-            let response = StoreList.viewDidLoad.Response(stores: stores)
+            let response = StoreList.Response.Stores(stores: stores)
             presenter?.displayStoreStockList(response)
         }
     }
     
-    func didSelectStore(_ request: StoreList.didSelectStore.Request) {
+    func didSelectStore(_ request: StoreList.Request.didSelectStore) {
         if let store = stores?[request.index] {
             router?.routeToStoreMap(store: store)
         }
     }
-    
 }
 
 // MARK: protocol
 
 protocol StoreListBusinessLogic {
     func viewDidLoad()
-    func didSelectStore(_ request: StoreList.didSelectStore.Request)
+    func didSelectStore(_ request: StoreList.Request.didSelectStore)
 }
 protocol StoreListPresentationLogic: class {
-    func displayStoreStockList(_ response: StoreList.viewDidLoad.Response)
+    func displayStoreStockList(_ response: StoreList.Response.Stores)
 }
 
 protocol StoreListRoutingLogic {

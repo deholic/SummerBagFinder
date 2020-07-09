@@ -35,22 +35,23 @@ class RegionSelectInteractor: RegionSelectBusinessLogic {
     
     func viewWillAppear() {
         if let message = message {
-            presenter?.showMessageAlert(message: message)
+            let response = RegionSelect.Response.AlertMessage(message: message)
+            presenter?.displayAlertMessage(response)
         }
     }
     
-    func doFetchRegions() {
+    func viewDidLoad() {
 
         worker?.fetchRegionList { [weak self] result in
             guard let self = self else { return }
             guard case let .success(regions) = result else { return }
             self.regions = regions
-            let response = RegionSelect.doFetchRegions.Response(regions: regions)
-            self.presenter?.presentRegionList(response)
+            let response = RegionSelect.Response.Regions(regions: regions)
+            self.presenter?.displayRegionList(response)
         }
     }
     
-    func doMoveToStoreList(_ request: RegionSelect.MoveStoreList.Request) {
+    func onSelectRegion(_ request: RegionSelect.Request.OnSelectRegion) {
         let indexPath = request.indexPath
         let subregion = regions[indexPath.section].subregions[indexPath.row]
         
@@ -68,13 +69,13 @@ class RegionSelectInteractor: RegionSelectBusinessLogic {
 
 protocol RegionSelectBusinessLogic {
     func viewWillAppear()
-    func doFetchRegions()
-    func doMoveToStoreList(_ request: RegionSelect.MoveStoreList.Request)
+    func viewDidLoad()
+    func onSelectRegion(_ request: RegionSelect.Request.OnSelectRegion)
 }
 
 protocol RegionSelectPresentationLogic: class {
-    func presentRegionList(_ response: RegionSelect.doFetchRegions.Response)
-    func showMessageAlert(message: String)
+    func displayRegionList(_ response: RegionSelect.Response.Regions)
+    func displayAlertMessage(_ response: RegionSelect.Response.AlertMessage)
 }
 
 protocol RegionSelectRoutingLogic {

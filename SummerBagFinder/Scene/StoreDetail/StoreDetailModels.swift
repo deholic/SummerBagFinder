@@ -14,14 +14,15 @@ import UIKit
 
 enum StoreDetail {
     // MARK: Use cases
-    
-    enum DidFinishWriting {
-        struct Request {
+    enum Request {
+        struct DidFinishWriting {
             let message: String
         }
-        struct Response {
-        }
-        struct ViewModel {
-        }
+    }
+    
+    enum Response {
+    }
+    
+    enum ViewModel {
     }
 }

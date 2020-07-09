@@ -21,7 +21,7 @@ struct StoreMapView: View {
     
     var regionSelectionItem: some View {
         Button(action: {
-            self.interactor?.didTapRegionSelection(StoreMap.DidTapRegionSelection.Request())
+            self.interactor?.didTapRegionSelection(StoreMap.Request.DidTapRegionSelection())
         }) {
             Image(systemName: "gear").imageScale(.large)
         }
@@ -32,7 +32,7 @@ struct StoreMapView: View {
         VStack {
             Text("StoreMap - SwiftUI")
             Button(action: {
-                self.interactor?.didTapButton(StoreMap.DidTapButton.Request())
+                self.interactor?.didTapButton(StoreMap.Request.DidTapButton())
             }) {
                 Text("go to StoreDetail")
             }

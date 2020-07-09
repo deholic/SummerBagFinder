@@ -22,7 +22,6 @@ enum StoreMapNextScene {
 
 class StoreMapPresenter: ObservableObject {
     
-    @Published var somthing = StoreMap.DidTapButton.ViewModel()
     @Published var MessageFromDetail: String = ""
     
     // MARK: routing
@@ -41,14 +40,9 @@ class StoreMapPresenter: ObservableObject {
 // MARK: StoreMapPresentationLogic
 
 extension StoreMapPresenter: StoreMapPresentationLogic {
-    // MARK: Do something
-    
-    func presentSomething(response: StoreMap.DidTapButton.Response) {
-        somthing = StoreMap.DidTapButton.ViewModel()
-    }
-    
-    func showRejectMessage(_ message: String) {
-        MessageFromDetail = message
+
+    func displayMessageFromDetail(_ viewModel: StoreMap.ViewModel.FromDetail) {
+        MessageFromDetail = viewModel.message
     }
 }
 

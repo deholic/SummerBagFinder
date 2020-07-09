@@ -14,22 +14,22 @@ import UIKit
 
 enum StoreMap {
     // MARK: Use cases
-    
-    enum DidTapButton {
-        struct Request {
+    enum Request {
+        struct DidTapButton {
         }
-        struct Response {
-        }
-        struct ViewModel {
+        struct DidTapRegionSelection {
         }
     }
     
-    enum DidTapRegionSelection {
-        struct Request {
-        }
-        struct Response {
-        }
-        struct ViewModel {
+    enum Response {
+
+    }
+    
+    enum ViewModel {
+        struct FromDetail {
+            let message: String
         }
     }
+    
+    
 }

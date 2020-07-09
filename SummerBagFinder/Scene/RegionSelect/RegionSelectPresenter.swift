@@ -15,31 +15,37 @@ import UIKit
 // MARK: RegionSelectPresenter
 
 class RegionSelectPresenter: RegionSelectPresentationLogic {
+    
     weak var viewController: RegionSelectDisplayLogic?
     
     deinit {
         print(#function)
     }
     
-    func presentRegionList(_ response: RegionSelect.doFetchRegions.Response) {
+    func displayRegionList(_ response: RegionSelect.Response.Regions) {
         let regions = response.regions.map {
             RegionViewModel(
                 name: $0.name,
                 subregions: $0.subregions.map { RegionViewModel.SubregionViewModel(name: $0.name)}
             )
         }
-        let viewModel = RegionSelect.doFetchRegions.ViewModel(regions: regions)
+        let viewModel = RegionSelect.ViewModel.Regions(regions: regions)
         viewController?.displayRegionList(viewModel)
     }
     
-    func showMessageAlert(message: String) {
-        viewController?.showMessageAlert(message: message)
+    func displayAlertMessage(_ response: RegionSelect.Response.AlertMessage) {
+        let viewModel = RegionSelect.ViewModel.AlertMessage(
+            title: "test",
+            message: response.message,
+            confirmTitle: "확인"
+        )
+        viewController?.displayAlertMessage(viewModel)
     }
 }
 
 // MARK: RegionSelectDisplayLogic
 
 protocol RegionSelectDisplayLogic: class {
-    func displayRegionList(_ viewModel: RegionSelect.doFetchRegions.ViewModel)
-    func showMessageAlert(message: String)
+    func displayRegionList(_ viewModel: RegionSelect.ViewModel.Regions)
+    func displayAlertMessage(_ viewModel: RegionSelect.ViewModel.AlertMessage)
 }

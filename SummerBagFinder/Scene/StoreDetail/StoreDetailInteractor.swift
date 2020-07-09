@@ -38,9 +38,9 @@ class StoreDetailInteractor: StoreDetailBusinessLogic, ObservableObject {
         }
     }
     
-    func didFinishWriting(request: StoreDetail.DidFinishWriting.Request) {
+    func didFinishWriting(request: StoreDetail.Request.DidFinishWriting) {
         message = request.message
-        presenter?.showConfirmButton()
+        presenter?.displayConfirmButton()
     }
 }
 
@@ -48,11 +48,11 @@ class StoreDetailInteractor: StoreDetailBusinessLogic, ObservableObject {
 
 protocol StoreDetailBusinessLogic {
     func viewDidDisappear()
-    func didFinishWriting(request: StoreDetail.DidFinishWriting.Request)
+    func didFinishWriting(request: StoreDetail.Request.DidFinishWriting)
 }
 
 protocol StoreDetailPresentationLogic {
-    func showConfirmButton()
+    func displayConfirmButton()
 }
 
 protocol StoreDetailRoutingLogic {

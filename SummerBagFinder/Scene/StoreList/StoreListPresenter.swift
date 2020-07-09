@@ -18,15 +18,36 @@ class StoreListPresenter: StoreListPresentationLogic {
     deinit {
         print(#function)
     }
-    func displayStoreStockList(_ response: StoreList.viewDidLoad.Response) {
-        let viewModel = StoreList.viewDidLoad.ViewModel(stores: response.stores)
+    func displayStoreStockList(_ response: StoreList.Response.Stores) {
+ 
+        let viewModel = StoreList.ViewModel.Stores(
+            stores: response.stores.map{
+                StoreList.ViewModel.Store(
+                    name: $0.name,
+                    address: $0.address,
+                    stock: StoreList.ViewModel.Stock(
+                        status: self.makeStockStatus(from: $0.stock),
+                        iconColor: self.makeStockIconColor(from: $0.stock)
+                    )
+                )
+            }
+        )
         
         viewController?.displayStoreStockList(viewModel)
+    }
+    
+    private func makeStockStatus(from stock: Stock?) -> String {
+        stock == nil ? "Unknown" : "G: \(stock!.greenCount) / P: \(stock!.pinkCount)"
+    }
+    
+    private func makeStockIconColor(from stock: Stock?) -> UIColor {
+        guard let stock = stock else { return .systemRed }
+        return true == stock.canBuyBag ? .systemGreen : .systemRed
     }
 }
 
 // MARK: protocol
 
 protocol StoreListDisplayLogic: class {
-    func displayStoreStockList(_ viewModel: StoreList.viewDidLoad.ViewModel)
+    func displayStoreStockList(_ viewModel: StoreList.ViewModel.Stores)
 }

@@ -15,13 +15,18 @@ import UIKit
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     
-    func presentLoginFailure() {
-        viewController?.displayLoginFailureAlert()
+    func displayLoginFailureAlert() {
+        let viewModel = Login.ViewModel.LoginFailureMessage(
+            title: "알림",
+            message: "로그인에 실패했습니다.\n아이디와 패스워드를 다시 확인해 주세요.",
+            confirmTitle: "확인"
+        )
+        viewController?.displayLoginFailureAlert(viewModel)
     }
 }
 
 // MARK: LoginDisplayLogic
 
 protocol LoginDisplayLogic: class {
-    func displayLoginFailureAlert()
+    func displayLoginFailureAlert(_ viewModel: Login.ViewModel.LoginFailureMessage)
 }

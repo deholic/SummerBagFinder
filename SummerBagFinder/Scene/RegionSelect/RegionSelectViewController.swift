@@ -45,7 +45,7 @@ class RegionSelectViewController: UIViewController {
         setupViews()
         setupTableView()
         
-        interactor?.doFetchRegions()
+        interactor?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,23 +99,23 @@ extension RegionSelectViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor?.doMoveToStoreList(RegionSelect.MoveStoreList.Request(indexPath: indexPath))
+        interactor?.onSelectRegion(RegionSelect.Request.OnSelectRegion(indexPath: indexPath))
     }
 }
 
 extension RegionSelectViewController: RegionSelectDisplayLogic {
     
-    func showMessageAlert(message: String) {
+    func displayAlertMessage(_ viewModel: RegionSelect.ViewModel.AlertMessage) {
         let alertController = UIAlertController(
-            title: "test",
-            message: message,
+            title: viewModel.title,
+            message: viewModel.message,
             preferredStyle: .alert
         )
-        alertController.addAction(UIAlertAction(title: "확인", style: .default))
+        alertController.addAction(UIAlertAction(title: viewModel.confirmTitle, style: .default))
         present(alertController, animated: true)
     }
     
-    func displayRegionList(_ viewModel: RegionSelect.doFetchRegions.ViewModel) {
+    func displayRegionList(_ viewModel: RegionSelect.ViewModel.Regions) {
         regions = viewModel.regions
         tableView.reloadData()
     }

@@ -24,10 +24,10 @@ struct StoreDetailView: View {
         VStack {
             Text("StoreDetail - SwiftUI")
             TextField("message", text: $message) {
-                self.interactor.didFinishWriting(request: StoreDetail.DidFinishWriting.Request(message: self.message))
+                self.interactor.didFinishWriting(request: StoreDetail.Request.DidFinishWriting(message: self.message))
             }
             .padding(.all, 20)
-            if true == self.presenter.isConfirmButtonShown {
+            if true == self.presenter.showConfirmButtion {
                 Button(action: {}, label: { Text("확인") })
             }
         }

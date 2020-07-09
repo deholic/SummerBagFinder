@@ -14,22 +14,30 @@ import UIKit
 
 enum RegionSelect {
     
-    enum doFetchRegions {
-        struct Request {}
-        struct Response {
-            let regions: [Region]
-        }
-        struct ViewModel {
-            let regions: [RegionViewModel]
+    enum Request {
+        struct OnSelectRegion {
+            let indexPath: IndexPath
         }
     }
     
-    enum MoveStoreList {
-        struct Request {
-            let indexPath: IndexPath
+    enum Response {
+        struct Regions {
+            let regions: [Region]
         }
-        struct Response {}
-        struct ViewModel {}
+        struct AlertMessage {
+            let message: String
+        }
+    }
+    
+    enum ViewModel {
+        struct Regions {
+            let regions: [RegionViewModel]
+        }
+        struct AlertMessage {
+            let title: String
+            let message: String
+            let confirmTitle: String
+        }
     }
 }
 

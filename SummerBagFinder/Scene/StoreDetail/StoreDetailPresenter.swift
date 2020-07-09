@@ -16,7 +16,7 @@ import UIKit
 
 class StoreDetailPresenter: ObservableObject {
     
-    @Published var isConfirmButtonShown = false
+    @Published var showConfirmButtion = false
     
     deinit {
         print(#function, #file)
@@ -29,8 +29,8 @@ class StoreDetailPresenter: ObservableObject {
 extension StoreDetailPresenter: StoreDetailPresentationLogic {
     // MARK: Do something
     
-    func showConfirmButton() {
-        isConfirmButtonShown = true
+    func displayConfirmButton() {
+        showConfirmButtion = true
     }
 }
 

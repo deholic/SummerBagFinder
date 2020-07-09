@@ -13,21 +13,30 @@
 import UIKit
 
 enum StoreList {
-    enum viewDidLoad {
-        struct Request {}
-        struct Response {
-            let stores: [Store]
+    enum Request {
+        struct didSelectStore {
+            let index: Int
         }
-        struct ViewModel {
+    }
+    enum Response {
+        struct Stores {
             let stores: [Store]
         }
     }
-    
-    enum didSelectStore {
-        struct Request {
-            let index: Int
+    enum ViewModel {
+        struct Stores {
+            let stores: [Store]
         }
-        struct Response {}
-        struct ViewModel {}
+
+        struct Store {
+            let name: String
+            let address: String
+            let stock: Stock
+        }
+        
+        struct Stock {
+            let status : String
+            let iconColor: UIColor
+        }
     }
 }

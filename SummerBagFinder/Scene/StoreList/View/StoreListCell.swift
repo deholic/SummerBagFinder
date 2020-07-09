@@ -26,20 +26,13 @@ class StoreListCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setStoreInfo(_ store: Store) {
+    func setStoreInfo(_ store: StoreList.ViewModel.Store) {
         nameLabel.text = store.name
         addressLabel.text = store.address
     }
     
-    func setStockInfo(_ stock: Stock?) {
-        guard let stock = stock else {
-            stockImage.tintColor = .systemRed
-            stockStatusLabel.text = "Unknown"
-            return
-        }
-        
-        stockImage.tintColor = stock.canBuyBag ? .systemGreen : .systemRed
-        stockStatusLabel.text = "G: \(stock.greenCount) / P: \(stock.pinkCount)"
+    func setStockInfo(_ stock: StoreList.ViewModel.Stock) {
+        stockImage.tintColor = stock.iconColor
+        stockStatusLabel.text = stock.status
     }
-    
 }

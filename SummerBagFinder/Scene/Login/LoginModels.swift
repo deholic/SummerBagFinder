@@ -13,16 +13,23 @@
 import UIKit
 
 enum Login {
-    enum LoginTrial {
-        struct Request {
-            var id: String
-            var password: String
+    
+    enum Request {
+        struct LoginTrial {
+            let id: String
+            let password: String
         }
-        struct Response {
-            
-        }
-        struct ViewModel {
-            
+    }
+    
+    enum Response {
+        
+    }
+    
+    enum ViewModel {
+        struct LoginFailureMessage {
+            let title: String
+            let message: String
+            let confirmTitle: String
         }
     }
 }

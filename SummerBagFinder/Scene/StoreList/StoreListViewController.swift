@@ -36,7 +36,7 @@ class StoreListViewController: UIViewController {
         return tableView
     }()
     
-    private var stores: [Store] = []
+    private var stores: [StoreList.ViewModel.Store] = []
     
     // MARK: View lifecycle
     
@@ -94,13 +94,13 @@ extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor?.didSelectStore(StoreList.didSelectStore.Request(index: indexPath.row))
+        interactor?.didSelectStore(StoreList.Request.didSelectStore(index: indexPath.row))
     }
 }
 
 extension StoreListViewController: StoreListDisplayLogic {
     
-    func displayStoreStockList(_ viewModel: StoreList.viewDidLoad.ViewModel) {
+    func displayStoreStockList(_ viewModel: StoreList.ViewModel.Stores) {
         stores = viewModel.stores
         tableView.reloadData()
     }

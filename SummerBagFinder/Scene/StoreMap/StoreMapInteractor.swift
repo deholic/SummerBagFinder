@@ -22,12 +22,12 @@ class StoreMapInteractor: StoreMapBusinessLogic {
     
     // MARK: Do something
     
-    func didTapButton(_ request: StoreMap.DidTapButton.Request) {
+    func didTapButton(_ request: StoreMap.Request.DidTapButton) {
         let store = Store(id: 100, name: "스타벅스 강남2호점", address: "강남역", isOpen: true, stock: Stock(totalCount: 100, greenCount: 40, pinkCount: 60))
         router?.routeToStoreDetail(store: store, listener: self)
     }
     
-    func didTapRegionSelection(_ request: StoreMap.DidTapRegionSelection.Request) {
+    func didTapRegionSelection(_ request: StoreMap.Request.DidTapRegionSelection) {
         router?.routeToRegionSelection(message: "Store Map에서 온 메시지")
     }
 }
@@ -37,20 +37,20 @@ class StoreMapInteractor: StoreMapBusinessLogic {
 extension StoreMapInteractor: StoreDetailListener {
     
     func didFinishWriting(message: String) {
-        presenter?.showRejectMessage(message)
+        let viewModel = StoreMap.ViewModel.FromDetail(message: message)
+        presenter?.displayMessageFromDetail(viewModel)
     }
 }
 
 // MARK: protocol
 
 protocol StoreMapBusinessLogic {
-    func didTapButton(_ request: StoreMap.DidTapButton.Request)
-    func didTapRegionSelection(_ request: StoreMap.DidTapRegionSelection.Request)
+    func didTapButton(_ request: StoreMap.Request.DidTapButton)
+    func didTapRegionSelection(_ request: StoreMap.Request.DidTapRegionSelection)
 }
 
 protocol StoreMapPresentationLogic {
-    func presentSomething(response: StoreMap.DidTapButton.Response)
-    func showRejectMessage(_ message: String)
+    func displayMessageFromDetail(_ viewModel: StoreMap.ViewModel.FromDetail)
 }
 
 protocol StoreMapRoutingLogic {

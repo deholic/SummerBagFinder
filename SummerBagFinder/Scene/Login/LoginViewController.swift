@@ -93,19 +93,19 @@ extension LoginViewController {
 extension LoginViewController {
     private func tapSubmitButton() {
         guard let id = idFormView.currentValue, let password = passwordFormView.currentValue else { return }
-        interactor?.doLogin(request: Login.LoginTrial.Request(id: id, password: password))
+        interactor?.tryLogin(request: Login.Request.LoginTrial(id: id, password: password))
     }
 }
 
 // MARK: - Display Something
 
 extension LoginViewController: LoginDisplayLogic {
-    func displayLoginFailureAlert() {
-        let alert = UIAlertController(title: "알림",
-                                      message: "로그인에 실패했습니다.\n아이디와 패스워드를 다시 확인해 주세요.",
+    func displayLoginFailureAlert(_ viewModel: Login.ViewModel.LoginFailureMessage) {
+        let alert = UIAlertController(title: viewModel.title,
+                                      message: viewModel.message,
                                       preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: viewModel.confirmTitle, style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 }
