@@ -10,11 +10,11 @@ import SwiftUI
 
 struct RegionSelectView: UIViewControllerRepresentable {
     
-    let sceneBuildingLogic: (() -> RegionSelectViewController)?
+    let builder: LazyRegionSelectBuildingLogic?
     
     func makeUIViewController(context: Context) -> RegionSelectViewController {
-        guard let sceneBuildingLogic = sceneBuildingLogic else { return RegionSelectViewController() }
-        let viewController = sceneBuildingLogic()
+        guard let builder = builder else { return RegionSelectViewController() }
+        let viewController = builder.executeBuilding()
         return viewController
     }
     

@@ -13,6 +13,11 @@
 import UIKit
 
 class StoreDetailWorker {
+    
+    deinit {
+        print(#function, #file)
+    }
+    
     func doSomeWork() {
     }
 }

@@ -15,24 +15,22 @@ import SwiftUI
 
 class StoreListRouter: NSObject, StoreListRoutingLogic {
     weak var viewController: UIViewController!
-    private var storeMapBuilder: StoreMapBuildingLogic
+    private var storeMapBuilder: LazyStoreMapBuildingLogic
     
     deinit {
         print(#function)
     }
     
-    init(viewController: UIViewController, storeMapBuilder: StoreMapBuildingLogic) {
+    init(viewController: UIViewController, storeMapBuilder: LazyStoreMapBuildingLogic) {
         self.viewController = viewController
         self.storeMapBuilder = storeMapBuilder
     }
     
     func routeToStoreMap(store: Store) {
         ///라우팅: 유킷  ->  스유
-        let sceneBuildingLogic: () -> (StoreMapBusinessLogic, StoreMapPresenter) = {
-            return self.storeMapBuilder.build(store: store)
-        }
+        storeMapBuilder.prepareForBuilding(store: store)
         
-        let destination = UIHostingController(rootView: StoreMapView(sceneBuildingLogic: sceneBuildingLogic))
+        let destination = UIHostingController(rootView: StoreMapView(builder: storeMapBuilder))
         viewController.show(destination, sender: nil)
     }
 }

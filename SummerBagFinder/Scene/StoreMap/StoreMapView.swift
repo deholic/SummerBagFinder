@@ -13,14 +13,10 @@ struct StoreMapView: View {
     private let interactor: StoreMapBusinessLogic?
     @ObservedObject private var presenter: StoreMapPresenter
 
-    init(sceneBuildingLogic: (() -> (StoreMapBusinessLogic, StoreMapPresenter))?) {
-        if let (interactor, presenter) = sceneBuildingLogic?() {
-            self.interactor = interactor
-            self.presenter = presenter
-        } else {
-            self.interactor = nil
-            self.presenter = StoreMapPresenter()
-        }
+    init(builder: LazyStoreMapBuildingLogic) {
+        let (interactor, presenter) = builder.executeBuilding()
+        self.interactor = interactor
+        self.presenter = presenter
     }
     
     var regionSelectionItem: some View {
@@ -30,6 +26,7 @@ struct StoreMapView: View {
             Image(systemName: "gear").imageScale(.large)
         }
     }
+    
     var body: some View {
 
         VStack {
@@ -39,28 +36,32 @@ struct StoreMapView: View {
             }) {
                 Text("go to StoreDetail")
             }
-// modal 방식
-            .sheet(isPresented: $presenter.isRegionSelectPresended, onDismiss: {
-                self.presenter.isRegionSelectPresended = false
-            }) {
-                RegionSelectView(sceneBuildingLogic: self.presenter.regionSelectBuilderBuildingLogic)
-            }
 // push 방식
             NavigationLink(
-                destination: StoreDetailView(sceneBuildingLogic: self.presenter.storeDetailBuilderBuildingLogic),
-                isActive: $presenter.isStoreDetailPresented
-            ) {
-                EmptyView()
-            }
+                destination: StoreDetailView(builder:self.presenter.storeDetailBuilder),
+                tag: StoreMapNextScene.storeDetail,
+                selection: $presenter.nextScene,
+                label: { EmptyView() }
+            )
             Text(presenter.MessageFromDetail)
         }
         .navigationBarItems(trailing: regionSelectionItem)
+// modal 방식
+        .sheet(isPresented: $presenter.isPresented, onDismiss: {
+            self.presenter.isPresented = false
+        }) {
+            if case .regionSelect = presenter.nextScene {
+                RegionSelectView(builder: self.presenter.regionSelectBuilder)
+            }
+        }
     }
 }
 
 
 struct StoreMapView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreMapView(sceneBuildingLogic: nil)
+        StoreMapView(builder: StoreMapBuilder())
     }
 }
+
+

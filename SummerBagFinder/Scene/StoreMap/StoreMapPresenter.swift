@@ -14,22 +14,25 @@ import UIKit
 
 // MARK: StoreMapPresenter
 
+enum StoreMapNextScene {
+    case none
+    case storeDetail
+    case regionSelect
+}
+
 class StoreMapPresenter: ObservableObject {
     
     @Published var somthing = StoreMap.DidTapButton.ViewModel()
     @Published var MessageFromDetail: String = ""
     
     // MARK: routing
+    @Published var nextScene: StoreMapNextScene?
+    @Published var isPresented = false
     
-    @Published var isStoreDetailPresented: Bool = false
-    @Published var storeDetailBuilderBuildingLogic: (() -> (StoreDetailBusinessLogic, StoreDetailPresenter))? = nil
-    @Published var isRegionSelectPresended: Bool = false
-    @Published var regionSelectBuilderBuildingLogic: (() -> RegionSelectViewController)? = nil
-    
-    private var storeDetailBuilder: StoreDetailBuildingLogic?
-    private var regionSelectBuilder: RegionSelectBuildingLogic?
+    var storeDetailBuilder: LazyStoreDetailBuildingLogic
+    var regionSelectBuilder: LazyRegionSelectBuildingLogic
 
-    init(storeDetailBuilder: StoreDetailBuildingLogic? = nil, regionSelectBuilder: RegionSelectBuildingLogic? = nil) {
+    init(storeDetailBuilder: LazyStoreDetailBuildingLogic, regionSelectBuilder: LazyRegionSelectBuildingLogic) {
         self.storeDetailBuilder = storeDetailBuilder
         self.regionSelectBuilder = regionSelectBuilder
     }
@@ -54,23 +57,15 @@ extension StoreMapPresenter: StoreMapPresentationLogic {
 extension StoreMapPresenter: StoreMapRoutingLogic {
 
     func routeToStoreDetail(store: Store, listener: StoreDetailListener?) {
-        guard let storeDetailBuilder = storeDetailBuilder else { return }
-        // 스유 -> 스유
-        let sceneBuildingLogic: () -> (StoreDetailBusinessLogic, StoreDetailPresenter) = {
-            return storeDetailBuilder.build(store: store, listener: listener)
-        }
-        self.isStoreDetailPresented = true
-        self.storeDetailBuilderBuildingLogic = sceneBuildingLogic
+        //라우팅: 스유 -> 스유
+        storeDetailBuilder.prepareForBuilding(store: store, listener: listener)
+        nextScene = .storeDetail
     }
     
     func routeToRegionSelection(message: String?) {
-        guard let regionSelectBuilder = regionSelectBuilder else { return }
         //라우팅: 스유 -> 유킷
-        let sceneBuildingLogic: () -> RegionSelectViewController = {
-            let viewController = regionSelectBuilder.build(message: message)
-            return viewController
-        }
-        self.isRegionSelectPresended = true
-        self.regionSelectBuilderBuildingLogic = sceneBuildingLogic
+        regionSelectBuilder.prepareForBuilding(message: message)
+        nextScene = .regionSelect
+        isPresented = true
     }
 }

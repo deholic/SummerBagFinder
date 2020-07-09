@@ -49,6 +49,7 @@
 		B8DDFD4F249ED185002B3B13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DDFD4D249ED185002B3B13 /* LaunchScreen.storyboard */; };
 		B8DDFD5A249ED185002B3B13 /* SummerBagFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DDFD59249ED185002B3B13 /* SummerBagFinderTests.swift */; };
 		B8DDFD65249ED185002B3B13 /* SummerBagFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DDFD64249ED185002B3B13 /* SummerBagFinderUITests.swift */; };
+		DEA5F0B524B6EEA400D8F195 /* LazySceneBuildingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA5F0B424B6EEA400D8F195 /* LazySceneBuildingLogic.swift */; };
 		DEFDEB5624A4B4630067A17C /* StoreListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5524A4B4630067A17C /* StoreListBuilder.swift */; };
 		DEFDEB5824A4B46F0067A17C /* RegionSelectBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5724A4B46F0067A17C /* RegionSelectBuilder.swift */; };
 		DEFDEB5A24A4B4960067A17C /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5924A4B4960067A17C /* LoginBuilder.swift */; };
@@ -133,6 +134,7 @@
 		B8DDFD64249ED185002B3B13 /* SummerBagFinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummerBagFinderUITests.swift; sourceTree = "<group>"; };
 		B8DDFD66249ED185002B3B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1E302647FA47E0FF4A5846C /* Pods_SummerBagFinderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SummerBagFinderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEA5F0B424B6EEA400D8F195 /* LazySceneBuildingLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazySceneBuildingLogic.swift; sourceTree = "<group>"; };
 		DEFDEB5524A4B4630067A17C /* StoreListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListBuilder.swift; sourceTree = "<group>"; };
 		DEFDEB5724A4B46F0067A17C /* RegionSelectBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectBuilder.swift; sourceTree = "<group>"; };
 		DEFDEB5924A4B4960067A17C /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		B88AE8F3249EFB1B002879AC /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DEA5F0B324B6EE9300D8F195 /* Common */,
 				B88AE900249EFB4C002879AC /* Login */,
 				B88AE901249EFB59002879AC /* RegionSelect */,
 				B88AE902249EFB6E002879AC /* StoreList */,
@@ -391,6 +394,14 @@
 				B8DDFD66249ED185002B3B13 /* Info.plist */,
 			);
 			path = SummerBagFinderUITests;
+			sourceTree = "<group>";
+		};
+		DEA5F0B324B6EE9300D8F195 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DEA5F0B424B6EEA400D8F195 /* LazySceneBuildingLogic.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		DEFDEBB624AC6FEA0067A17C /* StoreDetail */ = {
@@ -674,6 +685,7 @@
 				DEFDEB5A24A4B4960067A17C /* LoginBuilder.swift in Sources */,
 				B8C50562249F25CD00D45DCC /* BaseResponse.swift in Sources */,
 				B8C50577249F3A7400D45DCC /* StoreListPresenter.swift in Sources */,
+				DEA5F0B524B6EEA400D8F195 /* LazySceneBuildingLogic.swift in Sources */,
 				B8DDFD43249ED183002B3B13 /* AppDelegate.swift in Sources */,
 				B8C5055F249F1C1900D45DCC /* StarbuckService.swift in Sources */,
 				B8DDFD45249ED183002B3B13 /* SceneDelegate.swift in Sources */,

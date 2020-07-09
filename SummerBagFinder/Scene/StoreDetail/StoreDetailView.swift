@@ -10,25 +10,21 @@ import SwiftUI
 
 struct StoreDetailView: View {
     
-    private let interactor: StoreDetailBusinessLogic?
+    private let interactor: StoreDetailBusinessLogic
     @ObservedObject private var presenter: StoreDetailPresenter
     @State var message: String = ""
     
-    init(sceneBuildingLogic: (() -> (StoreDetailBusinessLogic, StoreDetailPresenter))?) {
-        if let (interactor, presenter) = sceneBuildingLogic?() {
-            self.interactor = interactor
-            self.presenter = presenter
-        } else {
-            self.interactor = nil
-            self.presenter = StoreDetailPresenter()
-        }
+    init(builder: LazyStoreDetailBuildingLogic) {
+        let (interactor, presenter) = builder.executeBuilding()
+        self.interactor = interactor
+        self.presenter = presenter
     }
     
     var body: some View {
         VStack {
             Text("StoreDetail - SwiftUI")
             TextField("message", text: $message) {
-                self.interactor?.didFinishWriting(request: StoreDetail.DidFinishWriting.Request(message: self.message))
+                self.interactor.didFinishWriting(request: StoreDetail.DidFinishWriting.Request(message: self.message))
             }
             .padding(.all, 20)
             if true == self.presenter.isConfirmButtonShown {
@@ -36,20 +32,13 @@ struct StoreDetailView: View {
             }
         }
         .onDisappear {
-            self.interactor?.viewDidDisappear()
+            self.interactor.viewDidDisappear()
         }
     }
 }
 
 struct StoreDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreDetailView(sceneBuildingLogic: {
-            return (
-                (
-                    StoreDetailInteractor(store: Store(id: 100), listener: nil)
-                    , StoreDetailPresenter()
-                )
-            )
-        })
+        StoreDetailView(builder: StoreDetailBuilder())
     }
 }

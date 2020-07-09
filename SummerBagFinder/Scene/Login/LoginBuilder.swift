@@ -6,15 +6,16 @@
 //  Copyright © 2020 EUIGYOM KIM. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol LoginBuidingLogic {
-    func build() -> LoginViewController
+    typealias Destination = LoginViewController
+    func build() -> Destination
 }
 
 class LoginBuilder: LoginBuidingLogic {
     
-    func build() -> LoginViewController {
+    func build() -> Destination {
         let viewController = LoginViewController()
         let interactor = LoginInteractor(worker: LoginWorker())
         let presenter = LoginPresenter()

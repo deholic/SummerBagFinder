@@ -23,9 +23,13 @@ class StoreDetailInteractor: StoreDetailBusinessLogic, ObservableObject {
     
     var message: String?
     
-    init(store: Store, listener: StoreDetailListener?) {
+    init(store: Store, listener: StoreDetailListener? = nil) {
         self.store = store
         self.listener = listener
+    }
+    
+    deinit {
+        print(#function, #file)
     }
     
     func viewDidDisappear() {

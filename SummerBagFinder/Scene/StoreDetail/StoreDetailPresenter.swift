@@ -17,6 +17,11 @@ import UIKit
 class StoreDetailPresenter: ObservableObject {
     
     @Published var isConfirmButtonShown = false
+    
+    deinit {
+        print(#function, #file)
+    }
+    
 }
 
 // MARK: StoreDetailPresentationLogic

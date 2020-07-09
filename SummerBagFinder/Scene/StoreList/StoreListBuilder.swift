@@ -6,10 +6,11 @@
 //  Copyright © 2020 EUIGYOM KIM. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol StoreListBuildingLogic {
-    func build(stores: [Store]?) -> StoreListViewController
+    typealias Destination = StoreListViewController
+    func build(stores: [Store]?) -> Destination
 }
 
 class StoreListBuilder: StoreListBuildingLogic {
@@ -19,7 +20,7 @@ class StoreListBuilder: StoreListBuildingLogic {
     }
     
     // builder 추가
-    func build(stores: [Store]?) -> StoreListViewController {
+    func build(stores: [Store]?) -> Destination {
         let destinationVC = StoreListViewController()
         let interactor = StoreListInteractor(stores: stores)
         let presenter = StoreListPresenter()
