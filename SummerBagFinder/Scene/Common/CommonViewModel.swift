@@ -10,7 +10,8 @@ import Foundation
 
 enum CommonViewModel {
     
-    struct Alert {
+    struct Alert: Identifiable {
+        var id: Int
         let title: String
         let message: String
         let confirmTitle: String

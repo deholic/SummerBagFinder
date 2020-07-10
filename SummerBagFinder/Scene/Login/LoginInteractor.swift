@@ -10,7 +10,7 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 
 // MARK: LoginInteractor
 
@@ -24,37 +24,37 @@ class LoginInteractor {
     }
 }
 
-extension LoginInteractor: LoginBusinessLogic {
-    func doLogin(request: Login.LoginTrial.Request) {
-        self.router?.routeToRegionList(message: "로그인화면에서 온 메시지")
-//        worker?.processToLogin(id: request.id, password: request.password) { [weak self] result in
-//            guard let self = self else { return }
-//            guard case let .success(isSuccess) = result else {
-//                self.presenter?.presentLoginFailure()
-//                return
-//            }
-//
-//            // 지역 선택 화면으로 이동
-//            if isSuccess {
-//                self.router?.routeToRegionList(message: "로그인화면에서 온 메시지")
-//            }
-//
-//            // 로그인 실패 얼럿 노출
-//            else {
-//                self.presenter?.presentLoginFailure()
-//            }
-//        }
+extension LoginInteractor: LoginRequestLogic {
+    func process(_ request: Login.Request.Login) {
+        //self.router?.routeToRegionList(message: "로그인화면에서 온 메시지")
+        worker?.processToLogin(id: request.id, password: request.password) { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case let .success(isSuccess):
+                // 지역 선택 화면으로 이동
+                if isSuccess {
+                    self.router?.routeToRegionList(message: "로그인화면에서 온 메시지")
+                }
+                // 로그인 실패 얼럿 노출
+                else {
+                    self.presenter?.present(Login.Response.error(BaseError.loginFailure))
+                }
+            case let .failure(error):
+                self.presenter?.present(Login.Response.error(error))
+            }
+        }
     }
 }
 
 // MARK: protocol
 
-protocol LoginBusinessLogic {
-    func doLogin(request: Login.LoginTrial.Request)
+protocol LoginRequestLogic {
+    func process(_ request: Login.Request.Login)
 }
 
 protocol LoginWorkingLogic {
-    func processToLogin(id: String?, password: String?, completion: @escaping (Result<Bool, Error>) -> ())
+    func processToLogin(id: String?, password: String?, completion: @escaping (Result<Bool, BaseError>) -> ())
 }
 
 protocol LoginRoutingLogic {
@@ -62,5 +62,5 @@ protocol LoginRoutingLogic {
 }
 
 protocol LoginPresentationLogic: class {
-    func presentLoginFailure()
+    func present(_ response: Login.Response)
 }

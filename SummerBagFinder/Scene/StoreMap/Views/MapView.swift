@@ -9,21 +9,26 @@
 import SwiftUI
 import MapKit
 
-struct StoreMapView: UIViewRepresentable {
+struct MapView: UIViewRepresentable {
     let coordinate: CLLocationCoordinate2D
+    let name: String
     
     func makeUIView(context: Context) -> MKMapView {
         MKMapView()
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        let camera: MKMapCamera(
+        let camera = MKMapCamera(
             lookingAtCenter: coordinate,
-            formDistance: 2500,
+            fromDistance: 2500,
             pitch: 45,
             heading: 0
         )
         uiView.setCamera(camera, animated: true)
+        let pin = MKPointAnnotation()
+        pin.title = name
+        pin.coordinate = coordinate
+        uiView.addAnnotation(pin)
     }
 }
 

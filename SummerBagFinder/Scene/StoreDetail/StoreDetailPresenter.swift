@@ -10,13 +10,13 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 
 // MARK: StoreDetailPresenter
 
 class StoreDetailPresenter: ObservableObject {
     
-    @Published var showConfirmButtion = false
+    @Published var viewModel = StoreDetail.ViewModel()
     
     deinit {
         print(#function, #file)
@@ -27,10 +27,18 @@ class StoreDetailPresenter: ObservableObject {
 // MARK: StoreDetailPresentationLogic
 
 extension StoreDetailPresenter: StoreDetailPresentationLogic {
-    // MARK: Do something
-    
-    func displayConfirmButton() {
-        showConfirmButtion = true
+    func present(_ response: StoreDetail.Response) {
+        switch response {
+        case let .textCount(count):
+            viewModel.alert = CommonViewModel.Alert(
+                id: 100,
+                title: "",
+                message: "\(count)자 입력하셨습니다.",
+                confirmTitle: "확인"
+            )
+        case let .wordCountButton(show):
+            viewModel.showWordCountButton = show
+        }
     }
 }
 

@@ -15,7 +15,7 @@ import RxSwift
 import RxCocoa
 
 class LoginViewController: UIViewController {
-    var interactor: LoginBusinessLogic?
+    var interactor: LoginRequestLogic?
     let disposeBag = DisposeBag()
     
     lazy var stackView: UIStackView = {
@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     private func setupViews() {
-        self.title = "로그인"
+        self.title = "로그인 - UIKit"
         self.edgesForExtendedLayout = [.all]
         
         view.backgroundColor = .systemBackground
@@ -93,14 +93,14 @@ extension LoginViewController {
 extension LoginViewController {
     private func tapSubmitButton() {
         guard let id = idFormView.currentValue, let password = passwordFormView.currentValue else { return }
-        interactor?.tryLogin(request: Login.Request.LoginTrial(id: id, password: password))
+        interactor?.process(Login.Request.Login(id: id, password: password))
     }
 }
 
-// MARK: - Display Something
+// MARK: - LoginDisplayLogic
 
 extension LoginViewController: LoginDisplayLogic {
-    func displayLoginFailureAlert(_ viewModel: Login.ViewModel.LoginFailureMessage) {
+    func display(_ viewModel: CommonViewModel.Alert) {
         let alert = UIAlertController(title: viewModel.title,
                                       message: viewModel.message,
                                       preferredStyle: .alert)

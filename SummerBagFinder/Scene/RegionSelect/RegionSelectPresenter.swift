@@ -10,7 +10,7 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 
 // MARK: RegionSelectPresenter
 
@@ -22,30 +22,39 @@ class RegionSelectPresenter: RegionSelectPresentationLogic {
         print(#function)
     }
     
-    func displayRegionList(_ response: RegionSelect.Response.Regions) {
-        let regions = response.regions.map {
-            RegionViewModel(
+    func present(_ response: RegionSelect.Response) {
+        switch response {
+        case let .regions(regions):
+            displayRegions(regions)
+        case let .alert(message):
+            displayAlert(message)
+        }
+    }
+    func displayRegions(_ regions: [Region]) {
+        let viewRegions = regions.map {
+            RegionSelect.ViewModel.Region(
                 name: $0.name,
-                subregions: $0.subregions.map { RegionViewModel.SubregionViewModel(name: $0.name)}
+                subregions: $0.subregions.map { RegionSelect.ViewModel.SubRegion(name: $0.name)}
             )
         }
-        let viewModel = RegionSelect.ViewModel.Regions(regions: regions)
-        viewController?.displayRegionList(viewModel)
+        let viewModel = RegionSelect.ViewModel.Regions(regions: viewRegions)
+        viewController?.display(viewModel)
     }
     
-    func displayAlertMessage(_ response: RegionSelect.Response.AlertMessage) {
-        let viewModel = RegionSelect.ViewModel.AlertMessage(
+    func displayAlert(_ message: String) {
+        let viewModel = CommonViewModel.Alert(
+            id: 100,
             title: "test",
-            message: response.message,
+            message: message,
             confirmTitle: "확인"
         )
-        viewController?.displayAlertMessage(viewModel)
+        viewController?.display(viewModel)
     }
 }
 
 // MARK: RegionSelectDisplayLogic
 
 protocol RegionSelectDisplayLogic: class {
-    func displayRegionList(_ viewModel: RegionSelect.ViewModel.Regions)
-    func displayAlertMessage(_ viewModel: RegionSelect.ViewModel.AlertMessage)
+    func display(_ viewModel: RegionSelect.ViewModel.Regions)
+    func display(_ viewModel: CommonViewModel.Alert)
 }

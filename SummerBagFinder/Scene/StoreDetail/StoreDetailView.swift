@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StoreDetailView: View {
     
-    private let interactor: StoreDetailBusinessLogic
+    private let interactor: StoreDetailRequestLogic
     @ObservedObject private var presenter: StoreDetailPresenter
     @State var message: String = ""
     
@@ -23,16 +23,24 @@ struct StoreDetailView: View {
     var body: some View {
         VStack {
             Text("StoreDetail - SwiftUI")
-            TextField("message", text: $message) {
-                self.interactor.didFinishWriting(request: StoreDetail.Request.DidFinishWriting(message: self.message))
+            TextField("이전화면에 전달할 메시지를 입력하세요.", text: $message) {
+                interactor.process(StoreDetail.Request.OnFinishWriting(message: message))
             }
             .padding(.all, 20)
-            if true == self.presenter.showConfirmButtion {
-                Button(action: {}, label: { Text("확인") })
+            if true == presenter.viewModel.showWordCountButton {
+                Button(
+                    action: { interactor.process(StoreDetail.Request.CheckTextCount()) },
+                    label: { Text("글자 수 세기") }
+                )
             }
         }
-        .onDisappear {
-            self.interactor.viewDidDisappear()
+        .navigationBarTitle("Store Detail - SwiftUI")
+        .alert(item: $presenter.viewModel.alert) {
+            Alert(
+                title: Text($0.title),
+                message: Text($0.message),
+                dismissButton: Alert.Button.default(Text($0.confirmTitle))
+            )
         }
     }
 }

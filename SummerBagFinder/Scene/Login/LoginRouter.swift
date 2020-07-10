@@ -12,7 +12,7 @@
 
 import UIKit
 
-class LoginRouter: NSObject, LoginRoutingLogic {
+class LoginRouter: NSObject {
     private var regionSelectBuilder: RegionSelectBuildingLogic
     private weak var viewController: UIViewController!
     
@@ -20,8 +20,9 @@ class LoginRouter: NSObject, LoginRoutingLogic {
         self.viewController = viewController
         self.regionSelectBuilder = regionSelectBuilder
     }
-    
-    // MARK: Routing
+}
+
+extension LoginRouter: LoginRoutingLogic {
     func routeToRegionList(message: String?) {
         ///라우팅: 유킷 -> 유킷
         let regionVC = regionSelectBuilder.build(message: message)

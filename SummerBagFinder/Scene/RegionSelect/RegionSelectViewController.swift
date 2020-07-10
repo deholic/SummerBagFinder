@@ -24,8 +24,8 @@ class RegionSelectViewController: UIViewController {
         print(#function)
     }
     
-    var interactor: RegionSelectBusinessLogic?
-    var regions: [RegionViewModel] = []
+    var interactor: RegionSelectRequestLogic?
+    var regions: [RegionSelect.ViewModel.Region] = []
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -45,13 +45,13 @@ class RegionSelectViewController: UIViewController {
         setupViews()
         setupTableView()
         
-        interactor?.viewDidLoad()
+        interactor?.process(RegionSelect.Request.OnLoad())
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        interactor?.viewWillAppear()
+        interactor?.process(RegionSelect.Request.OnAppear())
     }
 }
 
@@ -60,7 +60,7 @@ class RegionSelectViewController: UIViewController {
 extension RegionSelectViewController {
 
     private func setupViews() {
-        self.title = "지역 선택"
+        self.title = "지역 선택 - UIKit"
         self.edgesForExtendedLayout = [.all]
         
         view.backgroundColor = .systemBackground
@@ -99,13 +99,13 @@ extension RegionSelectViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor?.onSelectRegion(RegionSelect.Request.OnSelectRegion(indexPath: indexPath))
+        interactor?.process(RegionSelect.Request.OnSelectRegion(indexPath: indexPath))
     }
 }
 
 extension RegionSelectViewController: RegionSelectDisplayLogic {
     
-    func displayAlertMessage(_ viewModel: RegionSelect.ViewModel.AlertMessage) {
+    func display(_ viewModel: CommonViewModel.Alert) {
         let alertController = UIAlertController(
             title: viewModel.title,
             message: viewModel.message,
@@ -115,7 +115,7 @@ extension RegionSelectViewController: RegionSelectDisplayLogic {
         present(alertController, animated: true)
     }
     
-    func displayRegionList(_ viewModel: RegionSelect.ViewModel.Regions) {
+    func display(_ viewModel: RegionSelect.ViewModel.Regions) {
         regions = viewModel.regions
         tableView.reloadData()
     }

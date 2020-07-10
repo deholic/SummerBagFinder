@@ -10,18 +10,21 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 
 // MARK: StoreDetailInteractor
 
-class StoreDetailInteractor: StoreDetailBusinessLogic, ObservableObject {
+class StoreDetailInteractor: StoreDetailRequestLogic, ObservableObject {
     var router: StoreDetailRoutingLogic?
     var presenter: StoreDetailPresentationLogic?
-    var worker: StoreDetailWorker?
     private let store: Store
     private let listener: StoreDetailListener?
     
-    var message: String?
+    var message: String? {
+        didSet {
+            print("message:\(message)")
+        }
+    }
     
     init(store: Store, listener: StoreDetailListener? = nil) {
         self.store = store
@@ -32,32 +35,32 @@ class StoreDetailInteractor: StoreDetailBusinessLogic, ObservableObject {
         print(#function, #file)
     }
     
-    func viewDidDisappear() {
+    func process(_ request: StoreDetail.Request.CheckTextCount) {
+        presenter?.present(StoreDetail.Response.textCount(message?.count ?? 0))
+
+    }
+    
+    func process(_ request: StoreDetail.Request.OnFinishWriting) {
+        message = request.message
         if let message = message {
             listener?.didFinishWriting(message: message)
         }
-    }
-    
-    func didFinishWriting(request: StoreDetail.Request.DidFinishWriting) {
-        message = request.message
-        presenter?.displayConfirmButton()
+        presenter?.present(StoreDetail.Response.wordCountButton(show: true))
     }
 }
 
 // MARK: protocol
 
-protocol StoreDetailBusinessLogic {
-    func viewDidDisappear()
-    func didFinishWriting(request: StoreDetail.Request.DidFinishWriting)
+protocol StoreDetailRequestLogic {
+    func process(_ request: StoreDetail.Request.CheckTextCount)
+    func process(_ request: StoreDetail.Request.OnFinishWriting)
 }
 
 protocol StoreDetailPresentationLogic {
-    func displayConfirmButton()
+    func present(_ response: StoreDetail.Response)
 }
 
-protocol StoreDetailRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-}
+protocol StoreDetailRoutingLogic {}
 
 protocol StoreDetailListener {
     func didFinishWriting(message: String)

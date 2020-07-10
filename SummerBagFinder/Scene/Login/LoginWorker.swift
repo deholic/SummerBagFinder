@@ -10,11 +10,11 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 import Moya
 
 class LoginWorker: LoginWorkingLogic {
-    func processToLogin(id: String?, password: String?, completion: @escaping (Result<Bool, Error>) -> ()) {
+    func processToLogin(id: String?, password: String?, completion: @escaping (Result<Bool, BaseError>) -> ()) {
         guard let id = id, let password = password else { return }
         
         let provider = MoyaProvider<StarbucksService>()

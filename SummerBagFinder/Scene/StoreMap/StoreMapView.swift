@@ -7,12 +7,14 @@
 //
 
 import SwiftUI
+import CoreLocation
 
+#warning("present로 떴을 때도 네비게이션 바 붙이기- 스토어 상세가 동작을 안함..")
 struct StoreMapView: View {
     
-    private let interactor: StoreMapBusinessLogic?
+    private let interactor: StoreMapRequestLogic
     @ObservedObject private var presenter: StoreMapPresenter
-
+    
     init(builder: LazyStoreMapBuildingLogic) {
         let (interactor, presenter) = builder.executeBuilding()
         self.interactor = interactor
@@ -21,7 +23,7 @@ struct StoreMapView: View {
     
     var regionSelectionItem: some View {
         Button(action: {
-            self.interactor?.didTapRegionSelection(StoreMap.Request.DidTapRegionSelection())
+            interactor.process(StoreMap.Request.ToRegionSelect())
         }) {
             Image(systemName: "gear").imageScale(.large)
         }
@@ -30,33 +32,41 @@ struct StoreMapView: View {
     var body: some View {
 
         VStack {
-            Text("StoreMap - SwiftUI")
+            Text(presenter.viewModel.store.name)
+                .font(.title)
+            Text(presenter.viewModel.store.address)
+            MapView(
+                coordinate: presenter.viewModel.store.coordinate,
+                name: presenter.viewModel.store.name
+            )
             Button(action: {
-                self.interactor?.didTapButton(StoreMap.Request.DidTapButton())
+                interactor.process(StoreMap.Request.ToStoreDetail())
             }) {
                 Text("go to StoreDetail")
             }
-// push 방식
+            // push 화면전환
             NavigationLink(
-                destination: StoreDetailView(builder:self.presenter.storeDetailBuilder),
+                destination: StoreDetailView(builder: presenter.storeDetailBuilder),
                 tag: StoreMapNextScene.storeDetail,
-                selection: $presenter.nextScene,
+                selection: $presenter.viewModel.nextScene,
                 label: { EmptyView() }
             )
-            Text(presenter.MessageFromDetail)
+            Text(presenter.viewModel.dynamicMessage)
         }
+        .padding()
+        .navigationBarTitle("Store Map - SwiftUI")
         .navigationBarItems(trailing: regionSelectionItem)
-// modal 방식
-        .sheet(isPresented: $presenter.isPresented, onDismiss: {
-            self.presenter.isPresented = false
-        }) {
-            if case .regionSelect = presenter.nextScene {
-                RegionSelectView(builder: self.presenter.regionSelectBuilder)
+        .onAppear {
+            interactor.process(StoreMap.Request.OnAppear())
+        }
+        // modal 화면전환
+        .sheet(isPresented: $presenter.viewModel.isPresented) {
+            if case .regionSelect = presenter.viewModel.nextScene {
+                RegionSelectView(builder: presenter.regionSelectBuilder)
             }
         }
     }
 }
-
 
 struct StoreMapView_Previews: PreviewProvider {
     static var previews: some View {

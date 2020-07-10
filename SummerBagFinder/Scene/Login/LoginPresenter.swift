@@ -10,23 +10,27 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     
-    func displayLoginFailureAlert() {
-        let viewModel = Login.ViewModel.LoginFailureMessage(
-            title: "알림",
-            message: "로그인에 실패했습니다.\n아이디와 패스워드를 다시 확인해 주세요.",
-            confirmTitle: "확인"
-        )
-        viewController?.displayLoginFailureAlert(viewModel)
+    func present(_ response: Login.Response) {
+        switch response {
+        case let .error(error):
+            let viewModel = CommonViewModel.Alert(
+                id: 100,
+                title: "알림",
+                message: error.description,
+                confirmTitle: "확인"
+            )
+            viewController?.display(viewModel)
+        }
     }
 }
 
 // MARK: LoginDisplayLogic
 
 protocol LoginDisplayLogic: class {
-    func displayLoginFailureAlert(_ viewModel: Login.ViewModel.LoginFailureMessage)
+    func display(_ viewModel: CommonViewModel.Alert)
 }

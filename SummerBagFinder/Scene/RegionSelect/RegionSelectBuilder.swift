@@ -6,7 +6,7 @@
 //  Copyright © 2020 EUIGYOM KIM. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol RegionSelectBuildingLogic {
     typealias Destination = RegionSelectViewController

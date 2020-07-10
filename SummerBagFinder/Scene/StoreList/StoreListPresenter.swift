@@ -18,10 +18,21 @@ class StoreListPresenter: StoreListPresentationLogic {
     deinit {
         print(#function)
     }
-    func displayStoreStockList(_ response: StoreList.Response.Stores) {
+    
+    func present(_ response: StoreList.Response) {
+        switch response {
+        case let .stores(stores):
+            self.displayStoreStockList(stores)
+        }
+    }
+}
+
+extension StoreListPresenter {
+    
+    private func displayStoreStockList(_ stores: [Store]) {
  
         let viewModel = StoreList.ViewModel.Stores(
-            stores: response.stores.map{
+            stores: stores.map{
                 StoreList.ViewModel.Store(
                     name: $0.name,
                     address: $0.address,
@@ -33,7 +44,7 @@ class StoreListPresenter: StoreListPresentationLogic {
             }
         )
         
-        viewController?.displayStoreStockList(viewModel)
+        viewController?.display(viewModel)
     }
     
     private func makeStockStatus(from stock: Stock?) -> String {
@@ -49,5 +60,5 @@ class StoreListPresenter: StoreListPresentationLogic {
 // MARK: protocol
 
 protocol StoreListDisplayLogic: class {
-    func displayStoreStockList(_ viewModel: StoreList.ViewModel.Stores)
+    func display(_ viewModel: StoreList.ViewModel.Stores)
 }

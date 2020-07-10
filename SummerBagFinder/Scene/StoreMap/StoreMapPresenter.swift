@@ -10,7 +10,7 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 
 // MARK: StoreMapPresenter
 
@@ -25,13 +25,15 @@ class StoreMapPresenter: ObservableObject {
     @Published var MessageFromDetail: String = ""
     
     // MARK: routing
-    @Published var nextScene: StoreMapNextScene?
-    @Published var isPresented = false
+    @Published var viewModel = StoreMap.ViewModel()
     
     var storeDetailBuilder: LazyStoreDetailBuildingLogic
     var regionSelectBuilder: LazyRegionSelectBuildingLogic
 
-    init(storeDetailBuilder: LazyStoreDetailBuildingLogic, regionSelectBuilder: LazyRegionSelectBuildingLogic) {
+    init(
+        storeDetailBuilder: LazyStoreDetailBuildingLogic,
+        regionSelectBuilder: LazyRegionSelectBuildingLogic
+    ) {
         self.storeDetailBuilder = storeDetailBuilder
         self.regionSelectBuilder = regionSelectBuilder
     }
@@ -41,8 +43,18 @@ class StoreMapPresenter: ObservableObject {
 
 extension StoreMapPresenter: StoreMapPresentationLogic {
 
-    func displayMessageFromDetail(_ viewModel: StoreMap.ViewModel.FromDetail) {
-        MessageFromDetail = viewModel.message
+    func present(_ response: StoreMap.Response) {
+        switch response {
+        case let .store(store, coordinate):
+            let viewStore = StoreMap.ViewModel.Store(
+                name: store.name,
+                address: store.address,
+                coordinate: coordinate
+            )
+            viewModel.store = viewStore
+        case let .fromDetail(message):
+            viewModel.dynamicMessage = message
+        }
     }
 }
 
@@ -53,13 +65,13 @@ extension StoreMapPresenter: StoreMapRoutingLogic {
     func routeToStoreDetail(store: Store, listener: StoreDetailListener?) {
         //라우팅: 스유 -> 스유
         storeDetailBuilder.prepareForBuilding(store: store, listener: listener)
-        nextScene = .storeDetail
+        viewModel.nextScene = .storeDetail
     }
     
     func routeToRegionSelection(message: String?) {
         //라우팅: 스유 -> 유킷
         regionSelectBuilder.prepareForBuilding(message: message)
-        nextScene = .regionSelect
-        isPresented = true
+        viewModel.nextScene = .regionSelect
+        viewModel.isPresented = true
     }
 }

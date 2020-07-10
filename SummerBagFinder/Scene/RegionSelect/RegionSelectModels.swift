@@ -15,37 +15,33 @@ import UIKit
 enum RegionSelect {
     
     enum Request {
+        struct OnLoad {}
+        struct OnAppear {}
         struct OnSelectRegion {
             let indexPath: IndexPath
         }
     }
     
     enum Response {
-        struct Regions {
-            let regions: [Region]
-        }
-        struct AlertMessage {
-            let message: String
-        }
+        case regions([Region])
+        case alert(message: String)
     }
     
     enum ViewModel {
+        
         struct Regions {
-            let regions: [RegionViewModel]
+            let regions: [Region]
         }
-        struct AlertMessage {
-            let title: String
-            let message: String
-            let confirmTitle: String
+        
+        struct Region {
+            let name: String
+            let subregions: [SubRegion]
+        }
+        
+        struct SubRegion {
+            let name: String
         }
     }
 }
 
-struct RegionViewModel {
-    let name: String
-    let subregions: [SubregionViewModel]
-    
-    struct SubregionViewModel {
-        let name: String
-    }
-}
+

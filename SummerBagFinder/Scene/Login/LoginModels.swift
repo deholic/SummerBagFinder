@@ -15,21 +15,15 @@ import UIKit
 enum Login {
     
     enum Request {
-        struct LoginTrial {
+        struct Login {
             let id: String
             let password: String
         }
     }
     
     enum Response {
-        
+        case error(BaseError)
     }
     
-    enum ViewModel {
-        struct LoginFailureMessage {
-            let title: String
-            let message: String
-            let confirmTitle: String
-        }
-    }
+    enum ViewModel {}
 }

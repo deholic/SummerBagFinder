@@ -11,7 +11,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class StoreListViewController: UIViewController {
     
@@ -19,7 +18,7 @@ class StoreListViewController: UIViewController {
         static var storeCellIdentifier: String     = "StoreCell"
     }
     
-    var interactor: StoreListBusinessLogic?
+    var interactor: StoreListRequestLogic?
     
     deinit {
         print(#function)
@@ -45,7 +44,7 @@ class StoreListViewController: UIViewController {
         
         setupViews()
         setupTableView()
-        interactor?.viewDidLoad()
+        interactor?.process(StoreList.Request.OnLoad())
     }
 }
 
@@ -54,7 +53,7 @@ class StoreListViewController: UIViewController {
 extension StoreListViewController {
     
     private func setupViews() {
-        self.title = "재고 확인"
+        self.title = "재고 확인 - UIKit"
         self.edgesForExtendedLayout = [.all]
         
         view.backgroundColor = .systemBackground
@@ -94,13 +93,13 @@ extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor?.didSelectStore(StoreList.Request.didSelectStore(index: indexPath.row))
+        interactor?.process(StoreList.Request.DidSelectStore(index: indexPath.row))
     }
 }
 
 extension StoreListViewController: StoreListDisplayLogic {
     
-    func displayStoreStockList(_ viewModel: StoreList.ViewModel.Stores) {
+    func display(_ viewModel: StoreList.ViewModel.Stores) {
         stores = viewModel.stores
         tableView.reloadData()
     }

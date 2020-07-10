@@ -11,7 +11,7 @@ import Foundation
 // MARK: protocol
 
 protocol StoreMapBuildingLogic {
-    typealias Destination = (StoreMapBusinessLogic, StoreMapPresenter)
+    typealias Destination = (StoreMapRequestLogic, StoreMapPresenter)
     func build(store: Store) -> Destination
 }
 
@@ -24,7 +24,7 @@ protocol LazyStoreMapBuildingLogic {
 
 class StoreMapBuilder: containsLazySceneBuildingLogic {
     static var emptyDestination: Destination {
-        (StoreMapInteractor(), StoreMapPresenter(storeDetailBuilder: StoreDetailBuilder(), regionSelectBuilder: RegionSelectBuilder()))
+        (StoreMapInteractor(store: Store(id: 0)), StoreMapPresenter(storeDetailBuilder: StoreDetailBuilder(), regionSelectBuilder: RegionSelectBuilder()))
     }
     private(set) var lazyLogic = LazySceneBuildingLogic<Destination>(emptyDestination: StoreMapBuilder.emptyDestination)
 }
@@ -32,7 +32,7 @@ class StoreMapBuilder: containsLazySceneBuildingLogic {
 extension StoreMapBuilder: StoreMapBuildingLogic {
     
     func build(store: Store) -> Destination {
-        let interactor = StoreMapInteractor()
+        let interactor = StoreMapInteractor(store: store)
         let presenter = StoreMapPresenter(storeDetailBuilder: StoreDetailBuilder(), regionSelectBuilder: RegionSelectBuilder())
         interactor.router = presenter
         interactor.presenter = presenter

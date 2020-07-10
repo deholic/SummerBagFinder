@@ -10,7 +10,7 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 
 // MARK: StoreListInteractor
 
@@ -27,17 +27,15 @@ class StoreListInteractor {
     }
 }
 
-extension StoreListInteractor: StoreListBusinessLogic {
+extension StoreListInteractor: StoreListRequestLogic {
     
-    func viewDidLoad() {
-        
+    func process(_ request: StoreList.Request.OnLoad) {
         if let stores = stores {
-            let response = StoreList.Response.Stores(stores: stores)
-            presenter?.displayStoreStockList(response)
+            presenter?.present(StoreList.Response.stores(stores))
         }
     }
     
-    func didSelectStore(_ request: StoreList.Request.didSelectStore) {
+    func process(_ request: StoreList.Request.DidSelectStore) {
         if let store = stores?[request.index] {
             router?.routeToStoreMap(store: store)
         }
@@ -46,12 +44,13 @@ extension StoreListInteractor: StoreListBusinessLogic {
 
 // MARK: protocol
 
-protocol StoreListBusinessLogic {
-    func viewDidLoad()
-    func didSelectStore(_ request: StoreList.Request.didSelectStore)
+protocol StoreListRequestLogic {
+    func process(_ request: StoreList.Request.OnLoad)
+    func process(_ request: StoreList.Request.DidSelectStore)
 }
+
 protocol StoreListPresentationLogic: class {
-    func displayStoreStockList(_ response: StoreList.Response.Stores)
+    func present(_ response: StoreList.Response)
 }
 
 protocol StoreListRoutingLogic {

@@ -11,25 +11,41 @@
 //
 
 import UIKit
+import CoreLocation
 
 enum StoreMap {
-    // MARK: Use cases
+
     enum Request {
-        struct DidTapButton {
-        }
-        struct DidTapRegionSelection {
-        }
+        struct OnAppear {}
+        struct ToStoreDetail {}
+        struct ToRegionSelect {}
     }
     
     enum Response {
-
+        case fromDetail(message: String)
+        case store(store: Store, coordinate: CLLocationCoordinate2D)
     }
     
-    enum ViewModel {
-        struct FromDetail {
-            let message: String
+    struct ViewModel {
+        var nextScene: StoreMapNextScene?
+        var isPresented: Bool
+        var dynamicMessage: String
+        var store: Store
+        
+        init() {
+            isPresented = false
+            dynamicMessage = ""
+            store = Store(
+                name: "",
+                address: "",
+                coordinate: CLLocationCoordinate2DMake(0, 0)
+            )
+        }
+
+        struct Store {
+            let name: String
+            let address: String
+            let coordinate: CLLocationCoordinate2D
         }
     }
-    
-    
 }

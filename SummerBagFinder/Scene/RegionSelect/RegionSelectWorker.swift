@@ -10,7 +10,7 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 import Moya
 
 class RegionSelectWorker: ResionSelectWorkingLogic {
@@ -41,7 +41,7 @@ class RegionSelectWorker: ResionSelectWorkingLogic {
                 guard let data = try? response.map(StoreStockListResponseModel.self) else {
                     let g = Int.random(in: 0...9)
                     let p = Int.random(in: 0...9)
-                    let store = Store(id: Int.random(in: 1000...9999), name: "랜덤", address: "서울시 강남구", isOpen: true, stock: Stock(totalCount: g+p, greenCount: g, pinkCount: p))
+                    let store = Store(id: Int.random(in: 1000...9999), name: "아크플레이스점", address: "역삼동 736-1", isOpen: true, stock: Stock(totalCount: g+p, greenCount: g, pinkCount: p))
                     completion(.success([store]))
                     return
                 }

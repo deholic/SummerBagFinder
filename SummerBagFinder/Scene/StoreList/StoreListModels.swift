@@ -13,16 +13,18 @@
 import UIKit
 
 enum StoreList {
+    
     enum Request {
-        struct didSelectStore {
+        struct OnLoad {}
+        struct DidSelectStore {
             let index: Int
         }
     }
+    
     enum Response {
-        struct Stores {
-            let stores: [Store]
-        }
+        case stores([Store])
     }
+    
     enum ViewModel {
         struct Stores {
             let stores: [Store]
