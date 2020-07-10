@@ -15,7 +15,7 @@ import CoreLocation
 
 // MARK: StoreMapInteractor
 
-class StoreMapInteractor: StoreMapRequestLogic {
+class StoreMapInteractor {
     var router: StoreMapRoutingLogic?
     var presenter: StoreMapPresentationLogic?
     var worker: StoreMapWorker?
@@ -26,6 +26,9 @@ class StoreMapInteractor: StoreMapRequestLogic {
     init(store: Store) {
         self.store = store
     }
+}
+
+extension StoreMapInteractor: StoreMapRequestLogic {
     
     func process(_ request: StoreMap.Request.OnAppear) {
         let response = StoreMap.Response.store(

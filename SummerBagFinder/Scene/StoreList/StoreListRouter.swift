@@ -13,7 +13,7 @@
 import UIKit
 import SwiftUI
 
-class StoreListRouter: NSObject, StoreListRoutingLogic {
+class StoreListRouter: NSObject {
     weak var viewController: UIViewController!
     private var storeMapBuilder: LazyStoreMapBuildingLogic
     
@@ -25,6 +25,9 @@ class StoreListRouter: NSObject, StoreListRoutingLogic {
         self.viewController = viewController
         self.storeMapBuilder = storeMapBuilder
     }
+}
+
+extension StoreListRouter: StoreListRoutingLogic {
     
     func routeToStoreMap(store: Store) {
         ///라우팅: 유킷  ->  스유

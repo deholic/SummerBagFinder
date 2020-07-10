@@ -1,6 +1,6 @@
 import UIKit
 
-class RegionSelectRouter: NSObject, RegionSelectRoutingLogic {
+class RegionSelectRouter: NSObject {
     weak var viewController: UIViewController!
     private var storeListBuilder: StoreListBuildingLogic
     
@@ -14,7 +14,7 @@ class RegionSelectRouter: NSObject, RegionSelectRoutingLogic {
     }
 }
 
-extension RegionSelectRouter {
+extension RegionSelectRouter: RegionSelectRoutingLogic {
     // MARK: Routing
     func routeToStoreList(stores: [Store]?) {
         ///라우팅: 유킷 -> 유킷 

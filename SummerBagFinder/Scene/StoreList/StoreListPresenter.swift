@@ -12,12 +12,15 @@
 
 import UIKit
 
-class StoreListPresenter: StoreListPresentationLogic {
+class StoreListPresenter {
     weak var viewController: StoreListDisplayLogic?
     
     deinit {
         print(#function)
     }
+}
+
+extension StoreListPresenter: StoreListPresentationLogic {
     
     func present(_ response: StoreList.Response) {
         switch response {

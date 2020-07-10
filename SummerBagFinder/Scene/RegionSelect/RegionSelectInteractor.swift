@@ -14,7 +14,7 @@ import Foundation
 
 // MARK: RegionSelectInteractor
 
-class RegionSelectInteractor: RegionSelectRequestLogic {
+class RegionSelectInteractor {
     var router: (NSObjectProtocol & RegionSelectRoutingLogic)?
     var presenter: RegionSelectPresentationLogic?
     private var worker: ResionSelectWorkingLogic?
@@ -30,7 +30,9 @@ class RegionSelectInteractor: RegionSelectRequestLogic {
     deinit {
         print(#function)
     }
-    
+}
+
+extension RegionSelectInteractor: RegionSelectRequestLogic {
     func process(_ request: RegionSelect.Request.OnAppear) {
         if let message = message {
             presenter?.present(RegionSelect.Response.alert(message: message))

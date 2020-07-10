@@ -14,14 +14,16 @@ import Foundation
 
 // MARK: RegionSelectPresenter
 
-class RegionSelectPresenter: RegionSelectPresentationLogic {
+class RegionSelectPresenter {
     
     weak var viewController: RegionSelectDisplayLogic?
     
     deinit {
         print(#function)
     }
-    
+}
+
+extension RegionSelectPresenter: RegionSelectPresentationLogic {
     func present(_ response: RegionSelect.Response) {
         switch response {
         case let .regions(regions):
@@ -30,7 +32,10 @@ class RegionSelectPresenter: RegionSelectPresentationLogic {
             displayAlert(message)
         }
     }
-    func displayRegions(_ regions: [Region]) {
+}
+
+extension RegionSelectPresenter {
+    private func displayRegions(_ regions: [Region]) {
         let viewRegions = regions.map {
             RegionSelect.ViewModel.Region(
                 name: $0.name,
@@ -41,7 +46,7 @@ class RegionSelectPresenter: RegionSelectPresentationLogic {
         viewController?.display(viewModel)
     }
     
-    func displayAlert(_ message: String) {
+    private func displayAlert(_ message: String) {
         let viewModel = CommonViewModel.Alert(
             id: 100,
             title: "test",

@@ -104,6 +104,3 @@ extension StoreListViewController: StoreListDisplayLogic {
         tableView.reloadData()
     }
 }
-
-extension StoreListViewController {
-}

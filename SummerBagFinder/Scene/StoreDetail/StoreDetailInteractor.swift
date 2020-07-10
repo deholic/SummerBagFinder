@@ -14,7 +14,7 @@ import Foundation
 
 // MARK: StoreDetailInteractor
 
-class StoreDetailInteractor: StoreDetailRequestLogic, ObservableObject {
+class StoreDetailInteractor: ObservableObject {
     var router: StoreDetailRoutingLogic?
     var presenter: StoreDetailPresentationLogic?
     private let store: Store
@@ -34,10 +34,12 @@ class StoreDetailInteractor: StoreDetailRequestLogic, ObservableObject {
     deinit {
         print(#function, #file)
     }
+}
+
+extension StoreDetailInteractor: StoreDetailRequestLogic {
     
     func process(_ request: StoreDetail.Request.CheckTextCount) {
         presenter?.present(StoreDetail.Response.textCount(message?.count ?? 0))
-
     }
     
     func process(_ request: StoreDetail.Request.OnFinishWriting) {
