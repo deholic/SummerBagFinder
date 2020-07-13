@@ -22,8 +22,6 @@ enum StoreMapNextScene {
 
 final class StoreMapPresenter: ObservableObject {
     
-    @Published var MessageFromDetail: String = ""
-    
     // MARK: routing
     @Published var viewModel = StoreMap.ViewModel()
     
