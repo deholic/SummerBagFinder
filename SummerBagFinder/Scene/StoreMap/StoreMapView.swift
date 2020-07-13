@@ -54,7 +54,7 @@ struct StoreMapView: View {
             Text(presenter.viewModel.dynamicMessage)
         }
         .padding()
-        .navigationBarTitle("Store Map - SwiftUI")
+        .navigationBarTitle("매장위치 - SwiftUI")
         .navigationBarItems(trailing: regionSelectionItem)
         .onAppear {
             interactor.process(StoreMap.Request.OnAppear())

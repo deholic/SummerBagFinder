@@ -35,7 +35,7 @@ final class RegionSelectInteractor {
 extension RegionSelectInteractor: RegionSelectRequestLogic {
     func process(_ request: RegionSelect.Request.OnAppear) {
         if let message = message {
-            presenter?.present(RegionSelect.Response.alert(message: message))
+            presenter?.present(.alert(message: message))
         }
     }
     
@@ -45,7 +45,7 @@ extension RegionSelectInteractor: RegionSelectRequestLogic {
             guard let self = self else { return }
             guard case let .success(regions) = result else { return }
             self.regions = regions
-            self.presenter?.present(RegionSelect.Response.regions(regions))
+            self.presenter?.present(.regions(regions))
         }
     }
     

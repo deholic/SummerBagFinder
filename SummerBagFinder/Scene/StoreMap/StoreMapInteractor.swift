@@ -37,7 +37,7 @@ extension StoreMapInteractor: StoreMapRequestLogic {
         )
         presenter?.present(response)
         if let message = messageFromDetail {
-            presenter?.present(StoreMap.Response.fromDetail(message: message))
+            presenter?.present(.fromDetail(message: message))
         }
     }
     

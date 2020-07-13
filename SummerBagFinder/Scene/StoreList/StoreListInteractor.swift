@@ -31,7 +31,7 @@ extension StoreListInteractor: StoreListRequestLogic {
     
     func process(_ request: StoreList.Request.OnLoad) {
         if let stores = stores {
-            presenter?.present(StoreList.Response.stores(stores))
+            presenter?.present(.stores(stores))
         }
     }
     

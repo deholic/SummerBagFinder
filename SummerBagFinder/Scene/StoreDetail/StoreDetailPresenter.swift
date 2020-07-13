@@ -29,6 +29,12 @@ final class StoreDetailPresenter: ObservableObject {
 extension StoreDetailPresenter: StoreDetailPresentationLogic {
     func present(_ response: StoreDetail.Response) {
         switch response {
+        case let .store(store):
+            viewModel.store = StoreDetail.ViewModel.Store(
+                name: store.name,
+                address: store.address,
+                status: store.isOpen ? "영업 중" : "영업 종료"
+            )
         case let .textCount(count):
             viewModel.alert = CommonViewModel.Alert(
                 id: 100,

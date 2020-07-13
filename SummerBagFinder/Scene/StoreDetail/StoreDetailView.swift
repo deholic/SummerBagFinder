@@ -21,11 +21,19 @@ struct StoreDetailView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("StoreDetail - SwiftUI")
+        VStack() {
+            HStack(spacing: 20) {
+                Text("매장주소")
+                    .bold()
+                Text(presenter.viewModel.store.address)
+                Spacer()
+            }
+            .padding()
+            Text(presenter.viewModel.store.status)
             TextField("이전화면에 전달할 메시지를 입력하세요.", text: $message) {
                 interactor.process(StoreDetail.Request.OnFinishWriting(message: message))
             }
+            .font(.body)
             .padding(.all, 20)
             if true == presenter.viewModel.showWordCountButton {
                 Button(
@@ -33,8 +41,13 @@ struct StoreDetailView: View {
                     label: { Text("글자 수 세기") }
                 )
             }
+            Spacer()
         }
-        .navigationBarTitle("Store Detail - SwiftUI")
+        .font(.title)
+        .navigationBarTitle(presenter.viewModel.store.name + " - SwiftUI")
+        .onAppear {
+            interactor.process(StoreDetail.Request.OnAppear())
+        }
         .alert(item: $presenter.viewModel.alert) {
             Alert(
                 title: Text($0.title),

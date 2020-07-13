@@ -15,6 +15,7 @@ import UIKit
 enum StoreDetail {
 
     enum Request {
+        struct OnAppear {}
         struct CheckTextCount {}
         struct OnFinishWriting {
             let message: String
@@ -24,6 +25,7 @@ enum StoreDetail {
     enum Response {
         case textCount(Int)
         case wordCountButton(show: Bool)
+        case store(Store)
     }
     
     // struct!
@@ -31,10 +33,18 @@ enum StoreDetail {
         // 모두 상수로 선언하고 값이 변경될 때마다 ViewModel을 새로 만드는 것이 정석이지만 편의상 특정 값만 바꿀 수 있게 var로 선언
         var showWordCountButton: Bool
         var alert: CommonViewModel.Alert?
+        var store: Store
         
         // 매개변수 없는 초기화 메서드 제공하기. 처음 뷰를 그릴 때 기본값이 필요해서
         init() {
             showWordCountButton = false
+            store = Store(name: "", address: "", status: "")
+        }
+        
+        struct Store {
+            let name: String
+            let address: String
+            let status: String
         }
     }
 }

@@ -26,24 +26,24 @@ final class LoginInteractor {
 
 extension LoginInteractor: LoginRequestLogic {
     func process(_ request: Login.Request.Login) {
-        //self.router?.routeToRegionList(message: "로그인화면에서 온 메시지")
-        worker?.processToLogin(id: request.id, password: request.password) { [weak self] result in
-            guard let self = self else { return }
-
-            switch result {
-            case let .success(isSuccess):
-                // 지역 선택 화면으로 이동
-                if isSuccess {
-                    self.router?.routeToRegionList(message: "로그인화면에서 온 메시지")
-                }
-                // 로그인 실패 얼럿 노출
-                else {
-                    self.presenter?.present(Login.Response.error(BaseError.loginFailure))
-                }
-            case let .failure(error):
-                self.presenter?.present(Login.Response.error(error))
-            }
-        }
+        self.router?.routeToRegionList(message: "로그인화면에서 온 메시지")
+//        worker?.processToLogin(id: request.id, password: request.password) { [weak self] result in
+//            guard let self = self else { return }
+//
+//            switch result {
+//            case let .success(isSuccess):
+//                // 지역 선택 화면으로 이동
+//                if isSuccess {
+//                    self.router?.routeToRegionList(message: "로그인화면에서 온 메시지")
+//                }
+//                // 로그인 실패 얼럿 노출
+//                else {
+//                    self.presenter?.present(.error(BaseError.loginFailure))
+//                }
+//            case let .failure(error):
+//                self.presenter?.present(.error(error))
+//            }
+//        }
     }
 }
 

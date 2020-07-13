@@ -21,11 +21,7 @@ final class StoreDetailInteractor: ObservableObject {
     private let worker: StoreDetailWorkingLogic
     private let listener: StoreDetailListener?
     
-    var message: String? {
-        didSet {
-            print("message:\(message)")
-        }
-    }
+    var message: String?
     
     init(store: Store, worker: StoreDetailWorkingLogic, listener: StoreDetailListener? = nil) {
         self.store = store
@@ -40,8 +36,13 @@ final class StoreDetailInteractor: ObservableObject {
 
 extension StoreDetailInteractor: StoreDetailRequestLogic {
     
+    func process(_ request: StoreDetail.Request.OnAppear) {
+        presenter?.present(.store(store))
+    }
+    
+    
     func process(_ request: StoreDetail.Request.CheckTextCount) {
-        presenter?.present(StoreDetail.Response.textCount(message?.count ?? 0))
+        presenter?.present(.textCount(message?.count ?? 0))
     }
     
     func process(_ request: StoreDetail.Request.OnFinishWriting) {
@@ -49,13 +50,14 @@ extension StoreDetailInteractor: StoreDetailRequestLogic {
         if let message = message {
             listener?.didFinishWriting(message: message)
         }
-        presenter?.present(StoreDetail.Response.wordCountButton(show: true))
+        presenter?.present(.wordCountButton(show: true))
     }
 }
 
 // MARK: protocol
 
 protocol StoreDetailRequestLogic {
+    func process(_ request: StoreDetail.Request.OnAppear)
     func process(_ request: StoreDetail.Request.CheckTextCount)
     func process(_ request: StoreDetail.Request.OnFinishWriting)
 }
