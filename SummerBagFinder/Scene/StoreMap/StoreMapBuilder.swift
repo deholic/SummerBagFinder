@@ -22,9 +22,9 @@ protocol LazyStoreMapBuildingLogic {
 
 // MARK: StoreMapBuilder
 
-class StoreMapBuilder: containsLazySceneBuildingLogic {
+final class StoreMapBuilder: containsLazySceneBuildingLogic {
     static var emptyDestination: Destination {
-        (StoreMapInteractor(store: Store(id: 0)), StoreMapPresenter(storeDetailBuilder: StoreDetailBuilder(), regionSelectBuilder: RegionSelectBuilder()))
+        (StoreMapInteractor(store: Store(id: 0), worker: StoreMapWorker()), StoreMapPresenter(storeDetailBuilder: StoreDetailBuilder(), regionSelectBuilder: RegionSelectBuilder()))
     }
     private(set) var lazyLogic = LazySceneBuildingLogic<Destination>(emptyDestination: StoreMapBuilder.emptyDestination)
 }
@@ -32,7 +32,7 @@ class StoreMapBuilder: containsLazySceneBuildingLogic {
 extension StoreMapBuilder: StoreMapBuildingLogic {
     
     func build(store: Store) -> Destination {
-        let interactor = StoreMapInteractor(store: store)
+        let interactor = StoreMapInteractor(store: store, worker: StoreMapWorker())
         let presenter = StoreMapPresenter(storeDetailBuilder: StoreDetailBuilder(), regionSelectBuilder: RegionSelectBuilder())
         interactor.router = presenter
         interactor.presenter = presenter

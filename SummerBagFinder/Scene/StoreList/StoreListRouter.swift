@@ -13,7 +13,7 @@
 import UIKit
 import SwiftUI
 
-class StoreListRouter: NSObject {
+final class StoreListRouter: NSObject {
     weak var viewController: UIViewController!
     private var storeMapBuilder: LazyStoreMapBuildingLogic
     

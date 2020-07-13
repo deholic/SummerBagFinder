@@ -12,7 +12,7 @@
 
 import UIKit
 
-class LoginRouter: NSObject {
+final class LoginRouter: NSObject {
     private var regionSelectBuilder: RegionSelectBuildingLogic
     private weak var viewController: UIViewController!
     

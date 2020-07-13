@@ -13,7 +13,7 @@ protocol LoginBuidingLogic {
     func build() -> Destination
 }
 
-class LoginBuilder: LoginBuidingLogic {
+final class LoginBuilder: LoginBuidingLogic {
     
     func build() -> Destination {
         let viewController = LoginViewController()

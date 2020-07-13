@@ -14,7 +14,7 @@ import Foundation
 
 // MARK: StoreDetailPresenter
 
-class StoreDetailPresenter: ObservableObject {
+final class StoreDetailPresenter: ObservableObject {
     
     @Published var viewModel = StoreDetail.ViewModel()
     

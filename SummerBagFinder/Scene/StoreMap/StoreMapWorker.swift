@@ -12,7 +12,11 @@
 
 import Foundation
 
-class StoreMapWorker {
+final class StoreMapWorker {
+}
+
+extension StoreMapWorker: StoreMapWorkingLogic {
+    
     func doSomeWork() {
     }
 }

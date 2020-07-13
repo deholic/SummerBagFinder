@@ -12,7 +12,7 @@
 
 import UIKit
 
-class StoreListPresenter {
+final class StoreListPresenter {
     weak var viewController: StoreListDisplayLogic?
     
     deinit {

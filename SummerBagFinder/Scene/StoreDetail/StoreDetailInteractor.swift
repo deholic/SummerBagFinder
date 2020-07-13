@@ -14,10 +14,11 @@ import Foundation
 
 // MARK: StoreDetailInteractor
 
-class StoreDetailInteractor: ObservableObject {
+final class StoreDetailInteractor: ObservableObject {
     var router: StoreDetailRoutingLogic?
     var presenter: StoreDetailPresentationLogic?
     private let store: Store
+    private let worker: StoreDetailWorkingLogic
     private let listener: StoreDetailListener?
     
     var message: String? {
@@ -26,8 +27,9 @@ class StoreDetailInteractor: ObservableObject {
         }
     }
     
-    init(store: Store, listener: StoreDetailListener? = nil) {
+    init(store: Store, worker: StoreDetailWorkingLogic, listener: StoreDetailListener? = nil) {
         self.store = store
+        self.worker = worker
         self.listener = listener
     }
     
@@ -66,4 +68,8 @@ protocol StoreDetailRoutingLogic {}
 
 protocol StoreDetailListener {
     func didFinishWriting(message: String)
+}
+
+protocol StoreDetailWorkingLogic {
+     func doSomeWork()
 }

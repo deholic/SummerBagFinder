@@ -14,7 +14,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RegionSelectViewController: UIViewController {
+final class RegionSelectViewController: UIViewController {
     
     private struct Constant {
         static var regionCellIdentifier: String     = "RegionCell"

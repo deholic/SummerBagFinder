@@ -22,10 +22,10 @@ protocol LazyStoreDetailBuildingLogic {
 
 // MARK: StoreDetailBuilder
 
-class StoreDetailBuilder: containsLazySceneBuildingLogic {
+final class StoreDetailBuilder: containsLazySceneBuildingLogic {
     
     static var emptyDestination: Destination {
-        (StoreDetailInteractor(store: Store(id: 0), listener: nil), StoreDetailPresenter())
+        (StoreDetailInteractor(store: Store(id: 0), worker: StoreDetailWorker(), listener: nil), StoreDetailPresenter())
     }
     
     private(set) var lazyLogic = LazySceneBuildingLogic<Destination>(emptyDestination: StoreDetailBuilder.emptyDestination)
@@ -38,7 +38,7 @@ class StoreDetailBuilder: containsLazySceneBuildingLogic {
 extension StoreDetailBuilder: StoreDetailBuildingLogic {
     
     func build(store: Store, listener: StoreDetailListener?) -> Destination {
-        let interactor = StoreDetailInteractor(store: store, listener: listener)
+        let interactor = StoreDetailInteractor(store: store, worker: StoreDetailWorker(), listener: listener)
         let presenter = StoreDetailPresenter()
         interactor.router = presenter
         interactor.presenter = presenter

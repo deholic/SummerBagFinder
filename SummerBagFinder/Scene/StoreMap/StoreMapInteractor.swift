@@ -15,15 +15,15 @@ import CoreLocation
 
 // MARK: StoreMapInteractor
 
-class StoreMapInteractor {
+final class StoreMapInteractor {
     var router: StoreMapRoutingLogic?
     var presenter: StoreMapPresentationLogic?
-    var worker: StoreMapWorker?
+    var worker: StoreMapWorkingLogic?
     
     let store: Store
     var messageFromDetail: String?
     
-    init(store: Store) {
+    init(store: Store, worker: StoreMapWorkingLogic) {
         self.store = store
     }
 }
@@ -75,4 +75,8 @@ protocol StoreMapPresentationLogic {
 protocol StoreMapRoutingLogic {
     func routeToStoreDetail(store: Store, listener: StoreDetailListener?)
     func routeToRegionSelection(message: String?)
+}
+
+protocol StoreMapWorkingLogic {
+    func doSomeWork()
 }

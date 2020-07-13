@@ -12,7 +12,7 @@
 
 import UIKit
 
-class StoreListViewController: UIViewController {
+final class StoreListViewController: UIViewController {
     
     private struct Constant {
         static var storeCellIdentifier: String     = "StoreCell"

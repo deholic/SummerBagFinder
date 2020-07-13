@@ -14,7 +14,7 @@ import Foundation
 
 // MARK: RegionSelectInteractor
 
-class RegionSelectInteractor {
+final class RegionSelectInteractor {
     var router: (NSObjectProtocol & RegionSelectRoutingLogic)?
     var presenter: RegionSelectPresentationLogic?
     private var worker: ResionSelectWorkingLogic?

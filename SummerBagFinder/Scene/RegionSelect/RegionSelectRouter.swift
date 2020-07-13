@@ -1,6 +1,6 @@
 import UIKit
 
-class RegionSelectRouter: NSObject {
+final class RegionSelectRouter: NSObject {
     weak var viewController: UIViewController!
     private var storeListBuilder: StoreListBuildingLogic
     

@@ -14,7 +14,7 @@ import Foundation
 
 // MARK: StoreListInteractor
 
-class StoreListInteractor {
+final class StoreListInteractor {
     var router: (NSObjectProtocol & StoreListRoutingLogic)?
     var presenter: StoreListPresentationLogic?
     deinit {

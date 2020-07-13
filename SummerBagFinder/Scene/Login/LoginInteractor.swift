@@ -14,7 +14,7 @@ import Foundation
 
 // MARK: LoginInteractor
 
-class LoginInteractor {
+final class LoginInteractor {
     var presenter: LoginPresentationLogic?
     var router: LoginRoutingLogic?
     private var worker: LoginWorkingLogic?

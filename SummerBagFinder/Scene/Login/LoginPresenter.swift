@@ -12,7 +12,7 @@
 
 import Foundation
 
-class LoginPresenter: LoginPresentationLogic {
+final class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     
     func present(_ response: Login.Response) {

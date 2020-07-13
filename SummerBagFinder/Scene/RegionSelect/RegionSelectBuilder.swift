@@ -18,7 +18,7 @@ protocol LazyRegionSelectBuildingLogic {
     func executeBuilding() -> RegionSelectBuildingLogic.Destination
 }
 
-class RegionSelectBuilder: containsLazySceneBuildingLogic {
+final class RegionSelectBuilder: containsLazySceneBuildingLogic {
     
     static var emptyDestination: Destination {
         RegionSelectViewController()

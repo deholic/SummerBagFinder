@@ -9,7 +9,7 @@
 import SwiftUI
 import CoreLocation
 
-#warning("present로 떴을 때도 네비게이션 바 붙이기- 스토어 상세가 동작을 안함..")
+#warning("present로 떴을 때 네비게이션 바 추가하기. 현재는 스토어 상세가 동작을 안함")
 struct StoreMapView: View {
     
     private let interactor: StoreMapRequestLogic

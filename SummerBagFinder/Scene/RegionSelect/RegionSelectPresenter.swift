@@ -14,7 +14,7 @@ import Foundation
 
 // MARK: RegionSelectPresenter
 
-class RegionSelectPresenter {
+final class RegionSelectPresenter {
     
     weak var viewController: RegionSelectDisplayLogic?
     

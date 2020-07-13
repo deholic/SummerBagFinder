@@ -13,7 +13,7 @@
 import Foundation
 import Moya
 
-class LoginWorker: LoginWorkingLogic {
+final class LoginWorker: LoginWorkingLogic {
     func processToLogin(id: String?, password: String?, completion: @escaping (Result<Bool, BaseError>) -> ()) {
         guard let id = id, let password = password else { return }
         

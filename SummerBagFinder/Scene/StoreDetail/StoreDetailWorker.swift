@@ -12,11 +12,14 @@
 
 import Foundation
 
-class StoreDetailWorker {
+final class StoreDetailWorker {
     
     deinit {
         print(#function, #file)
     }
+}
+
+extension StoreDetailWorker: StoreDetailWorkingLogic {
     
     func doSomeWork() {
     }

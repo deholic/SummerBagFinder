@@ -20,7 +20,7 @@ enum StoreMapNextScene {
     case regionSelect
 }
 
-class StoreMapPresenter: ObservableObject {
+final class StoreMapPresenter: ObservableObject {
     
     @Published var MessageFromDetail: String = ""
     

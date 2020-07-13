@@ -13,7 +13,7 @@ protocol StoreListBuildingLogic {
     func build(stores: [Store]?) -> Destination
 }
 
-class StoreListBuilder: StoreListBuildingLogic {
+final class StoreListBuilder: StoreListBuildingLogic {
     
     deinit {
         print(#function)

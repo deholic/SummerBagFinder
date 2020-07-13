@@ -14,7 +14,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     var interactor: LoginRequestLogic?
     let disposeBag = DisposeBag()
     
