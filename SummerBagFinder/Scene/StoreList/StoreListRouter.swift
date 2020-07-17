@@ -15,13 +15,13 @@ import SwiftUI
 
 final class StoreListRouter: NSObject {
     weak var viewController: UIViewController!
-    private var storeMapBuilder: LazyStoreMapBuildingLogic
+    private var storeMapBuilder: StoreMapBuildingLogic
     
     deinit {
         print(#function)
     }
     
-    init(viewController: UIViewController, storeMapBuilder: LazyStoreMapBuildingLogic) {
+    init(viewController: UIViewController, storeMapBuilder: StoreMapBuildingLogic) {
         self.viewController = viewController
         self.storeMapBuilder = storeMapBuilder
     }
@@ -31,9 +31,9 @@ extension StoreListRouter: StoreListRoutingLogic {
     
     func routeToStoreMap(store: Store) {
         ///라우팅: 유킷  ->  스유
-        storeMapBuilder.prepareForBuilding(store: store)
+        let d = storeMapBuilder.build(store: store)
         
-        let destination = UIHostingController(rootView: StoreMapView(builder: storeMapBuilder))
+        let destination = UIHostingController(rootView: StoreMapView(destination: d))
         viewController.show(destination, sender: nil)
     }
 }

@@ -52,6 +52,10 @@ extension StoreDetailInteractor: StoreDetailRequestLogic {
         }
         presenter?.present(.wordCountButton(show: true))
     }
+    
+    func process(_ request: StoreDetail.Request.ToStoreMap) {
+        router?.routeToStoreMap(store: store)
+    }
 }
 
 // MARK: protocol
@@ -60,13 +64,16 @@ protocol StoreDetailRequestLogic {
     func process(_ request: StoreDetail.Request.OnAppear)
     func process(_ request: StoreDetail.Request.CheckTextCount)
     func process(_ request: StoreDetail.Request.OnFinishWriting)
+    func process(_ request: StoreDetail.Request.ToStoreMap)
 }
 
 protocol StoreDetailPresentationLogic {
     func present(_ response: StoreDetail.Response)
 }
 
-protocol StoreDetailRoutingLogic {}
+protocol StoreDetailRoutingLogic {
+    func routeToStoreMap(store: Store)
+}
 
 protocol StoreDetailListener {
     func didFinishWriting(message: String)

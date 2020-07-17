@@ -31,6 +31,7 @@ enum StoreMap {
         var isPresented: Bool
         var dynamicMessage: String
         var store: Store
+        //var storeDetailDestination: StoreDetailBuilder.Destination
         
         init() {
             isPresented = false
@@ -40,6 +41,7 @@ enum StoreMap {
                 address: "",
                 coordinate: CLLocationCoordinate2DMake(0, 0)
             )
+            //storeDetailDestination = StoreDetailBuilder().emptyDestination
         }
 
         struct Store {

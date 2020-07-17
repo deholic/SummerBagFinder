@@ -18,13 +18,10 @@ protocol LazyRegionSelectBuildingLogic {
     func executeBuilding() -> RegionSelectBuildingLogic.Destination
 }
 
-final class RegionSelectBuilder: containsLazySceneBuildingLogic {
+final class RegionSelectBuilder {
     
-    static var emptyDestination: Destination {
-        RegionSelectViewController()
-    }
-    var lazyLogic = LazySceneBuildingLogic<Destination>(emptyDestination: RegionSelectBuilder.emptyDestination)
-
+    private var message: String?
+    
     deinit {
         print(#function)
     }
@@ -40,7 +37,7 @@ extension RegionSelectBuilder: RegionSelectBuildingLogic {
         interactor.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
-
+        
         return viewController
     }
 }
@@ -48,15 +45,10 @@ extension RegionSelectBuilder: RegionSelectBuildingLogic {
 extension RegionSelectBuilder: LazyRegionSelectBuildingLogic {
     
     func prepareForBuilding(message: String?) {
-        lazyLogic = LazySceneBuildingLogic(
-            logic: {[weak self] in
-                self?.build(message: message)
-            },
-            emptyDestination: Self.emptyDestination
-        )
+        self.message = message
     }
     
     func executeBuilding() -> RegionSelectViewController {
-        lazyLogic.execute()
+        build(message: message)
     }
 }

@@ -13,23 +13,23 @@ import Foundation
 protocol StoreDetailBuildingLogic {
     typealias Destination = (StoreDetailInteractor, StoreDetailPresenter)
     func build(store: Store, listener: StoreDetailListener?) -> Destination
-}
 
-protocol LazyStoreDetailBuildingLogic {
-    func prepareForBuilding(store: Store, listener: StoreDetailListener?)
-    func executeBuilding() -> StoreDetailBuildingLogic.Destination
+    func getDestination() -> Destination
 }
 
 // MARK: StoreDetailBuilder
 
-final class StoreDetailBuilder: containsLazySceneBuildingLogic {
+final class StoreDetailBuilder {
     
-    static var emptyDestination: Destination {
-        (StoreDetailInteractor(store: Store(id: 0), worker: StoreDetailWorker(), listener: nil), StoreDetailPresenter())
+    private var destination: Destination?
+    
+    init() {
+        print(#function, #file)
+    }
+    var emptyDestination: Destination {
+        (StoreDetailInteractor(store: Store(id: 0), worker: StoreDetailWorker(), listener: nil), StoreDetailPresenter(storeMapBuilder: StoreMapBuilder()))
     }
     
-    private(set) var lazyLogic = LazySceneBuildingLogic<Destination>(emptyDestination: StoreDetailBuilder.emptyDestination)
-
     deinit {
         print(#function, #file)
     }
@@ -37,28 +37,17 @@ final class StoreDetailBuilder: containsLazySceneBuildingLogic {
 
 extension StoreDetailBuilder: StoreDetailBuildingLogic {
     
+    func getDestination() -> Destination {
+        destination ?? emptyDestination
+    }
+
     func build(store: Store, listener: StoreDetailListener?) -> Destination {
         let interactor = StoreDetailInteractor(store: store, worker: StoreDetailWorker(), listener: listener)
-        let presenter = StoreDetailPresenter()
+        let presenter = StoreDetailPresenter(storeMapBuilder: StoreMapBuilder())
         interactor.router = presenter
         interactor.presenter = presenter
-
+        destination = (interactor, presenter)
         return (interactor, presenter)
     }
 }
 
-extension StoreDetailBuilder: LazyStoreDetailBuildingLogic {
-    
-    func prepareForBuilding(store: Store, listener: StoreDetailListener? = nil) {
-        lazyLogic = LazySceneBuildingLogic (
-            logic:{[weak self] in
-                self?.build(store: store, listener: listener)
-            },
-            emptyDestination: Self.emptyDestination
-        )
-    }
-
-    func executeBuilding() -> Destination {
-        lazyLogic.execute()
-    }
-}

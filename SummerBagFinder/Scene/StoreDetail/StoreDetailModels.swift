@@ -20,6 +20,7 @@ enum StoreDetail {
         struct OnFinishWriting {
             let message: String
         }
+        struct ToStoreMap {}
     }
     
     enum Response {
@@ -34,6 +35,7 @@ enum StoreDetail {
         var showWordCountButton: Bool
         var alert: CommonViewModel.Alert?
         var store: Store
+        var nextScene: StoreDetailNextScene?
         
         // 매개변수 없는 초기화 메서드 제공하기. 처음 뷰를 그릴 때 기본값이 필요해서
         init() {

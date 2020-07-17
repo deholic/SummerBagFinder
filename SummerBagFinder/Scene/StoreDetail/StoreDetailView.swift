@@ -14,8 +14,8 @@ struct StoreDetailView: View {
     @ObservedObject private var presenter: StoreDetailPresenter
     @State var message: String = ""
     
-    init(builder: LazyStoreDetailBuildingLogic) {
-        let (interactor, presenter) = builder.executeBuilding()
+    init(builder: StoreDetailBuildingLogic) {
+        let (interactor, presenter) = builder.getDestination()
         self.interactor = interactor
         self.presenter = presenter
     }
@@ -42,6 +42,13 @@ struct StoreDetailView: View {
                 )
             }
             Spacer()
+            // push 화면전환 - 전환되기 전에 StoreDetailView가 생성되면 따라서 StoreMapView가 생성이 됨
+            NavigationLink(
+                destination: StoreMapView(destination: presenter.storeMapBuilder.getDestination()),
+                tag: StoreDetailNextScene.storeMap,
+                selection: $presenter.viewModel.nextScene,
+                label: { EmptyView() }
+            )
         }
         .font(.title)
         .navigationBarTitle(presenter.viewModel.store.name + " - SwiftUI")

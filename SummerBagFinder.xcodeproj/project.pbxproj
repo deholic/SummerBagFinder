@@ -51,7 +51,6 @@
 		DE853C8B24BC8716001A1F4E /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE853C8824BC8716001A1F4E /* Region.swift */; };
 		DE853C8C24BC8716001A1F4E /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE853C8924BC8716001A1F4E /* Stock.swift */; };
 		DE853C8D24BC8716001A1F4E /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE853C8A24BC8716001A1F4E /* Store.swift */; };
-		DEA5F0B524B6EEA400D8F195 /* LazySceneBuildingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA5F0B424B6EEA400D8F195 /* LazySceneBuildingLogic.swift */; };
 		DEFDEB5624A4B4630067A17C /* StoreListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5524A4B4630067A17C /* StoreListBuilder.swift */; };
 		DEFDEB5824A4B46F0067A17C /* RegionSelectBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5724A4B46F0067A17C /* RegionSelectBuilder.swift */; };
 		DEFDEB5A24A4B4960067A17C /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFDEB5924A4B4960067A17C /* LoginBuilder.swift */; };
@@ -138,7 +137,6 @@
 		DE853C8824BC8716001A1F4E /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		DE853C8924BC8716001A1F4E /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		DE853C8A24BC8716001A1F4E /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		DEA5F0B424B6EEA400D8F195 /* LazySceneBuildingLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazySceneBuildingLogic.swift; sourceTree = "<group>"; };
 		DEFDEB5524A4B4630067A17C /* StoreListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListBuilder.swift; sourceTree = "<group>"; };
 		DEFDEB5724A4B46F0067A17C /* RegionSelectBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectBuilder.swift; sourceTree = "<group>"; };
 		DEFDEB5924A4B4960067A17C /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
@@ -420,7 +418,6 @@
 		DEA5F0B324B6EE9300D8F195 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				DEA5F0B424B6EEA400D8F195 /* LazySceneBuildingLogic.swift */,
 				DE853C7F24B85490001A1F4E /* CommonViewModel.swift */,
 			);
 			path = Common;
@@ -706,7 +703,6 @@
 				DE853C8D24BC8716001A1F4E /* Store.swift in Sources */,
 				DEFDEB5A24A4B4960067A17C /* LoginBuilder.swift in Sources */,
 				B8C50577249F3A7400D45DCC /* StoreListPresenter.swift in Sources */,
-				DEA5F0B524B6EEA400D8F195 /* LazySceneBuildingLogic.swift in Sources */,
 				DE853C8B24BC8716001A1F4E /* Region.swift in Sources */,
 				B8DDFD43249ED183002B3B13 /* AppDelegate.swift in Sources */,
 				DE853C8024B85490001A1F4E /* CommonViewModel.swift in Sources */,

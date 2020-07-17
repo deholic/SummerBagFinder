@@ -12,6 +12,11 @@
 
 import Foundation
 
+enum StoreDetailNextScene {
+    case none
+    case storeMap
+}
+
 // MARK: StoreDetailPresenter
 
 final class StoreDetailPresenter: ObservableObject {
@@ -22,6 +27,11 @@ final class StoreDetailPresenter: ObservableObject {
         print(#function, #file)
     }
     
+    var storeMapBuilder: StoreMapBuildingLogic
+    
+    init(storeMapBuilder: StoreMapBuildingLogic) {
+        self.storeMapBuilder = storeMapBuilder
+    }
 }
 
 // MARK: StoreDetailPresentationLogic
@@ -51,6 +61,9 @@ extension StoreDetailPresenter: StoreDetailPresentationLogic {
 // MARK: StoreDetailRoutingLogic
 
 extension StoreDetailPresenter: StoreDetailRoutingLogic {
-    
+    func routeToStoreMap(store: Store) {
+        _ = storeMapBuilder.build(store: store)
+        viewModel.nextScene = .storeMap
+    }
 }
 

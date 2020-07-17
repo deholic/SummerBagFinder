@@ -14,6 +14,7 @@ import Foundation
 
 // MARK: StoreMapPresenter
 
+#warning("ViewModel안에서 정의?")
 enum StoreMapNextScene {
     case none
     case storeDetail
@@ -22,14 +23,15 @@ enum StoreMapNextScene {
 
 final class StoreMapPresenter: ObservableObject {
     
-    // MARK: routing
     @Published var viewModel = StoreMap.ViewModel()
     
-    var storeDetailBuilder: LazyStoreDetailBuildingLogic
+    // MARK: routing
+    
+    var storeDetailBuilder: StoreDetailBuildingLogic
     var regionSelectBuilder: LazyRegionSelectBuildingLogic
 
     init(
-        storeDetailBuilder: LazyStoreDetailBuildingLogic,
+        storeDetailBuilder: StoreDetailBuildingLogic,
         regionSelectBuilder: LazyRegionSelectBuildingLogic
     ) {
         self.storeDetailBuilder = storeDetailBuilder
@@ -62,7 +64,7 @@ extension StoreMapPresenter: StoreMapRoutingLogic {
 
     func routeToStoreDetail(store: Store, listener: StoreDetailListener?) {
         //라우팅: 스유 -> 스유
-        storeDetailBuilder.prepareForBuilding(store: store, listener: listener)
+        _ = storeDetailBuilder.build(store: store, listener: listener)
         viewModel.nextScene = .storeDetail
     }
     

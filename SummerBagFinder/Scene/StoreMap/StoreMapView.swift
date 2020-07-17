@@ -15,10 +15,10 @@ struct StoreMapView: View {
     private let interactor: StoreMapRequestLogic
     @ObservedObject private var presenter: StoreMapPresenter
     
-    init(builder: LazyStoreMapBuildingLogic) {
-        let (interactor, presenter) = builder.executeBuilding()
-        self.interactor = interactor
-        self.presenter = presenter
+    init(destination: StoreMapBuildingLogic.Destination) {
+        //let (interactor, presenter) = builder.getDestination()
+        self.interactor = destination.0
+        self.presenter = destination.1
     }
     
     var regionSelectionItem: some View {
@@ -43,8 +43,9 @@ struct StoreMapView: View {
                 interactor.process(StoreMap.Request.ToStoreDetail())
             }) {
                 Text("go to StoreDetail")
+                    .font(.title)
             }
-            // push 화면전환
+            // push 화면전환 - 전환되기 전에 StoreMapView 가 생성되면 따라서 StoreDetailView가 생성이 됨 
             NavigationLink(
                 destination: StoreDetailView(builder: presenter.storeDetailBuilder),
                 tag: StoreMapNextScene.storeDetail,
@@ -70,7 +71,7 @@ struct StoreMapView: View {
 
 struct StoreMapView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreMapView(builder: StoreMapBuilder())
+        StoreMapView(destination: StoreMapBuilder().getDestination())
     }
 }
 
