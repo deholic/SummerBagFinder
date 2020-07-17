@@ -26,6 +26,10 @@ final class StoreMapInteractor {
     init(store: Store, worker: StoreMapWorkingLogic) {
         self.store = store
     }
+    
+    deinit {
+        print(#function, #file)
+    }
 }
 
 extension StoreMapInteractor: StoreMapRequestLogic {

@@ -10,7 +10,7 @@ final class RegionSelectRouter: NSObject {
     }
     
     deinit {
-        print(#function)
+        print(#function, #file)
     }
 }
 

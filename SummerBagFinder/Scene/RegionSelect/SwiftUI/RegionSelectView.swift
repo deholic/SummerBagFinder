@@ -18,6 +18,8 @@ struct RegionSelectView: UIViewControllerRepresentable {
         return viewController
     }
     
-    func updateUIViewController(_ uiViewController: RegionSelectViewController, context: Context) {}
+    func updateUIViewController(_ uiViewController: RegionSelectViewController, context: Context) {
+        print(#function, #file)
+    }
 }
 

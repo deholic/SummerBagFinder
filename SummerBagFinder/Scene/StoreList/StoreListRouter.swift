@@ -18,7 +18,7 @@ final class StoreListRouter: NSObject {
     private var storeMapBuilder: StoreMapBuildingLogic
     
     deinit {
-        print(#function)
+        print(#function, #file)
     }
     
     init(viewController: UIViewController, storeMapBuilder: StoreMapBuildingLogic) {

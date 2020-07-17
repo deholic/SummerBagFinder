@@ -19,6 +19,7 @@ struct StoreMapView: View {
         //let (interactor, presenter) = builder.getDestination()
         self.interactor = destination.0
         self.presenter = destination.1
+        print(#function, #file)
     }
     
     var regionSelectionItem: some View {

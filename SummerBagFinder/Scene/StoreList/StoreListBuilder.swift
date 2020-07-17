@@ -16,7 +16,7 @@ protocol StoreListBuildingLogic {
 final class StoreListBuilder: StoreListBuildingLogic {
     
     deinit {
-        print(#function)
+        print(#function, #file)
     }
     
     // builder 추가

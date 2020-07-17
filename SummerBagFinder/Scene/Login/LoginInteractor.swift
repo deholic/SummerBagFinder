@@ -22,6 +22,10 @@ final class LoginInteractor {
     init(worker: LoginWorkingLogic) {
         self.worker = worker
     }
+    
+    deinit {
+        print(#function, #file)
+    }
 }
 
 extension LoginInteractor: LoginRequestLogic {

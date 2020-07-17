@@ -18,13 +18,14 @@ final class StoreListInteractor {
     var router: (NSObjectProtocol & StoreListRoutingLogic)?
     var presenter: StoreListPresentationLogic?
     deinit {
-        print(#function)
+        print(#function, #file)
     }
     var stores: [Store]?
     
     init(stores: [Store]?) {
         self.stores = stores
     }
+
 }
 
 extension StoreListInteractor: StoreListRequestLogic {

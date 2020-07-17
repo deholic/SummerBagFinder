@@ -20,8 +20,21 @@ final class RegionSelectViewController: UIViewController {
         static var regionCellIdentifier: String     = "RegionCell"
     }
     
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        print(#function, #file)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        print(#function, #file)
+    }
+    
+    
     deinit {
-        print(#function)
+        print(#function, #file)
     }
     
     var interactor: RegionSelectRequestLogic?

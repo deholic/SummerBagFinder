@@ -21,7 +21,7 @@ final class StoreListViewController: UIViewController {
     var interactor: StoreListRequestLogic?
     
     deinit {
-        print(#function)
+        print(#function, #file)
     }
     
     lazy var tableView: UITableView = {

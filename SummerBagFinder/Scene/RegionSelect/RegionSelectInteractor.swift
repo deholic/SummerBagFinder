@@ -28,7 +28,7 @@ final class RegionSelectInteractor {
     }
     
     deinit {
-        print(#function)
+        print(#function, #file)
     }
 }
 

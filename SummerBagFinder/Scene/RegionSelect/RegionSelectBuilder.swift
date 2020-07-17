@@ -22,8 +22,11 @@ final class RegionSelectBuilder {
     
     private var message: String?
     
+    init() {
+        print(#function, #file)
+    }
     deinit {
-        print(#function)
+        print(#function, #file)
     }
 }
 

@@ -16,7 +16,7 @@ final class StoreListPresenter {
     weak var viewController: StoreListDisplayLogic?
     
     deinit {
-        print(#function)
+        print(#function, #file)
     }
 }
 

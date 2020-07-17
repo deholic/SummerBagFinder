@@ -19,7 +19,7 @@ final class RegionSelectPresenter {
     weak var viewController: RegionSelectDisplayLogic?
     
     deinit {
-        print(#function)
+        print(#function, #file)
     }
 }
 
