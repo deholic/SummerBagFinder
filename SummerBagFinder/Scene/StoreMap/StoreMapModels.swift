@@ -26,24 +26,7 @@ enum StoreMap {
         case store(store: Store, coordinate: CLLocationCoordinate2D)
     }
     
-    struct ViewModel {
-        var nextScene: StoreMapNextScene?
-        var isPresented: Bool
-        var dynamicMessage: String
-        var store: Store
-        //var storeDetailDestination: StoreDetailBuilder.Destination
-        
-        init() {
-            isPresented = false
-            dynamicMessage = ""
-            store = Store(
-                name: "",
-                address: "",
-                coordinate: CLLocationCoordinate2DMake(0, 0)
-            )
-            //storeDetailDestination = StoreDetailBuilder().emptyDestination
-        }
-
+    enum ViewModel {
         struct Store {
             let name: String
             let address: String

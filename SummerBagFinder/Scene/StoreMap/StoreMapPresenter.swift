@@ -11,6 +11,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 // MARK: StoreMapPresenter
 
@@ -23,7 +24,14 @@ enum StoreMapNextScene {
 
 final class StoreMapPresenter: ObservableObject {
     
-    @Published var viewModel = StoreMap.ViewModel()
+    @Published var nextScene: StoreMapNextScene?
+    @Published var isPresented: Bool = false
+    @Published var dynamicMessage: String = ""
+    @Published var store = StoreMap.ViewModel.Store(
+        name: "",
+        address: "",
+        coordinate: CLLocationCoordinate2DMake(0, 0)
+    )
     
     // MARK: routing
     
@@ -51,9 +59,9 @@ extension StoreMapPresenter: StoreMapPresentationLogic {
                 address: store.address,
                 coordinate: coordinate
             )
-            viewModel.store = viewStore
+            self.store = viewStore
         case let .fromDetail(message):
-            viewModel.dynamicMessage = message
+            dynamicMessage = message
         }
     }
 }
@@ -65,13 +73,13 @@ extension StoreMapPresenter: StoreMapRoutingLogic {
     func routeToStoreDetail(store: Store, listener: StoreDetailListener?) {
         //라우팅: 스유 -> 스유
         _ = storeDetailBuilder.build(store: store, listener: listener)
-        viewModel.nextScene = .storeDetail
+        nextScene = .storeDetail
     }
     
     func routeToRegionSelection(message: String?) {
         //라우팅: 스유 -> 유킷
         regionSelectBuilder.prepareForBuilding(message: message)
-        viewModel.nextScene = .regionSelect
-        viewModel.isPresented = true
+        nextScene = .regionSelect
+        isPresented = true
     }
 }

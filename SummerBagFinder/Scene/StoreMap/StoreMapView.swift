@@ -33,12 +33,12 @@ struct StoreMapView: View {
     var body: some View {
 
         VStack {
-            Text(presenter.viewModel.store.name)
+            Text(presenter.store.name)
                 .font(.title)
-            Text(presenter.viewModel.store.address)
+            Text(presenter.store.address)
             MapView(
-                coordinate: presenter.viewModel.store.coordinate,
-                name: presenter.viewModel.store.name
+                coordinate: presenter.store.coordinate,
+                name: presenter.store.name
             )
             Button(action: {
                 interactor.process(StoreMap.Request.ToStoreDetail())
@@ -50,10 +50,10 @@ struct StoreMapView: View {
             NavigationLink(
                 destination: StoreDetailView(builder: presenter.storeDetailBuilder),
                 tag: StoreMapNextScene.storeDetail,
-                selection: $presenter.viewModel.nextScene,
+                selection: $presenter.nextScene,
                 label: { EmptyView() }
             )
-            Text(presenter.viewModel.dynamicMessage)
+            Text(presenter.dynamicMessage)
         }
         .padding()
         .navigationBarTitle("매장위치 - SwiftUI")
@@ -62,8 +62,8 @@ struct StoreMapView: View {
             interactor.process(StoreMap.Request.OnAppear())
         }
         // modal 화면전환
-        .sheet(isPresented: $presenter.viewModel.isPresented) {
-            if case .regionSelect = presenter.viewModel.nextScene {
+        .sheet(isPresented: $presenter.isPresented) {
+            if case .regionSelect = presenter.nextScene {
                 RegionSelectView(builder: presenter.regionSelectBuilder)
             }
         }
