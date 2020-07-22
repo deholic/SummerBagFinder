@@ -16,7 +16,7 @@ enum StoreList {
     
     enum Request {
         struct OnLoad {}
-        struct DidSelectStore {
+        struct OnSelectStore {
             let index: Int
         }
     }

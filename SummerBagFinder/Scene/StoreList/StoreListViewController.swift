@@ -93,7 +93,7 @@ extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor?.process(StoreList.Request.DidSelectStore(index: indexPath.row))
+        interactor?.process(StoreList.Request.OnSelectStore(index: indexPath.row))
     }
 }
 

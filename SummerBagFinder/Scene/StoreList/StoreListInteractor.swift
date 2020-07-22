@@ -36,7 +36,7 @@ extension StoreListInteractor: StoreListRequestLogic {
         }
     }
     
-    func process(_ request: StoreList.Request.DidSelectStore) {
+    func process(_ request: StoreList.Request.OnSelectStore) {
         if let store = stores?[request.index] {
             router?.routeToStoreMap(store: store)
         }
@@ -47,7 +47,7 @@ extension StoreListInteractor: StoreListRequestLogic {
 
 protocol StoreListRequestLogic {
     func process(_ request: StoreList.Request.OnLoad)
-    func process(_ request: StoreList.Request.DidSelectStore)
+    func process(_ request: StoreList.Request.OnSelectStore)
 }
 
 protocol StoreListPresentationLogic: class {
